@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import java.util.List;
 
 /**
- * Created by cn40580 on 2016-10-10.
+ * Created by cn40580 at 2016-10-10 10:05 AM.
  */
 @Component("userService")
 public class UserServiceJpaImpl implements UserService {

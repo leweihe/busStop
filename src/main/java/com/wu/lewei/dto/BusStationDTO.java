@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 /**
- * Created by cn40580 at 2016-10-10.
+ * Created by cn40580 at 2016-10-10 10:04 AM.
  */
 public class BusStationDTO {
 

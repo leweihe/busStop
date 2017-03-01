@@ -10,7 +10,7 @@ import com.wu.lewei.web.rest.resource.BusRouteResource;
 import com.wu.lewei.web.rest.resource.BusStationResource;
 
 /**
- * Created by cn40580 at 2016-10-10.
+ * Created by cn40580 at 2016-10-10 10:06 AM.
  */
 @Mapper
 public interface BusStationResourceMapper {

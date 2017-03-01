@@ -7,7 +7,7 @@ import org.springframework.hateoas.ResourceSupport;
 import java.util.List;
 
 /**
- * Created by cn40580 at 2016-10-10.
+ * Created by cn40580 at 2016-10-10 10:06 AM.
  */
 public class BusRouteResource extends ResourceSupport {
     private String routeName;

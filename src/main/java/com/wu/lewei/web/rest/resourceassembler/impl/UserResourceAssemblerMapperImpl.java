@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import javax.validation.constraints.NotNull;
 
 /**
- * Created by cn40580 on 2016-10-10.
+ * Created by cn40580 at 2016-10-10 10:06 AM.
  */
 @Component
 public class UserResourceAssemblerMapperImpl implements UserResourceAssembler {

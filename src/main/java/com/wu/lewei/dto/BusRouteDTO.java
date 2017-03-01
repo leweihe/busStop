@@ -12,7 +12,8 @@ public class BusRouteDTO {
     @Id
     private String id;
     private String routeName;
-    @OneToMany(mappedBy = "stationDTO")
+
+    @OneToMany(mappedBy = "BusStationDTO")
     private List<BusStationDTO> stations;
 
     public String getId() {

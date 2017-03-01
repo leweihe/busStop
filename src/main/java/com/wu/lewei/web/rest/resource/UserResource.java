@@ -3,7 +3,7 @@ package com.wu.lewei.web.rest.resource;
 import org.springframework.hateoas.ResourceSupport;
 
 /**
- * Created by cn40580 on 2016-10-10.
+ * Created by cn40580 at 2016-10-10 10:02 AM.
  */
 public class UserResource extends ResourceSupport {
     private String username;

@@ -8,7 +8,7 @@ import com.wu.lewei.dto.BusStationDTO;
 import com.wu.lewei.web.rest.resource.BusStationResource;
 
 /**
- * Created by cn40580 at 2016-10-10.
+ * Created by cn40580 at 2016-10-10 10:02 AM.
  */
 public interface BusStationResourceAssembler extends ResourceAssembler<BusStationDTO, BusStationResource> {
 

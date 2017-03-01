@@ -12,7 +12,7 @@ import com.wu.lewei.web.rest.resourceassembler.BusRouteResourceAssembler;
 import com.wu.lewei.web.rest.resourceassembler.mapper.BusRouteResourceMapper;
 
 /**
- * Created by cn40580 on 2016-10-10.
+ * Created by cn40580 at 2016-10-10 10:00 AM.
  */
 @Component
 public class BusRouteAssemblerMapperImpl implements BusRouteResourceAssembler {
