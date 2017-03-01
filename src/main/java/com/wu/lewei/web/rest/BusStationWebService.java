@@ -10,6 +10,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,6 +42,16 @@ public class BusStationWebService {
     @Timed
     public ResponseEntity<List<BusStationResource>> getAllBusStations() {
         List<BusStationDTO> us = busStationService.findAll();
+        List<BusStationResource> res = us.stream().map(n -> busStationResourceAssembler.toResource(n)).collect(Collectors.toList());
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/busstation/:routeId",
+            method = RequestMethod.GET,
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_ATOM_XML_VALUE})
+    @Timed
+    public ResponseEntity<List<BusStationResource>> getAllBusStationsByRouteId(@PathVariable String routeId) {
+        List<BusStationDTO> us = busStationService.findStationsByRouteId(routeId);
         List<BusStationResource> res = us.stream().map(n -> busStationResourceAssembler.toResource(n)).collect(Collectors.toList());
         return new ResponseEntity<>(res, HttpStatus.OK);
     }

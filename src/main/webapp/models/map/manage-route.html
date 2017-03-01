@@ -7,12 +7,17 @@
 <button type="button" class="btn btn-warning" aria-label="Left Align" ng-click="setMapStyle('dark')">
     Dark
 </button>
+<div ng-repeat="route in allBusRoutes" class="row">
+    <div class="col-sm-1">
+        {{route.routeName}}
+    </div>
+    <div class="col-sm-3">
+        <button type="button" class="btn btn-success" ng-click="doSearchDrivingPath(route)">
+            search
+        </button>
+    </div>
+</div>
 
-<input type="text" ng-model="fromLocation">
-<input type="text" ng-model="toLocation">
-<button type="button" class="btn btn-success" ng-click="doSearchDrivingPath()">
-    search
-</button>
 <p></p>
 <div id="mapContainer" class="map"></div>
 <div id="panel"></div>

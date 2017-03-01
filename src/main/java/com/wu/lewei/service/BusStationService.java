@@ -2,6 +2,7 @@ package com.wu.lewei.service;
 
 import java.util.List;
 
+import com.wu.lewei.dto.BusRouteDTO;
 import com.wu.lewei.dto.BusStationDTO;
 
 /**
@@ -10,4 +11,7 @@ import com.wu.lewei.dto.BusStationDTO;
 public interface BusStationService {
 
     public List<BusStationDTO> findAll();
+
+    public List<BusStationDTO> findStationsByRouteId(String routeId);
+
 }

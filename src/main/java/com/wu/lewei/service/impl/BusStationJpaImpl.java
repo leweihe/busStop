@@ -22,8 +22,17 @@ public class BusStationJpaImpl implements BusStationService {
     @Inject
     private StationRepository stationRepo;
 
+    @Inject
+    private BusRouteRepository routeRepo;
+
     @Override
     public List<BusStationDTO> findAll() {
         return stationRepo.findAll();
+    }
+
+    @Override
+    public List<BusStationDTO> findStationsByRouteId(String routeId) {
+        BusRouteDTO route = routeRepo.findOne(routeId);
+        return route.getStations();
     }
 }
