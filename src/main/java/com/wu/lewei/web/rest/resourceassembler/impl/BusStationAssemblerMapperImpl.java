@@ -30,4 +30,12 @@ public class BusStationAssemblerMapperImpl implements BusStationResourceAssemble
 
         return res;
     }
+
+    @Override
+    public BusStationDTO toDTO(@NotNull BusStationResource res) {
+        Validate.notNull(res);
+        BusStationDTO dto = busStationResourceMapper.ResourceToDTO(res);
+
+        return dto;
+    }
 }

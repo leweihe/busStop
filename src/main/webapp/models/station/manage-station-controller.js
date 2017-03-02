@@ -11,37 +11,12 @@ angular.module('myApp.manageStation', ['ngRoute'])
 
     .controller('ManageStationController', ['$scope', 'ManageStationService', function ($scope, ManageRouteService) {
 
-        var map = new AMap.Map('mapContainer', {
-            resizeEnable: true,
-            zoom: 14,
-            center: [118.139839, 24.488006]
-        });
 
-        $scope.setMapStyle = function (mapStyle) {
-            map.setMapStyle(mapStyle);
-        };
-
-        ManageRouteService.findAllBusRoute().then(function (allBusRoutes) {
-            $scope.allBusRoutes = allBusRoutes.data;
-        });
-
-        $scope.doSearchDrivingPath = function (route) {
-            AMap.plugin('AMap.Driving', function () {
-                var drving = new AMap.Driving({
-                    map: map
-                });
-                drving.search(route.stations);
-            });
-        };
-
-    }]).factory('ManageStationService', ['$http', function ($http) {
+    }]).factory('ManageStationService', ['$http', '$resource', function ($http, $resource) {
+    var BusStation = $resource('app/rest/busstation/save', {}, {
+        save: {method: 'POST', cache: true}
+    });
     return {
-        findAllBusRoute: function () {
-            var promise = $http.get('app/rest/busroute/all').then(function (data) {
-                return data;
-            });
-            return promise;
-        },
         findAllBusStation: function () {
             var promise = $http.get('app/rest/busstation/all').then(function (data) {
                 return data;
@@ -57,6 +32,16 @@ angular.module('myApp.manageStation', ['ngRoute'])
                 return data;
             });
             return promise;
+        },
+
+        saveBusStation: function (busRoute) {
+            var resource = new BusStation();
+            resource.keyword = busRoute.keyword;
+            resource.city = busRoute.city === '' ? '厦门' : busRoute.city;
+            return resource.$save();
+        },
+        removeStation: function (stationId) {
+            return $resource('app/rest/busroute/remove/:stationId', {stationId: stationId}).delete().$promise;
         }
     }
 }]);

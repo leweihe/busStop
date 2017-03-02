@@ -10,8 +10,11 @@ import com.wu.lewei.dto.BusStationDTO;
  */
 public interface BusStationService {
 
-    public List<BusStationDTO> findAll();
+    List<BusStationDTO> findAll();
 
-    public List<BusStationDTO> findStationsByRouteId(String routeId);
+    List<BusStationDTO> findStationsByRouteId(String routeId);
 
+    BusStationDTO saveBusStation(BusStationDTO busStationDTO);
+
+    void remove(String stationId);
 }

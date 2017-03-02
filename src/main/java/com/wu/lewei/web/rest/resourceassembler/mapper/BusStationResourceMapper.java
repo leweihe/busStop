@@ -20,4 +20,6 @@ public interface BusStationResourceMapper {
             @Mapping(target = "links", ignore = true)
     })
     BusStationResource DTOtoResource(BusStationDTO entity);
+
+    BusStationDTO ResourceToDTO(BusStationResource entity);
 }

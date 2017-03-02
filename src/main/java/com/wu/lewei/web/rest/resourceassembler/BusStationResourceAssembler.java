@@ -13,4 +13,5 @@ import com.wu.lewei.web.rest.resource.BusStationResource;
 public interface BusStationResourceAssembler extends ResourceAssembler<BusStationDTO, BusStationResource> {
 
     public BusStationResource toResource(@NotNull BusStationDTO entity);
+    public BusStationDTO toDTO(@NotNull BusStationResource res);
 }

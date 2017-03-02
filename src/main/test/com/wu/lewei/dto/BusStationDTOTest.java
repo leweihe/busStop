@@ -34,27 +34,40 @@ public class BusStationDTOTest {
     @Test
     public void test() {
         BusRouteDTO busRoute = new BusRouteDTO();
-        busRoute.setRouteName("B18");
+        busRoute.setRouteName("No.1");
+        busRoute.setDescription("思北");
 
         BusStationDTO s1 = new BusStationDTO();
-        s1.setKeyword("金尚路吕岭路交汇");
+        s1.setKeyword("故宫路");
         s1.setCity("厦门");
 
         BusStationDTO s2 = new BusStationDTO();
-        s1.setCity("厦门");
-        s2.setKeyword("泰禾花园");
+        s2.setCity("厦门");
+        s2.setKeyword("思北路口");
 
         BusStationDTO s3 = new BusStationDTO();
-        s1.setCity("厦门");
-        s3.setKeyword("吕厝");
+        s3.setCity("厦门");
+        s3.setKeyword("滨北中行");
 
         BusStationDTO s4 = new BusStationDTO();
-        s1.setCity("厦门");
-        s4.setKeyword("湖滨北路");
+        s4.setCity("厦门");
+        s4.setKeyword("特贸");
 
-        stationRepo.save(Arrays.asList(s1, s2, s3, s4));
+        BusStationDTO s5 = new BusStationDTO();
+        s5.setCity("厦门");
+        s5.setKeyword("体育东村");
 
-        busRoute.setStations(Arrays.asList(s1, s2, s3, s4));
+        BusStationDTO s6 = new BusStationDTO();
+        s6.setCity("厦门");
+        s6.setKeyword("宏业大厦");
+
+        BusStationDTO s7 = new BusStationDTO();
+        s7.setCity("厦门");
+        s7.setKeyword("林德");
+
+        stationRepo.save(Arrays.asList(s1, s2, s3, s4, s5, s6, s7));
+
+        busRoute.setStations(Arrays.asList(s1, s2, s3, s4, s5, s6, s7));
 
         busRouteRepo.save(busRoute);
     }
