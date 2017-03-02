@@ -10,9 +10,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.codahale.metrics.annotation.Timed;
 import com.wu.lewei.dto.BusRouteDTO;
@@ -43,5 +41,18 @@ public class BusRouteWebService {
         List<BusRouteDTO> us = busRouteService.findAll();
         List<BusRouteResource> res = us.stream().map(n -> busRouteResourceAssembler.toResource(n)).collect(Collectors.toList());
         return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+
+
+    @RequestMapping(value = "/busroute/save", method = RequestMethod.POST,
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    @Timed
+    public ResponseEntity<BusRouteResource> addProfile(@RequestBody BusRouteResource busRouteResource) throws Exception {
+        LOG.debug("To Create new Bus Route" + busRouteResource);
+        BusRouteDTO busRouteDTO = busRouteResourceAssembler.toDto(busRouteResource);
+
+        BusRouteDTO newBusRoute = busRouteService.saveBusRoute(busRouteDTO);
+        BusRouteResource newBusRouteRes = busRouteResourceAssembler.toResource(newBusRoute);
+        return new ResponseEntity<>(newBusRouteRes, HttpStatus.OK);
     }
 }

@@ -31,35 +31,31 @@ public class BusStationDTOTest {
         stationRepo.deleteAll();
     }
 
-//    @Test
-//    public void test() {
-//        BusStationDTO busRoute = new BusStationDTO();
-//        busRoute.setRouteName("B18");
-//
-//        BusStationDTO s1 = new BusStationDTO();
-//        s1.setX(new Float(118.145754));
-//        s1.setY(new Float(24.489877));
-//        s1.setStationName("金尚路吕岭路交汇");
-//
-//        BusStationDTO s2 = new BusStationDTO();
-//        s2.setX(new Float(118.139703));
-//        s2.setY(new Float(24.492064));
-//        s2.setStationName("泰禾花园");
-//
-//        BusStationDTO s3 = new BusStationDTO();
-//        s3.setX(new Float(118.128888));
-//        s3.setY(new Float(24.48976));
-//        s3.setStationName("吕厝");
-//
-//        BusStationDTO s4 = new BusStationDTO();
-//        s4.setX(new Float(118.119103));
-//        s4.setY(new Float(24.487417));
-//        s4.setStationName("湖滨北路");
-//
-//        stationRepo.save(Arrays.asList(s1, s2, s3, s4));
-//
-//        busRoute.setStations(Arrays.asList(s1, s2, s3, s4));
-//
-//        busRouteRepo.save(busRoute);
-//    }
+    @Test
+    public void test() {
+        BusRouteDTO busRoute = new BusRouteDTO();
+        busRoute.setRouteName("B18");
+
+        BusStationDTO s1 = new BusStationDTO();
+        s1.setKeyword("金尚路吕岭路交汇");
+        s1.setCity("厦门");
+
+        BusStationDTO s2 = new BusStationDTO();
+        s1.setCity("厦门");
+        s2.setKeyword("泰禾花园");
+
+        BusStationDTO s3 = new BusStationDTO();
+        s1.setCity("厦门");
+        s3.setKeyword("吕厝");
+
+        BusStationDTO s4 = new BusStationDTO();
+        s1.setCity("厦门");
+        s4.setKeyword("湖滨北路");
+
+        stationRepo.save(Arrays.asList(s1, s2, s3, s4));
+
+        busRoute.setStations(Arrays.asList(s1, s2, s3, s4));
+
+        busRouteRepo.save(busRoute);
+    }
 }

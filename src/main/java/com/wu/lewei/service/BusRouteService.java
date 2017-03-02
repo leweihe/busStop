@@ -9,5 +9,7 @@ import com.wu.lewei.dto.BusRouteDTO;
  */
 public interface BusRouteService {
 
-    public List<BusRouteDTO> findAll();
+    List<BusRouteDTO> findAll();
+
+    BusRouteDTO saveBusRoute(BusRouteDTO busRouteDTO);
 }

@@ -1,5 +1,9 @@
 package com.wu.lewei.dto;
 
+import com.wu.lewei.constants.RouteStatusEnum;
+
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.List;
@@ -12,6 +16,10 @@ public class BusRouteDTO {
     @Id
     private String id;
     private String routeName;
+    private String description;
+
+    @Enumerated(EnumType.STRING)
+    private RouteStatusEnum routeStatus;
 
     @OneToMany(mappedBy = "BusStationDTO")
     private List<BusStationDTO> stations;
@@ -38,5 +46,21 @@ public class BusRouteDTO {
 
     public void setStations(List<BusStationDTO> stations) {
         this.stations = stations;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public RouteStatusEnum getRouteStatus() {
+        return routeStatus;
+    }
+
+    public void setRouteStatus(RouteStatusEnum routeStatus) {
+        this.routeStatus = routeStatus;
     }
 }

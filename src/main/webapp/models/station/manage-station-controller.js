@@ -1,15 +1,15 @@
 'use strict';
 
-angular.module('myApp.manageRoute', ['ngRoute'])
+angular.module('myApp.manageStation', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/manage-route', {
-            templateUrl: 'models/map/manage-route.html',
-            controller: 'ManageRouteController'
+        $routeProvider.when('/manage-station', {
+            templateUrl: 'models/station/manage-station.html',
+            controller: 'ManageStationController'
         });
     }])
 
-    .controller('ManageRouteController', ['$scope', 'ManageRouteService', function ($scope, ManageRouteService) {
+    .controller('ManageStationController', ['$scope', 'ManageStationService', function ($scope, ManageRouteService) {
 
         var map = new AMap.Map('mapContainer', {
             resizeEnable: true,
@@ -34,7 +34,7 @@ angular.module('myApp.manageRoute', ['ngRoute'])
             });
         };
 
-    }]).factory('ManageRouteService', ['$http', function ($http) {
+    }]).factory('ManageStationService', ['$http', function ($http) {
     return {
         findAllBusRoute: function () {
             var promise = $http.get('app/rest/busroute/all').then(function (data) {

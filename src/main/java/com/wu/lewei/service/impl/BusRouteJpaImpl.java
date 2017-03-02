@@ -1,14 +1,12 @@
 package com.wu.lewei.service.impl;
 
-import java.util.List;
-
-import javax.inject.Inject;
-
-import org.springframework.stereotype.Component;
-
 import com.wu.lewei.dto.BusRouteDTO;
 import com.wu.lewei.repo.BusRouteRepository;
 import com.wu.lewei.service.BusRouteService;
+import org.springframework.stereotype.Component;
+
+import javax.inject.Inject;
+import java.util.List;
 
 /**
  * Created by cn40580 at 2016-10-12 10:24 AM.
@@ -22,5 +20,10 @@ public class BusRouteJpaImpl implements BusRouteService {
     @Override
     public List<BusRouteDTO> findAll() {
         return busRouteRepo.findAll();
+    }
+
+    @Override
+    public BusRouteDTO saveBusRoute(BusRouteDTO dto) {
+        return busRouteRepo.save(dto);
     }
 }

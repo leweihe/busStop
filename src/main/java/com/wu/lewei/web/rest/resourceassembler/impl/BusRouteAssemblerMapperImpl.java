@@ -26,4 +26,11 @@ public class BusRouteAssemblerMapperImpl implements BusRouteResourceAssembler {
 
         return res;
     }
+
+    public BusRouteDTO toDto(@NotNull BusRouteResource res) {
+        Validate.notNull(res);
+        BusRouteDTO entity = busRouteResourceMapper.resourceToDTO(res);
+
+        return entity;
+    }
 }
