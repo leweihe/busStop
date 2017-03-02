@@ -65,6 +65,9 @@ angular.module('myApp.manageRoute', ['ngRoute', 'ngResource'])
         };
 
     }]).factory('ManageRouteService', ['$http', '$resource', function ($http, $resource) {
+    var BusRoute = $resource('app/rest/busroute/save', {}, {
+        save: {method: 'POST', cache: true}
+    });
     return {
         findAllBusRoute: function () {
             var promise = $http.get('app/rest/busroute/all').then(function (data) {
@@ -92,10 +95,10 @@ angular.module('myApp.manageRoute', ['ngRoute', 'ngResource'])
         },
 
         saveBusRoute: function (busRoute) {
-            var resource = $resource('app/rest/busroute/save');
+            var resource = new BusRoute();
             resource.description = busRoute.description;
             resource.routeName = busRoute.routeName;
-            return resource.save().$promise;
+            return resource.$save();
         },
         removeRoute: function (routeId) {
             return $resource('app/rest/busroute/remove/:routeId', {routeId: routeId}).delete().$promise;
