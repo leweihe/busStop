@@ -16,6 +16,7 @@ import com.wu.lewei.web.rest.resource.BusStationResource;
 public interface BusStationResourceMapper {
 
     @Mappings({
+            @Mapping(source = "id", target = "stationId"),
             @Mapping(target = "links", ignore = true)
     })
     BusStationResource DTOtoResource(BusStationDTO entity);

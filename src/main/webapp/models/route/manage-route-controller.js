@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.manageRoute', ['ngRoute'])
+angular.module('myApp.manageRoute', ['ngRoute', 'ngResource'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/manage-route', {
@@ -56,7 +56,15 @@ angular.module('myApp.manageRoute', ['ngRoute'])
             }
         };
 
-    }]).factory('ManageRouteService', ['$http', function ($http) {
+        $scope.removeRoute = function (route) {
+            if (route.routeId) {
+                ManageRouteService.removeRoute(route.routeId).then(function () {
+                    $scope.$broadcast("refreshRoutes");
+                });
+            }
+        };
+
+    }]).factory('ManageRouteService', ['$http', '$resource', function ($http, $resource) {
     return {
         findAllBusRoute: function () {
             var promise = $http.get('app/rest/busroute/all').then(function (data) {
@@ -64,12 +72,14 @@ angular.module('myApp.manageRoute', ['ngRoute'])
             });
             return promise;
         },
+
         findAllBusStation: function () {
             var promise = $http.get('app/rest/busstation/all').then(function (data) {
                 return data;
             });
             return promise;
         },
+
         findAllBusStationByRouteId: function (routeId) {
             var promise = $http.get('app/rest/busstation/:routeId', {
                 params: {
@@ -80,15 +90,15 @@ angular.module('myApp.manageRoute', ['ngRoute'])
             });
             return promise;
         },
+
         saveBusRoute: function (busRoute) {
-            var promise = $http.post('app/rest/busroute/save', {
-                params: {
-                    busRoute: busRoute
-                }
-            }).then(function (data) {
-                return data;
-            });
-            return promise;
+            var resource = $resource('app/rest/busroute/save');
+            resource.description = busRoute.description;
+            resource.routeName = busRoute.routeName;
+            return resource.save().$promise;
+        },
+        removeRoute: function (routeId) {
+            return $resource('app/rest/busroute/remove/:routeId', {routeId: routeId}).delete().$promise;
         }
     }
 }]);

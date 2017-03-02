@@ -13,7 +13,8 @@ import org.mapstruct.Mappings;
 public interface BusRouteResourceMapper {
 
     @Mappings({
-            @Mapping(target = "links", ignore = true)
+            @Mapping(target = "links", ignore = true),
+            @Mapping(source = "id", target = "routeId")
     })
     BusRouteResource DTOtoResource(BusRouteDTO entity);
 

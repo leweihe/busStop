@@ -43,11 +43,18 @@ public class BusRouteWebService {
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/busroute/remove/{routeId}",
+            method = RequestMethod.DELETE)
+    @Timed
+    public ResponseEntity<List<BusRouteResource>> removeBusRoute(@PathVariable String routeId) {
+        busRouteService.remove(routeId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/busroute/save", method = RequestMethod.POST,
             produces = {MediaType.APPLICATION_JSON_VALUE})
     @Timed
-    public ResponseEntity<BusRouteResource> addProfile(@RequestBody BusRouteResource busRouteResource) throws Exception {
+    public ResponseEntity<BusRouteResource> saveBusRoute(@RequestBody BusRouteResource busRouteResource) throws Exception {
         LOG.debug("To Create new Bus Route" + busRouteResource);
         BusRouteDTO busRouteDTO = busRouteResourceAssembler.toDto(busRouteResource);
 

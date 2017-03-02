@@ -2,10 +2,7 @@ package com.wu.lewei.dto;
 
 import com.wu.lewei.constants.RouteStatusEnum;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -14,7 +11,9 @@ import java.util.List;
 public class BusRouteDTO {
 
     @Id
+    @GeneratedValue
     private String id;
+
     private String routeName;
     private String description;
 

@@ -5,7 +5,7 @@ import org.springframework.hateoas.ResourceSupport;
 /**
  * Created by cn40580 at 2016-10-10 10:02 AM.
  */
-public class UserResource extends ResourceSupport {
+public class UserResource extends ResourceSupport{
     private String username;
     private Integer age;
     private String preferredLanguage;

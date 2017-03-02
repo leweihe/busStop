@@ -23,6 +23,11 @@ public class BusRouteJpaImpl implements BusRouteService {
     }
 
     @Override
+    public void remove(String routeId) {
+        busRouteRepo.delete(routeId);
+    }
+
+    @Override
     public BusRouteDTO saveBusRoute(BusRouteDTO dto) {
         return busRouteRepo.save(dto);
     }

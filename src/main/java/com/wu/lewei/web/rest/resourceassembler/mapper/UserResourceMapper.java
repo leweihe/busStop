@@ -7,7 +7,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
 /**
- * Created by cn40580 on 2016-10-10.
+ * Created by cn40580 at 2016-10-10 1:30 PM.
  */
 @Mapper
 public interface UserResourceMapper {

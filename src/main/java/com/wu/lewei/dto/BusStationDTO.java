@@ -41,4 +41,12 @@ public class BusStationDTO {
     public void setBusRoute(BusRouteDTO busRoute) {
         this.busRoute = busRoute;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

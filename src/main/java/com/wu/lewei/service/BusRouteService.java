@@ -11,5 +11,7 @@ public interface BusRouteService {
 
     List<BusRouteDTO> findAll();
 
+    void remove(String routeId);
+
     BusRouteDTO saveBusRoute(BusRouteDTO busRouteDTO);
 }
