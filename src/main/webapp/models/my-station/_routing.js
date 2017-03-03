@@ -4,7 +4,7 @@ angular.module('myApp-manageStation').config(function ($stateProvider) {
     $stateProvider
         .state('manageStation', {
             url: '/manage-station/:routeId',
-            templateUrl: 'models/station/manage-station.html',
+            templateUrl: 'models/my-station/manage-station.html',
             controller: 'ManageStationController'
         });
 });

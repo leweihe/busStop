@@ -4,7 +4,7 @@ angular.module('myApp-manageRoute', ['base'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/manage-route', {
-            templateUrl: 'models/route/manage-route.html',
+            templateUrl: 'models/my-route/manage-route.html',
             controller: 'ManageRouteController'
         });
     }])
