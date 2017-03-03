@@ -45,7 +45,7 @@ public class BusStationWebService {
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/busstation/:routeId",
+    @RequestMapping(value = "/busstation/{routeId}",
             method = RequestMethod.GET,
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_ATOM_XML_VALUE})
     @Timed

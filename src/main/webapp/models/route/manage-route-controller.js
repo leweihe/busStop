@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.manageRoute', ['ngRoute', 'ngResource'])
+angular.module('myApp-manageRoute', ['base'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/manage-route', {
@@ -9,7 +9,7 @@ angular.module('myApp.manageRoute', ['ngRoute', 'ngResource'])
         });
     }])
 
-    .controller('ManageRouteController', ['$scope', 'ManageRouteService', function ($scope, ManageRouteService) {
+    .controller('ManageRouteController', ['$scope', '$state', 'ManageRouteService', 'ManageStationService', function ($scope, $state, ManageRouteService, ManageStationService) {
 
         var map = new AMap.Map('mapContainer', {
             resizeEnable: true,
@@ -32,16 +32,22 @@ angular.module('myApp.manageRoute', ['ngRoute', 'ngResource'])
         });
 
         $scope.searchInAmap = function (route) {
-            AMap.plugin('AMap.Driving', function () {
-                var driving = new AMap.Driving({
-                    map: map
+            if (route.routeId) {
+                ManageStationService.findAllBusStationByRouteId(route.routeId)
+                    .then(function (data) {
+                        AMap.plugin('AMap.Driving', function () {
+                            var driving = new AMap.Driving({
+                                map: map
+                            });
+                            driving.search(data.data);
+                        });
                 });
-                driving.search(route.stations);
-            });
+            }
         };
 
         $scope.listStations = function (route) {
             $scope.stations = route.stations;
+            $scope.routeId = route.routeId;
         };
 
         $scope.editRouteInfo = function (route) {
@@ -50,7 +56,7 @@ angular.module('myApp.manageRoute', ['ngRoute', 'ngResource'])
 
         $scope.saveBusRoute = function () {
             if ($scope.inputBusRoute) {
-                ManageRouteService.saveBusRoute($scope.inputBusRoute).then(function (route) {
+                ManageRouteService.saveBusRoute($scope.inputBusRoute).then(function () {
                     $scope.$broadcast("refreshRoutes");
                 });
             }
@@ -64,6 +70,10 @@ angular.module('myApp.manageRoute', ['ngRoute', 'ngResource'])
             }
         };
 
+        $scope.jumpToStationEditPage = function () {
+            $state.go('manageStation', {routeId: $scope.routeId});
+        }
+
     }]).factory('ManageRouteService', ['$http', '$resource', function ($http, $resource) {
     var BusRoute = $resource('app/rest/busroute/save', {}, {
         save: {method: 'POST', cache: true}
@@ -75,25 +85,6 @@ angular.module('myApp.manageRoute', ['ngRoute', 'ngResource'])
             });
             return promise;
         },
-
-        findAllBusStation: function () {
-            var promise = $http.get('app/rest/busstation/all').then(function (data) {
-                return data;
-            });
-            return promise;
-        },
-
-        findAllBusStationByRouteId: function (routeId) {
-            var promise = $http.get('app/rest/busstation/:routeId', {
-                params: {
-                    routeId: routeId
-                }
-            }).then(function (data) {
-                return data;
-            });
-            return promise;
-        },
-
         saveBusRoute: function (busRoute) {
             var resource = new BusRoute();
             resource.description = busRoute.description;

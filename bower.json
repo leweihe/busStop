@@ -1,6 +1,6 @@
 {
-  "name": "lewei_angul",
-  "description": "this is my first angularjs project",
+  "name": "busStop",
+  "description": "to manage busstop in this system.",
   "main": "",
   "authors": [
     "lewei.he <lewei.me@gmail.com>"
@@ -22,8 +22,9 @@
     "angular-mocks": "1.6.x",
     "angular-resource": "1.6.x",
     "angular-route": "1.6.x",
-    "angular-ui-router": "~0.2.13",
+    "angular-ui-router": "~0.4.2",
     "angular-loader": "~1.5.0",
+    "angular-bootstrap": "2.5.0",
     "bootstrap": "3.3.x",
     "jquery": "2.2.x",
     "html5-boilerplate": "^5.3.0"
