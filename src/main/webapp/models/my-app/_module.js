@@ -6,7 +6,6 @@ angular.module('myApp', [
     'myApp-manageRoute',
     'myApp-manageStation'
 ]).config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
-    // $locationProvider.hashPrefix('!');
+    $locationProvider.hashPrefix('!');
 
-    // $routeProvider.otherwise({redirectTo: '/manage-route'});
 }]);

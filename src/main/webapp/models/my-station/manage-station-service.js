@@ -21,21 +21,6 @@ angular.module('myApp-manageStation').factory('ManageStationService', ['$http', 
         },
         removeStation: function (routeId, stationId) {
             return $resource('app/rest/busstation/remove/:routeId/:stationId', {routeId: routeId, stationId: stationId}).remove().$promise;
-        },
-        initTipInput: function(map) {
-            //init tip input
-            var autoOptions = {
-                input: "tipinput"
-            };
-            var auto = new AMap.Autocomplete(autoOptions);
-            var placeSearch = new AMap.PlaceSearch({
-                map: map
-            });
-            AMap.event.addListener(auto, "select", select);
-            function select(e) {
-                placeSearch.setCity(e.poi.adcode);
-                placeSearch.search(e.poi.name);
-            }
         }
     }
 }]);

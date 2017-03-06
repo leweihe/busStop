@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('myApp-manageStation').controller('ManageStationController', ['$scope', '$stateParams', 'ManageStationService',
-    function ($scope, $stateParams, ManageStationService) {
+angular.module('myApp-manageStation').controller('ManageStationController', ['$rootScope', '$scope', '$stateParams', 'ManageStationService', 'AmapService',
+    function ($rootScope, $scope, $stateParams, ManageStationService, AmapService) {
 
         $scope.routeId = $stateParams.routeId;
-        var map = new AMap.Map('mapContainer', {
+        $scope.map = new AMap.Map('mapContainer', {
             resizeEnable: true,
             zoom: 14,
             center: [118.139839, 24.488006]
@@ -16,7 +16,7 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$s
 
         $scope.addBusStation = function () {
             $scope.inputBusStation.routeId = $scope.routeId;
-            ManageStationService.saveBusStation($scope.inputBusStation).then(function (data) {
+            ManageStationService.saveBusStation($scope.inputBusStation).then(function () {
                 $scope.$broadcast("refreshStations");
             });
         };
@@ -32,8 +32,43 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$s
             $scope.$broadcast("refreshStations");
         };
 
-        ManageStationService.initTipInput(map);
+        AmapService.initTipInput($scope.map);
 
+        $scope.$on('openInfoPoint', function (ev, point) {
+            $scope.openInfoPoint($scope.map, point);
+        });
+
+        $scope.openInfoPoint = function (map, point) {
+            var marker = new AMap.Marker({
+                map: map,
+                position: point.position,
+                offset: new AMap.Pixel(-17, -42), //相对于基点的偏移位置
+                draggable: true,
+                content: '<div class="marker-route marker-marker-bus-from"></div>'   //自定义点标记覆盖物内容
+            });
+
+            marker.on();
+
+            $scope.inputBusStation.lng = point.location.lng;
+            $scope.inputBusStation.lat = point.location.lat;
+
+            infoWindow.open(map, [point.location.lng, point.location.lat]);
+        };
+
+        $scope.openInfoWin = function (map, point) {
+            var info = [];
+            info.push('<div><img src="images/linde-logo.jpg" width="100"><br/> ');
+            info.push(point.name);
+            info.push('地址 : ' + point.district + point.address + '</div>');
+
+            var infoWindow = new AMap.InfoWindow({
+                content: info.join("")
+            });
+            $scope.inputBusStation.lng = point.location.lng;
+            $scope.inputBusStation.lat = point.location.lat;
+
+            infoWindow.open(map, [point.location.lng, point.location.lat]);
+        }
     }
 
 ]);

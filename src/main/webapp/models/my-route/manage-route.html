@@ -29,7 +29,7 @@
                     <span ng-click="searchInAmap(route)"
                           class="glyphicon glyphicon-search pointer-hand"> </span>
                     <span ng-click="editRouteInfo(route)"
-                          class="glyphicon glyphicon-edit pointer-hand"> </span>
+                          class="glyphicon glyphicon-plus pointer-hand"> </span>
                     <span ng-click="removeRoute(route)"
                           class="glyphicon glyphicon-remove pointer-hand"> </span>
                     <span ng-click="listStations(route)"
@@ -56,6 +56,7 @@
         <div class="row" ng-repeat="station in stations">
             <div>{{station.keyword}}</div>
         </div>
+        <div class="row"><hr/></div>
         <div class="row center-block">
             <a class="btn btn-default" ng-click="jumpToStationEditPage()">Edit</a>
         </div>

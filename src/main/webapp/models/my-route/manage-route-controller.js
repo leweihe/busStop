@@ -30,7 +30,7 @@ angular.module('myApp-manageRoute').controller('ManageRouteController', ['$scope
                         var driving = new AMap.Driving({
                             map: map
                         });
-                        driving.search(data.data);
+                        driving.search(data);
                     });
                 });
         }
