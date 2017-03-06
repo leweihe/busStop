@@ -14,4 +14,8 @@ public interface BusRouteService {
     void remove(String routeId);
 
     BusRouteDTO saveBusRoute(BusRouteDTO busRouteDTO);
+
+    BusRouteDTO findById(String routeId);
+
+    BusRouteDTO removeStation(String routeId, String stationId);
 }

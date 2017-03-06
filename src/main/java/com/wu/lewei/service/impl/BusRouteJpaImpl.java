@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by cn40580 at 2016-10-12 10:24 AM.
@@ -30,5 +31,17 @@ public class BusRouteJpaImpl implements BusRouteService {
     @Override
     public BusRouteDTO saveBusRoute(BusRouteDTO dto) {
         return busRouteRepo.save(dto);
+    }
+
+    @Override
+    public BusRouteDTO findById(String routeId) {
+        return busRouteRepo.findOne(routeId);
+    }
+
+    @Override
+    public BusRouteDTO removeStation(String routeId, String stationId) {
+        BusRouteDTO busRoute = busRouteRepo.findOne(routeId);
+        busRoute.setStations(busRoute.getStations().stream().filter(n -> !stationId.equals(n.getId())).collect(Collectors.toList()));
+        return busRouteRepo.save(busRoute);
     }
 }

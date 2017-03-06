@@ -17,9 +17,14 @@ public interface BusStationResourceMapper {
 
     @Mappings({
             @Mapping(source = "id", target = "stationId"),
-            @Mapping(target = "links", ignore = true)
+            @Mapping(target = "links", ignore = true),
+            @Mapping(target = "busRouteId", ignore = true)
     })
     BusStationResource DTOtoResource(BusStationDTO entity);
 
+    @Mappings({
+            @Mapping(target = "id", ignore = true),
+            @Mapping(target = "busRoute", ignore = true)
+    })
     BusStationDTO ResourceToDTO(BusStationResource entity);
 }

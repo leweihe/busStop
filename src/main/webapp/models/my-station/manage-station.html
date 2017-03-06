@@ -11,17 +11,15 @@
     <div class="col-md-5">
         <div id="mapContainer" class="map"></div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-5">
         <table class="table table-hover">
             <tr>
-                <th class="col-md-2">City</th>
-                <th class="col-md-2">Keyword</th>
+                <th class="col-md-4">Keyword</th>
                 <th class="col-md-4">Description</th>
                 <th>Action</th>
             </tr>
 
             <tr ng-repeat="station in allBusStations">
-                <td>{{station.city}}</td>
                 <td>{{station.keyword}}</td>
                 <td>{{station.description}}</td>
                 <td>
@@ -29,25 +27,30 @@
                           class="glyphicon glyphicon-search pointer-hand"> </span>
                     <span ng-click=""
                           class="glyphicon glyphicon-edit pointer-hand"> </span>
-                    <span ng-click=""
+                    <span ng-click="deleteBusStation(station.stationId)"
                           class="glyphicon glyphicon-remove pointer-hand"> </span>
                     <span ng-click=""
                           class="glyphicon glyphicon-arrow-right pointer-hand"> </span>
                 </td>
             </tr>
         </table>
-        <div class="row col-sm-12">
+        <div class="row">
             <form class="form-group" name="myForm" >
-                <div class="col-md-2">
-                    <input class="form-control" type="text" ng-model="inputBusStation.keyword" required title="type in station keyword"/>
+                <div class="col-md-4">
+                    <input id="tipinput" class="form-control" type="text" ng-model="inputBusStation.keyword"
+                           title="type in station keyword"/>
                 </div>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" ng-model="inputBusStation.description" required title="type in station description"/>
+                    <input class="form-control" type="text" ng-model="inputBusStation.description"
+                           title="type in station description"/>
                 </div>
-                <div class="col-md-2">
-                    <span ng-click="saveBusStation()" class="btn btn-default">Add</span>
+                <div>
+                    <span ng-click="addBusStation()" class="btn btn-default">Add</span>
                 </div>
             </form>
+        </div>
+        <div class="row">
+            <div class="col-md_4" id="searchResults"></div>
         </div>
     </div>
 

@@ -10,6 +10,7 @@ public class BusStationResource extends ResourceSupport {
     private String stationId;
     private String keyword;
     private String city;
+    private String busRouteId;
 
     public String getKeyword() {
         return keyword;
@@ -33,5 +34,13 @@ public class BusStationResource extends ResourceSupport {
 
     public void setStationId(String stationId) {
         this.stationId = stationId;
+    }
+
+    public String getBusRouteId() {
+        return busRouteId;
+    }
+
+    public void setBusRouteId(String busRouteId) {
+        this.busRouteId = busRouteId;
     }
 }

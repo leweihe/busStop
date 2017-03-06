@@ -2,7 +2,7 @@
 
 angular.module('myApp-home').config(function ($stateProvider) {
     $stateProvider.state('home', {
-        template: '<h1>ererererer</h1>',
+        templateUrl: 'models/my-home/home.html',
         url: '/home'
-        });
+    });
 });
