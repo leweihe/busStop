@@ -17,6 +17,9 @@ angular.module('myApp-manageRoute').factory('ManageRouteService', ['$http', '$re
         },
         removeRoute: function (routeId) {
             return $resource('app/rest/busroute/remove/:routeId', {routeId: routeId}).delete().$promise;
+        },
+        findRoutesByStationIds: function (stationIds) {
+            return $resource('app/rest/busroute/find/:stationIds', {stationIds: stationIds}).query().$promise;
         }
     }
 }]);

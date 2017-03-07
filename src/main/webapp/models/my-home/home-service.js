@@ -1,4 +1,4 @@
-angular.module('myApp-home').factory('HomeService', ['$http', '$q','ManageStationService', function ($http, $q, ManageStationService) {
+angular.module('myApp-home').factory('HomeService', ['$http', '$q', 'ManageStationService', 'ManageRouteService', function ($http, $q, ManageStationService, ManageRouteService) {
     return {
         findStationsInCircle: function (circle) {
             var defer = $q.defer();

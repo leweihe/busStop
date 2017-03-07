@@ -1,10 +1,11 @@
 package com.wu.lewei.web.rest;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.inject.Inject;
-
+import com.codahale.metrics.annotation.Timed;
+import com.wu.lewei.dto.BusRouteDTO;
+import com.wu.lewei.dto.BusStationDTO;
+import com.wu.lewei.service.BusRouteService;
+import com.wu.lewei.web.rest.resource.BusRouteResource;
+import com.wu.lewei.web.rest.resourceassembler.BusRouteResourceAssembler;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.http.HttpStatus;
@@ -12,11 +13,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.codahale.metrics.annotation.Timed;
-import com.wu.lewei.dto.BusRouteDTO;
-import com.wu.lewei.service.BusRouteService;
-import com.wu.lewei.web.rest.resource.BusRouteResource;
-import com.wu.lewei.web.rest.resourceassembler.BusRouteResourceAssembler;
+import javax.inject.Inject;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by cn40580 at 2016-10-12 10:21 AM.
@@ -61,5 +60,16 @@ public class BusRouteWebService {
         BusRouteDTO newBusRoute = busRouteService.saveBusRoute(busRouteDTO);
         BusRouteResource newBusRouteRes = busRouteResourceAssembler.toResource(newBusRoute);
         return new ResponseEntity<>(newBusRouteRes, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/busroute/find/{stationIds}", method = RequestMethod.GET,
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    @Timed
+    public ResponseEntity<List<BusRouteResource>> findRoutesByStationIds(@PathVariable String stationIds) throws Exception {
+        LOG.debug("To Create new Bus Route" + stationIds);
+        List<BusRouteDTO> allBusRoutes = busRouteService.findAll();
+        List<BusRouteResource> result = allBusRoutes.stream().filter(n -> n.getStations().contains(new BusStationDTO(stationIds)))
+                .map(n -> busRouteResourceAssembler.toResource(n)).collect(Collectors.toList());
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

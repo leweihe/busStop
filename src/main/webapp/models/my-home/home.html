@@ -24,9 +24,17 @@
             </div>
         </div>
     </div>
-    <div>
-        <div ng-repeat="route in outputRoutes">
-        </div>
+    <div class="col-md-3">
+        <table class="table table-hover">
+            <tr>
+                <th class="col-md-1">Name</th>
+                <th class="col-md-2">Description</th>
+            </tr>
+            <tr ng-repeat="route in outputRoutes">
+                <td>{{route.routeName}}</td>
+                <td>{{route.description}}</td>
+            </tr>
+        </table>
     </div>
 </div>
 

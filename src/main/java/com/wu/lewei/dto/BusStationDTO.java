@@ -20,6 +20,14 @@ public class BusStationDTO {
     @ManyToOne
     private BusRouteDTO busRoute;
 
+    public BusStationDTO() {
+
+    }
+
+    public BusStationDTO(String id) {
+        this.id = id;
+    }
+
     public String getKeyword() {
         return keyword;
     }
@@ -66,5 +74,20 @@ public class BusStationDTO {
 
     public void setLat(String lat) {
         this.lat = lat;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        BusStationDTO that = (BusStationDTO) o;
+
+        return id != null ? id.equals(that.id) : that.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 }

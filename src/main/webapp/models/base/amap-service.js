@@ -25,7 +25,6 @@ angular.module('base').service('AmapService', ['$rootScope', '$http', '$q', func
             $http.get(url)
                 .then(function (returnVal) {
                     if('OK' === returnVal.statusText) {
-                        console.log("" + returnVal.data.results);
                         defer.resolve(returnVal.data.results);
                     }
                 });
@@ -41,9 +40,6 @@ angular.module('base').service('AmapService', ['$rootScope', '$http', '$q', func
             };
 
             var auto = new AMap.Autocomplete(autoOptions);
-            var placeSearch = new AMap.PlaceSearch({
-                map: map
-            });
 
             AMap.event.addListener(auto, "select", function (e) {
                 $rootScope.$broadcast('openInfoPoint', e.poi);

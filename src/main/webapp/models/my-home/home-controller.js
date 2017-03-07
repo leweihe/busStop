@@ -2,7 +2,7 @@
     * Created by cn40580 at 2017-03-06 2:43 PM.
     */
 
-angular.module('myApp-home').controller('HomeController', ['$scope', 'HomeService', 'AmapService', function ($scope, HomeService, AmapService) {
+angular.module('myApp-home').controller('HomeController', ['$scope', 'HomeService', 'AmapService', 'ManageRouteService', function ($scope, HomeService, AmapService, ManageRouteService) {
 
     $scope.inputBusStation = {
         lng: "",
@@ -15,8 +15,6 @@ angular.module('myApp-home').controller('HomeController', ['$scope', 'HomeServic
     });
 
     $scope.inputKeyword = "连岳里";
-    $scope.outputRoutes;
-
 
     $scope.searchNearestStations = function() {
         if(!$scope.inputBusStation.lng) {
@@ -35,22 +33,30 @@ angular.module('myApp-home').controller('HomeController', ['$scope', 'HomeServic
             var destination = {lng: $scope.inputBusStation.lng, lat: $scope.inputBusStation.lat};
 
             AmapService.calcWalkDist(originals, destination).then(function(distResults){
+
                 var shortestInd = 0;
                 var shortestDist = 0;
                 var tmpDist = 0;
                 angular.forEach(distResults, function(dist, index){
                     console.log('@ ' + dist.distance + '');
                     if(index == 0) {
-                        shortestDist = dist.distance;
+                        shortestDist = parseFloat(dist.distance);
                     }
-                    tmpDist = dist.distance;
+                    tmpDist = parseFloat(dist.distance);
                     if(tmpDist < shortestDist) {
                         shortestDist = tmpDist;
                         shortestInd = index;
                     }
                 });
                 console.log('the shortest one is ' + shortestDist + ' and the index is ' + shortestInd);
-                console.log('station is : ' + stations[0].keyword);
+                console.log('the nearest station is : ' + stations[shortestInd].keyword + ', suggest to take route number ' + stations[shortestInd].routeId);
+                $scope.nearestStation = stations[shortestInd];
+            }).then(function () {
+                ManageRouteService.findRoutesByStationIds($scope.nearestStation.stationId).then(function (outputRoutes) {
+                    $scope.outputRoutes = outputRoutes;
+                    console.log('choose route name : ' + $scope.outputRoutes[0].routeName);
+
+                });
             });
 
         });
