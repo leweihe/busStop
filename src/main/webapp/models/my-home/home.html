@@ -15,10 +15,19 @@
         <div id="mapContainer" class="map"></div>
     </div>
     <div class="col-md-4">
-        <input ng-bind="inputKeyword"></input>
+        <div class="form-group">
+            <div class="col-sm-5">
+                <input ng-model="inputKeyword" id="tipinput" class="form-control"/>
+            </div>
+            <div class="col-sm-1">
+                <span ng-click="searchNearestStations()" class="btn btn-default">query</span>
+            </div>
+        </div>
     </div>
-    <div><span ng-bind="outputResult"></span></div>
+    <div>
+        <div ng-repeat="route in outputRoutes">
+        </div>
+    </div>
 </div>
 
 <!--<span ng-click="testFunction()" class="">test</span>-->
-<span ng-click="testOpenWind()" class="">test</span>

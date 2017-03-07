@@ -1,10 +1,11 @@
-angular.module('base').service('AmapService', ['$rootScope', '$http', function ($rootScope, $http) {
+angular.module('base').service('AmapService', ['$rootScope', '$http', '$q', function ($rootScope, $http, $q) {
     return {
         getAmapWebApiKey: function () {
             return '06268f43b75ea67cbe6faa132acc4d19';
         },
 
         calcWalkDist: function (origins, destination) {
+            var defer = $q.defer();
             var url = 'http://restapi.amap.com/v3/distance?output=json&';
 
             url += 'origins=';
@@ -22,9 +23,13 @@ angular.module('base').service('AmapService', ['$rootScope', '$http', function (
 
             url += '&key=' + this.getAmapWebApiKey();
             $http.get(url)
-                .then(function (result) {
-                    console.log("" + result.data);
+                .then(function (returnVal) {
+                    if('OK' === returnVal.statusText) {
+                        console.log("" + returnVal.data.results);
+                        defer.resolve(returnVal.data.results);
+                    }
                 });
+            return defer.promise;
         },
 
         initTipInput: function (map) {
@@ -34,14 +39,16 @@ angular.module('base').service('AmapService', ['$rootScope', '$http', function (
                 city: "厦门",
                 citylimit: true
             };
+
             var auto = new AMap.Autocomplete(autoOptions);
             var placeSearch = new AMap.PlaceSearch({
                 map: map
             });
-            AMap.event.addListener(auto, "choose", function (e) {
+
+            AMap.event.addListener(auto, "select", function (e) {
+                $rootScope.$broadcast('openInfoPoint', e.poi);
                 map.setZoom(15);
                 map.setCenter(e.poi.location);
-                $rootScope.$broadcast('openInfoPoint', e.poi);
             });
         }
     }
