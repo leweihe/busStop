@@ -23,7 +23,7 @@
                 <td>{{station.keyword}}</td>
                 <td>{{station.description}}</td>
                 <td>
-                    <span ng-click=""
+                    <span ng-click="drawStationPoint(station)"
                           class="glyphicon glyphicon-search pointer-hand"> </span>
                     <span ng-click=""
                           class="glyphicon glyphicon-edit pointer-hand"> </span>
@@ -35,8 +35,7 @@
         <div class="row">
             <form class="form-group" name="myForm" >
                 <div class="col-md-4">
-                    <input id="tipinput" class="form-control" type="text" ng-model="inputBusStation.keyword"
-                           title="type in station keyword"/>
+                    <input id="tipinput" class="form-control" type="text" title="type in station keyword"/>
                 </div>
                 <div class="col-md-4">
                     <input class="form-control" type="text" ng-model="inputBusStation.description"

@@ -2,20 +2,36 @@
 
 angular.module('myApp-manageStation').controller('ManageStationController', ['$rootScope', '$scope', '$stateParams', 'ManageStationService', 'AmapService',
     function ($rootScope, $scope, $stateParams, ManageStationService, AmapService) {
-
         $scope.routeId = $stateParams.routeId;
+        $scope.inputBusStation = {
+            routeId: '',
+            lng: '',
+            lat: '',
+            keyword: ''
+        };
+        $scope.inputBusStation.routeId = $scope.routeId;
+        var amapRoute;
+
         $scope.map = new AMap.Map('mapContainer', {
             resizeEnable: true,
             zoom: 14,
             center: [118.139839, 24.488006]
         });
 
+
         ManageStationService.findAllBusStationByRouteId($scope.routeId).then(function (allBusStations) {
             $scope.allBusStations = allBusStations;
+            var path = [];
+            angular.forEach(allBusStations, function (station) {
+                path.push([station.lng, station.lat]);
+            });
+            $scope.map.plugin("AMap.DragRoute", function () {
+                amapRoute = new AMap.DragRoute($scope.map, path, AMap.DrivingPolicy.LEAST_DISTANCE);
+                amapRoute.search();
+            });
         });
 
         $scope.addBusStation = function () {
-            $scope.inputBusStation.routeId = $scope.routeId;
             ManageStationService.saveBusStation($scope.inputBusStation).then(function () {
                 $scope.$broadcast("refreshStations");
             });
@@ -39,20 +55,54 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
         });
 
         $scope.openInfoPoint = function (map, point) {
+            map.clearMap();
             var marker = new AMap.Marker({
                 map: map,
-                position: point.position,
-                offset: new AMap.Pixel(-17, -42), //相对于基点的偏移位置
-                draggable: true,
-                content: '<div class="marker-route marker-marker-bus-from"></div>'   //自定义点标记覆盖物内容
+                position: point.location,
+                draggable: true
             });
 
-            marker.on();
+            marker.on('dragend', function (dragedPoint) {
+                $scope.inputBusStation.lng = dragedPoint.lnglat.lng;
+                $scope.inputBusStation.lat = dragedPoint.lnglat.lat;
+            });
 
             $scope.inputBusStation.lng = point.location.lng;
             $scope.inputBusStation.lat = point.location.lat;
+            $scope.inputBusStation.keyword = point.name;
+        };
 
-            infoWindow.open(map, [point.location.lng, point.location.lat]);
+        $scope.drawStationPoint = function (station) {
+            var position = new AMap.LngLat(station.lng, station.lat);
+            var marker = new AMap.Marker({
+                map: $scope.map,
+                position: position,
+                draggable: false,
+                clickable: true
+            });
+            marker.on('dblclick', function () {
+                marker.setMap(null);
+                $scope.editStationPoint(station)
+            })
+        };
+
+        $scope.editStationPoint = function (station) {
+            var position = new AMap.LngLat(station.lng, station.lat);
+            var marker = new AMap.Marker({
+                map: $scope.map,
+                position: position,
+                draggable: true
+            });
+            marker.setAnimation('AMAP_ANIMATION_BOUNCE');
+            marker.on('dragend', function (dragedPoint) {
+                station.lng = dragedPoint.lnglat.lng;
+                station.lat = dragedPoint.lnglat.lat;
+                station.routeId = $scope.routeId;
+            });
+            marker.on('dblclick', function () {
+                marker.setMap(null);
+                ManageStationService.saveBusStation(station);
+            })
         };
 
         $scope.openInfoWin = function (map, point) {

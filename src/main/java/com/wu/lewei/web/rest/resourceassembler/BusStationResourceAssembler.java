@@ -14,11 +14,13 @@ import com.wu.lewei.web.rest.resource.BusStationResource;
  */
 public interface BusStationResourceAssembler extends ResourceAssembler<BusStationDTO, BusStationResource> {
 
+    @Mappings({
+            @Mapping(target = "busRouteId", source = "id"),
+    })
     public BusStationResource toResource(@NotNull BusStationDTO entity);
 
     @Mappings({
             @Mapping(target = "id", source = "busRouteId"),
-            @Mapping(target = "id", ignore = true)
     })
     public BusStationDTO toDTO(@NotNull BusStationResource res);
 }

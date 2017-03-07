@@ -23,7 +23,7 @@ public interface BusStationResourceMapper {
     BusStationResource DTOtoResource(BusStationDTO entity);
 
     @Mappings({
-            @Mapping(target = "id", ignore = true),
+            @Mapping(source = "stationId", target = "id"),
             @Mapping(target = "busRoute", ignore = true)
     })
     BusStationDTO ResourceToDTO(BusStationResource entity);

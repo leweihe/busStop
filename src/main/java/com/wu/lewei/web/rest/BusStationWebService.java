@@ -79,4 +79,24 @@ public class BusStationWebService {
         BusStationResource newBusStationRes = busStationResourceAssembler.toResource(newBusStation);
         return new ResponseEntity<>(newBusStationRes, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/busstation/save", method = RequestMethod.PUT,
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    @Timed
+    public ResponseEntity<BusStationResource> updateBusStation(@RequestBody BusStationResource busStationResource) throws Exception {
+        LOG.debug("To Create new Bus Station" + busStationResource);
+        BusStationDTO busStationDTO = busStationResourceAssembler.toDTO(busStationResource);
+        BusRouteDTO busRouteDTO = busRouteService.findById(busStationResource.getBusRouteId());
+
+        BusStationDTO newBusStation = busStationService.saveBusStation(busStationDTO);
+        busRouteDTO.getStations().forEach(n -> {
+            if (n.getId().equals(newBusStation.getId())) {
+                n.setLng(newBusStation.getLng());
+                n.setLat(newBusStation.getLat());
+            }
+        });
+        busRouteService.saveBusRoute(busRouteDTO);
+        BusStationResource newBusStationRes = busStationResourceAssembler.toResource(newBusStation);
+        return new ResponseEntity<>(newBusStationRes, HttpStatus.OK);
+    }
 }

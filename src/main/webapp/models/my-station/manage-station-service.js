@@ -1,6 +1,7 @@
 angular.module('myApp-manageStation').factory('ManageStationService', ['$http', '$resource', function ($http, $resource) {
-    var BusStation = $resource('app/rest/busstation/save/:routeId', {routeId: '@routeId'}, {
-        save: {method: 'POST', cache: true}
+    var BusStation = $resource('app/rest/busstation/save', {}, {
+        save: {method: 'POST', cache: true},
+        update: {method: 'PUT'}
     });
     return {
         findAllBusStations: function () {
@@ -14,13 +15,24 @@ angular.module('myApp-manageStation').factory('ManageStationService', ['$http', 
         },
         saveBusStation: function (busStation) {
             var resource = new BusStation();
+            resource.stationId = busStation.stationId;
             resource.keyword = busStation.keyword;
-            resource.city = busStation.city === '' ? '厦门' : busStation.city;
+            resource.city = busStation.city ? '厦门' : busStation.city;
             resource.busRouteId = busStation.routeId;
-            return resource.$save();
+            resource.lng = busStation.lng;
+            resource.lat = busStation.lat;
+            resource.description = busStation.description;
+            if (resource.stationId) {
+                return resource.$update();
+            } else {
+                return resource.$save();
+            }
         },
         removeStation: function (routeId, stationId) {
-            return $resource('app/rest/busstation/remove/:routeId/:stationId', {routeId: routeId, stationId: stationId}).remove().$promise;
+            return $resource('app/rest/busstation/remove/:routeId/:stationId', {
+                routeId: routeId,
+                stationId: stationId
+            }).remove().$promise;
         }
     }
 }]);

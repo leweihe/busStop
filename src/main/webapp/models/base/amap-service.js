@@ -30,13 +30,15 @@ angular.module('base').service('AmapService', ['$rootScope', '$http', function (
         initTipInput: function (map) {
             //init tip input
             var autoOptions = {
-                input: "tipinput"
+                input: "tipinput",
+                city: "厦门",
+                citylimit: true
             };
             var auto = new AMap.Autocomplete(autoOptions);
             var placeSearch = new AMap.PlaceSearch({
                 map: map
             });
-            AMap.event.addListener(auto, "select", function (e) {
+            AMap.event.addListener(auto, "choose", function (e) {
                 map.setZoom(15);
                 map.setCenter(e.poi.location);
                 $rootScope.$broadcast('openInfoPoint', e.poi);
