@@ -6,7 +6,7 @@
     "lewei.he <lewei.me@gmail.com>"
   ],
   "license": "ISC",
-  "homepage": "https://github.com/leweihe/lewei_angul",
+  "homepage": "https://github.com/leweihe",
   "private": true,
   "ignore": [
     "**/.*",
@@ -26,7 +26,7 @@
     "angular-loader": "~1.5.0",
     "angular-bootstrap": "2.5.0",
     "bootstrap": "3.3.x",
-    "jquery": "2.2.x",
+    "jquery": "3.1.x",
     "html5-boilerplate": "^5.3.0"
   }
 }

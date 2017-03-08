@@ -8,12 +8,12 @@
         <version>1.4.0.RELEASE</version>
     </parent>
 
-    <groupId>com.wu</groupId>
+    <groupId>com.linde</groupId>
     <artifactId>busStop</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>lewei.angul</name>
+    <name>linde busStop</name>
     <url>http://maven.apache.org</url>
 
     <properties>

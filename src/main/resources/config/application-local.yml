@@ -1,5 +1,5 @@
 server:
-    contextPath: /lewei
+    contextPath: /linde
     port: 8088
 
 spring:

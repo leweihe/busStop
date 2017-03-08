@@ -14,7 +14,11 @@ angular.module('myApp-home').controller('HomeController', ['$scope', 'HomeServic
         center: [118.139839, 24.488006]
     });
 
-    $scope.inputKeyword = "连岳里";
+    $scope.map.plugin(["AMap.ToolBar"], function () {
+        $scope.map.addControl(new AMap.ToolBar());
+    });
+
+    $scope.inputKeyword = "";
 
     $scope.searchNearestStations = function() {
         if(!$scope.inputBusStation.lng) {
@@ -67,9 +71,6 @@ angular.module('myApp-home').controller('HomeController', ['$scope', 'HomeServic
                         });
                     });
 
-                    $scope.map.plugin(["AMap.ToolBar"], function () {
-                        $scope.map.addControl(new AMap.ToolBar());
-                    });
                     var walking = new AMap.Walking({
                         map: $scope.map
                     });

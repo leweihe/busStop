@@ -1,41 +1,27 @@
-<div class="row">
-    <div class="col-md-5">
-        <h3>map</h3>
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <h1>Linde Bus Stop</h1>
+        <h3>key in key word of your destination</h3>
+        <br>
+        <div class="container"><input ng-model="inputKeyword" id="tipinput" class="form-control"/></div>
+        <br>
+        <p><span ng-click="searchNearestStations()" class="btn btn-default">search</span></p>
     </div>
-    <div class="col-md-4">
-        <h3>Route</h3>
-    </div>
-    <div class="col-md-3">
-        <h3>Stations</h3>
-    </div>
-</div>
+</header>
 
-<div class="row">
-    <div class="col-md-5">
-        <div id="mapContainer" class="map"></div>
-    </div>
-    <div class="col-md-4">
-        <div class="form-group">
-            <div class="col-sm-5">
-                <input ng-model="inputKeyword" id="tipinput" class="form-control"/>
-            </div>
-            <div class="col-sm-1">
-                <span ng-click="searchNearestStations()" class="btn btn-default">query</span>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <table class="table table-hover">
-            <tr>
-                <th class="col-md-1">Name</th>
-                <th class="col-md-2">Description</th>
-            </tr>
-            <tr ng-repeat="route in outputRoutes">
-                <td>{{route.routeName}}</td>
-                <td>{{route.description}}</td>
-            </tr>
-        </table>
-    </div>
-</div>
+<section id="map" class="container">
+    <div id="mapContainer" class="map"></div>
+</section>
 
-<!--<span ng-click="testFunction()" class="">test</span>-->
+<section id="result" class="container">
+    <table class="table table-hover">
+        <tr>
+            <th class="col-md-1">Name</th>
+            <th class="col-md-2">Description</th>
+        </tr>
+        <tr ng-repeat="route in outputRoutes">
+            <td>{{route.routeName}}</td>
+            <td>{{route.description}}</td>
+        </tr>
+    </table>
+</section>

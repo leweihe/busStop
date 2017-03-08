@@ -12,10 +12,6 @@ angular.module('myApp-manageRoute').controller('ManageRouteController', ['$scope
         map.addControl(new AMap.ToolBar());
     });
 
-    $scope.setMapStyle = function (mapStyle) {
-        map.setMapStyle(mapStyle);
-    };
-
     ManageRouteService.findAllBusRoute().then(function (allBusRoutes) {
         $scope.allBusRoutes = allBusRoutes.data;
     });
@@ -67,6 +63,10 @@ angular.module('myApp-manageRoute').controller('ManageRouteController', ['$scope
         }
     };
 
+    $scope.clearMap = function () {
+        map.clearMap();
+    };
+
     $scope.removeRoute = function (route) {
         if (route.routeId) {
             ManageRouteService.removeRoute(route.routeId).then(function () {
@@ -75,8 +75,8 @@ angular.module('myApp-manageRoute').controller('ManageRouteController', ['$scope
         }
     };
 
-    $scope.jumpToStationEditPage = function () {
-        $state.go('manageStation', {routeId: $scope.routeId});
+    $scope.jumpToStationEditPage = function (route) {
+        $state.go('manageStation', {routeId: route.routeId});
     }
 
 }]);

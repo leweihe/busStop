@@ -15,13 +15,13 @@
         <table class="table table-hover">
             <tr>
                 <th class="col-md-4">Keyword</th>
-                <th class="col-md-4">Description</th>
+                <th class="col-md-4">Position</th>
                 <th>Action</th>
             </tr>
 
             <tr ng-repeat="station in allBusStations">
                 <td>{{station.keyword}}</td>
-                <td>{{station.description}}</td>
+                <td>{{station.lng}}, {{station.lat}}</td>
                 <td>
                     <span ng-click="drawStationPoint(station)"
                           class="glyphicon glyphicon-search pointer-hand"> </span>
@@ -35,10 +35,10 @@
         <div class="row">
             <form class="form-group" name="myForm" >
                 <div class="col-md-4">
-                    <input id="tipinput" class="form-control" type="text" title="type in station keyword"/>
+                    <input id="tipinput" class="form-control" type="text" ng-model="inputBusStation.keyword" title="type in station keyword"/>
                 </div>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" ng-model="inputBusStation.description"
+                    <input class="form-control" type="text" value="{{station.lng}}, {{station.lat}}" contenteditable="false"
                            title="type in station description"/>
                 </div>
                 <div>

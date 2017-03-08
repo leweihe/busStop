@@ -7,7 +7,8 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
             routeId: '',
             lng: '',
             lat: '',
-            keyword: ''
+            keyword: '',
+            description: ""
         };
         $scope.inputBusStation.routeId = $scope.routeId;
         var amapRoute;
@@ -69,35 +70,19 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
 
             $scope.inputBusStation.lng = point.location.lng;
             $scope.inputBusStation.lat = point.location.lat;
-            $scope.inputBusStation.keyword = point.name;
         };
 
         $scope.drawStationPoint = function (station) {
-            var position = new AMap.LngLat(station.lng, station.lat);
-            var marker = new AMap.Marker({
-                map: $scope.map,
-                position: position,
-                draggable: false,
-                clickable: true
-            });
-            marker.on('dblclick', function () {
-                marker.setMap(null);
-                $scope.editStationPoint(station)
-            })
-        };
-
-        $scope.editStationPoint = function (station) {
+            station.routeId = $scope.routeId;
             var position = new AMap.LngLat(station.lng, station.lat);
             var marker = new AMap.Marker({
                 map: $scope.map,
                 position: position,
                 draggable: true
             });
-            marker.setAnimation('AMAP_ANIMATION_BOUNCE');
             marker.on('dragend', function (dragedPoint) {
                 station.lng = dragedPoint.lnglat.lng;
                 station.lat = dragedPoint.lnglat.lat;
-                station.routeId = $scope.routeId;
             });
             marker.on('dblclick', function () {
                 marker.setMap(null);
