@@ -56,6 +56,26 @@ angular.module('myApp-home').controller('HomeController', ['$scope', 'HomeServic
                     $scope.outputRoutes = outputRoutes;
                     console.log('choose route name : ' + $scope.outputRoutes[0].routeName);
 
+                    angular.forEach(outputRoutes, function (route) {
+                        var path = [];
+                        angular.forEach(route.stations, function (station) {
+                            path.push([station.lng, station.lat]);
+                        });
+                        $scope.map.plugin("AMap.DragRoute", function () {
+                            route = new AMap.DragRoute($scope.map, path, AMap.DrivingPolicy.LEAST_DISTANCE);
+                            route.search();
+                        });
+                    });
+
+                    $scope.map.plugin(["AMap.ToolBar"], function () {
+                        $scope.map.addControl(new AMap.ToolBar());
+                    });
+                    var walking = new AMap.Walking({
+                        map: $scope.map
+                    });
+                    var fromLnglat = new AMap.LngLat($scope.inputBusStation.lng, $scope.inputBusStation.lat);
+                    var toLngLat = new AMap.LngLat($scope.nearestStation.lng, $scope.nearestStation.lat);
+                    walking.search(fromLnglat, toLngLat);
                 });
             });
 

@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -74,7 +75,13 @@ public class BusStationWebService {
         BusRouteDTO busRouteDTO = busRouteService.findById(busStationResource.getBusRouteId());
 
         BusStationDTO newBusStation = busStationService.saveBusStation(busStationDTO);
-        busRouteDTO.getStations().add(newBusStation);
+        if (null != busRouteDTO.getStations()) {
+            busRouteDTO.getStations().add(newBusStation);
+        } else {
+            List<BusStationDTO> tmpList = new ArrayList<>();
+            tmpList.add(newBusStation);
+            busRouteDTO.setStations(tmpList);
+        }
         busRouteService.saveBusRoute(busRouteDTO);
         BusStationResource newBusStationRes = busStationResourceAssembler.toResource(newBusStation);
         return new ResponseEntity<>(newBusStationRes, HttpStatus.OK);
