@@ -14,6 +14,11 @@ angular.module('myApp-home').controller('HomeController', ['$scope', 'HomeServic
         center: [118.139839, 24.488006]
     });
 
+    $("#tipinput").click(function(){
+        $("#searchTitle1").animate({height:'hide'});
+        $("#searchTitle2").animate({height:'hide'});
+    });
+
     $scope.map.plugin(["AMap.ToolBar"], function () {
         $scope.map.addControl(new AMap.ToolBar());
     });

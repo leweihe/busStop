@@ -6,5 +6,6 @@
 angular.module('base', [
     'ngRoute',
     'ngResource',
-    'ui.router'
+    'ui.router',
+    'pascalprecht.translate'
 ]);

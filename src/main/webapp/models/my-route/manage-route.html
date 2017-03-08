@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-md-5">
-        <h3>map</h3>
+        <h3>{{'route.map' | translate}}</h3>
     </div>
     <div class="col-md-4">
-        <h3>Route</h3>
+        <h3>{{'route.route' | translate}}</h3>
     </div>
     <div class="col-md-3">
-        <h3>Stations</h3>
+        <h3>{{'route.station' | translate}}</h3>
     </div>
 </div>
 
@@ -17,39 +17,39 @@
     <div class="col-md-4">
         <table class="table table-hover">
             <tr>
-                <th class="col-md-2">Name</th>
-                <th class="col-md-4">Description</th>
-                <th class="col-md-4">Action</th>
+                <th class="col-md-2">{{'route.keyword' | translate}}</th>
+                <th class="col-md-4">{{'route.description' | translate}}</th>
+                <th class="col-md-4">{{'route.action' | translate}}</th>
             </tr>
 
             <tr ng-repeat="route in allBusRoutes">
                 <td>
                     <span ng-click="removeRoute(route)"
-                          class="glyphicon glyphicon-remove pointer-hand" title="delete"> </span>
+                          class="glyphicon glyphicon-remove pointer-hand" title="{{'route.delete' | translate}}"> </span>
                     {{route.routeName}}
                 </td>
                 <td>{{route.description}}</td>
                 <td>
                     <span ng-click="searchInAmap(route)"
-                          class="glyphicon glyphicon-search pointer-hand" title="show in map"> </span>
+                          class="glyphicon glyphicon-search pointer-hand" title="{{'route.show.in.map' | translate}}"> </span>
                     <span ng-click="jumpToStationEditPage(route)"
-                          class="glyphicon glyphicon-edit pointer-hand" title="edit"> </span>
+                          class="glyphicon glyphicon-edit pointer-hand" title="{{'route.edit' | translate}}"> </span>
                     <span ng-click="listStations(route)"
-                          class="glyphicon glyphicon-arrow-right pointer-hand" title="show stations"></span>
+                          class="glyphicon glyphicon-arrow-right pointer-hand" title="{{'route.show.stations' | translate}}"></span>
                 </td>
             </tr>
         </table>
         <div class="row col-sm-12">
             <form class="form-group" name="myForm" >
                 <div class="col-md-2">
-                    <input class="form-control" type="text" ng-model="inputBusRoute.routeName" required title="type in route name"/>
+                    <input class="form-control" type="text" ng-model="inputBusRoute.routeName" />
                 </div>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" ng-model="inputBusRoute.description" required title="type in route description"/>
+                    <input class="form-control" type="text" ng-model="inputBusRoute.description" />
                 </div>
                 <div class="col-md-4">
-                    <span ng-click="saveBusRoute()" class="btn btn-default">Add</span>
-                    <span ng-click="clearMap()" class="btn btn-default">Clear Map</span>
+                    <span ng-click="saveBusRoute()" class="btn btn-default">{{'route.add' | translate}}</span>
+                    <span ng-click="clearMap()" class="btn btn-default">{{'route.clear.map' | translate}}</span>
                 </div>
             </form>
         </div>

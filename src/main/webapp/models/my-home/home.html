@@ -1,11 +1,20 @@
+<!--TODO-->
+<div class="alert alert-warning fade in" hidden="hidden" role="alert">
+</div>
+
 <header id="top" class="header">
     <div class="text-vertical-center">
-        <h1>Linde Bus Stop</h1>
-        <h3>key in key word of your destination</h3>
+        <h1 id="searchTitle1">{{'home.title' | translate}}</h1>
+        <h3 id="searchTitle2">{{'home.subtitle' | translate}}</h3>
         <br>
-        <div class="container"><input ng-model="inputKeyword" id="tipinput" class="form-control"/></div>
+        <div class="container">
+            <input type="text" class="form-control" ng-model="inputKeyword" id="tipinput" >
+        </div>
         <br>
-        <p><span ng-click="searchNearestStations()" class="btn btn-default">search</span></p>
+        <span ng-click="searchNearestStations()" class="btn btn-default" data-dismiss="alert">{{'home.search' | translate}}</span>
+        <div class="container">
+            <hr/>
+        </div>
     </div>
 </header>
 

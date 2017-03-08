@@ -1,5 +1,6 @@
 package com.linde.config;
 
+import com.linde.security.MyRequestHeaderAuthenticationFilter;
 import org.hibernate.InstantiationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,7 +10,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter;
 
 import com.linde.security.MyUserAuthenticationProvider;
 
@@ -57,11 +57,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      * Creates an iv-user header filter to get user id from TAM/Webseal.
      *
      * @return the request header authentication filter
-     * @throws Exception
-     *             the exception if something goes wrong
+     *
      */
-    private RequestHeaderAuthenticationFilter createIVUserHeaderFilter() {
-        RequestHeaderAuthenticationFilter requestFilter = new RequestHeaderAuthenticationFilter();
+    private MyRequestHeaderAuthenticationFilter createIVUserHeaderFilter() {
+        MyRequestHeaderAuthenticationFilter requestFilter = new MyRequestHeaderAuthenticationFilter();
         requestFilter.setPrincipalRequestHeader("iv-user");
         requestFilter.setExceptionIfHeaderMissing(false);
         requestFilter.setCheckForPrincipalChanges(true);

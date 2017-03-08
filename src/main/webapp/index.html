@@ -18,11 +18,11 @@
     <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-<div class="container-fluid">
 
-    <ul class="nav nav-tabs">
-    <li><a ui-sref="home">home</a></li>
-    <li><a ui-sref="manageRoute">route</a></li>
+<div class="container-fluid">
+    <ul class="nav nav-pills">
+    <li><a ui-sref="home">{{'global.home' | translate}}</a></li>
+    <li><a ui-sref="manageRoute">{{'global.route' | translate}}</a></li>
 </ul>
 
 <!--[if lt IE 7]>
@@ -40,6 +40,7 @@
 <script src="bower_components/angular-route/angular-route.min.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="bower_components/angular-translate/angular-translate.min.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
@@ -47,6 +48,7 @@
 <!-- define your js -->
 <script src="models/my-app/_module.js"></script>
 <script src="models/base/_module.js"></script>
+<script src="models/base/_config.js"></script>
 <script src="models/base/amap-service.js"></script>
 
 <script src="models/my-home/_module.js"></script>

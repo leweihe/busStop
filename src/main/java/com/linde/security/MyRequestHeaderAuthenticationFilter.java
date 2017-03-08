@@ -12,6 +12,8 @@ public class MyRequestHeaderAuthenticationFilter extends RequestHeaderAuthentica
     @Override
     protected Object getPreAuthenticatedPrincipal(HttpServletRequest request) {
         String principal = (String) super.getPreAuthenticatedPrincipal(request);
-        return null == principal ? null : principal.toLowerCase();
+        //TODO now for test set a default value
+        return "cn40580";
+//        return null == principal ? null : principal.toLowerCase();
     }
 }
