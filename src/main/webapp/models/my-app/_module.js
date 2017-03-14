@@ -4,7 +4,8 @@
 angular.module('myApp', [
     'myApp-home',
     'myApp-manageRoute',
-    'myApp-manageStation'
+    'myApp-manageStation',
+    'myApp-bot-api'
 ]).config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
 
