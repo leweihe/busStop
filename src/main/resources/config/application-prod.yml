@@ -1,0 +1,40 @@
+server:
+    contextPath: /linde
+    port: 8088
+
+spring:
+    profiles: local
+    boot.admin.url: http://localhost:8081
+
+    data:
+        mongodb:
+            uri: mongodb://lewei-luis:ULOTuo0NdnR4hoD8zQvsKZuwIpjp3O98BKrynYynyaFBxVlHDZNDoSvmN5VCtTgSR40YVpnH0fNdpjEhPNoJew==@lewei-luis.documents.azure.com:10250/?ssl=true&sslInvalidHostNameAllowed=true
+            database: test
+
+    datasource:
+        dataSourceClassName: org.h2.jdbcx.JdbcDataSource
+        url: jdbc:h2:mem:jhipster;MODE=Oracle
+        databaseName: localDB
+        serverName:
+        username:
+        password:
+        maxLifetime: 0
+        metrics: true
+        
+    jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+        database: H2
+        openInView: false
+        show_sql: true
+        generate-ddl: false
+        hibernate:
+            ddl-auto: none
+            naming-strategy: org.hibernate.cfg.EJB3NamingStrategy
+        properties:
+            hibernate.cache.use_second_level_cache: false
+            hibernate.cache.use_query_cache: false
+            hibernate.generate_statistics: true
+security:
+    user:
+        name: admin
+        password: test

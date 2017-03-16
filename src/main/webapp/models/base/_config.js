@@ -8,7 +8,7 @@ angular.module('base')
         'TITLE':'Hello',
         'FOO':'This is a paragraph',
         "global": {
-            "app.name": "busStop",
+            "app.name": "lewei-bus",
             "home": "home",
             "route": "route"
         },
