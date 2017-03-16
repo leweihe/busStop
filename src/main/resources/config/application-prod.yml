@@ -3,13 +3,18 @@ server:
     port: 8088
 
 spring:
-    profiles: local
+    profiles: prod
     boot.admin.url: http://localhost:8081
 
     data:
         mongodb:
             uri: mongodb://lewei-luis:ULOTuo0NdnR4hoD8zQvsKZuwIpjp3O98BKrynYynyaFBxVlHDZNDoSvmN5VCtTgSR40YVpnH0fNdpjEhPNoJew==@lewei-luis.documents.azure.com:10250/?ssl=true&sslInvalidHostNameAllowed=true
             database: test
+            host: lewei-luis.documents.azure.com
+            port: 10250
+            username: lewei-luis
+            password: ULOTuo0NdnR4hoD8zQvsKZuwIpjp3O98BKrynYynyaFBxVlHDZNDoSvmN5VCtTgSR40YVpnH0fNdpjEhPNoJew==
+
 
     datasource:
         dataSourceClassName: org.h2.jdbcx.JdbcDataSource

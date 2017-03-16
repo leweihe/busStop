@@ -13,9 +13,11 @@ import org.springframework.boot.actuate.autoconfigure.MetricRepositoryAutoConfig
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.hazelcast.HazelcastAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.SimpleCommandLinePropertySource;
 
+@Configuration
 @EnableAutoConfiguration(exclude = { HazelcastAutoConfiguration.class, MetricRepositoryAutoConfiguration.class })
 @ComponentScan(basePackages = { "com.linde" })
 public class Application {
@@ -34,7 +36,9 @@ public class Application {
     }
 
     private static void addDefaultProfile(SpringApplication app, SimpleCommandLinePropertySource source) {
-
+        if (!source.containsProperty("spring.profiles.active")) {
+            app.setAdditionalProfiles(Profiles.LOCAL);
+        }
     }
 
     @PostConstruct

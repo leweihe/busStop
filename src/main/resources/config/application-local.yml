@@ -15,7 +15,7 @@ spring:
         password:
         maxLifetime: 0
         metrics: true
-        
+
     jpa:
         database-platform: org.hibernate.dialect.H2Dialect
         database: H2

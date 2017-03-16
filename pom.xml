@@ -13,7 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>linde busStop</name>
+    <name>lewei-bus</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -173,6 +173,23 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <skip>false</skip>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- Deactivated, this causes Maven boot <jvmArguments>-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005</jvmArguments> -->
+                    <addResources>false</addResources>
+                    <arguments>
+                        <argument>--spring.profiles.active=${spring.profiles.active}</argument>
+                    </arguments>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.bsc.maven</groupId>
@@ -212,11 +229,27 @@
 
     <profiles>
         <profile>
+            <!-- This profile utilizes a different context xml for the local tomcat,
+				allowing e.g. to switch to another datasource -->
             <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
-                <logback.loglevel>DEBUG</logback.loglevel>
-                <spring-boot.skipRepackage>false</spring-boot.skipRepackage>
+                <!-- Spring profile to use -->
                 <spring.profiles.active>local</spring.profiles.active>
+            </properties>
+        </profile>
+        <profile>
+            <!-- This profile utilizes a different context xml for the local tomcat,
+				allowing e.g. to switch to another datasource -->
+            <id>prod</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- Spring profile to use -->
+                <spring.profiles.active>prod</spring.profiles.active>
             </properties>
         </profile>
     </profiles>
