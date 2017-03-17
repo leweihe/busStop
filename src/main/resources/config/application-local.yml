@@ -12,8 +12,8 @@ spring:
 #            database: test
             host: localhost
             port: 27017
-            username: abc
-            password:
+#            username:
+#            password:
 
     datasource:
         dataSourceClassName: org.h2.jdbcx.JdbcDataSource
@@ -38,6 +38,8 @@ spring:
             hibernate.cache.use_second_level_cache: false
             hibernate.cache.use_query_cache: false
             hibernate.generate_statistics: true
+            hibernate.current_session_context_class: org.springframework.orm.hibernate4.SpringSessionContext
+
 security:
     user:
         name: admin
