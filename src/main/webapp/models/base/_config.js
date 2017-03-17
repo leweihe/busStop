@@ -10,7 +10,8 @@ angular.module('base')
         "global": {
             "app.name": "lewei-bus",
             "home": "home",
-            "route": "route"
+            "route": "route",
+            "bot": "Chat Bot"
         },
         "home": {
             "title": "Linde Bus Stop",
@@ -46,7 +47,8 @@ angular.module('base')
         "global": {
             "app.name": "Linde班车",
             "home": "首页",
-            "route": "班次"
+            "route": "班次",
+            "bot": "机器人"
         },
         "home": {
             "title": "Linde 班车",

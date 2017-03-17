@@ -1,4 +1,3 @@
-<!--TODO-->
 <div class="alert alert-warning fade in" hidden="hidden" role="alert">
 </div>
 
@@ -8,10 +7,10 @@
         <h3 id="searchTitle2">{{'home.subtitle' | translate}}</h3>
         <br>
         <div class="container">
-            <input type="text" class="form-control" ng-model="inputKeyword" id="tipinput" >
+            <input type="text" class="form-control" id="tipinput" >
         </div>
         <br>
-        <span ng-click="searchNearestStations()" class="btn btn-default" data-dismiss="alert">{{'home.search' | translate}}</span>
+        <span ng-click="searchNearestStations(false)" class="btn btn-default" data-dismiss="alert">{{'home.search' | translate}}</span>
         <div class="container">
             <hr/>
         </div>

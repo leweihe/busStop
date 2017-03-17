@@ -2,7 +2,7 @@
     * Created by cn40580 at 2017-03-06 2:43 PM.
     */
 
-angular.module('myApp-home').controller('HomeController', ['$scope', 'HomeService', 'AmapService', 'ManageRouteService', function ($scope, HomeService, AmapService, ManageRouteService) {
+angular.module('myApp-home').controller('HomeController', ['$scope', '$location', 'HomeService', 'AmapService', 'ManageRouteService', function ($scope, $location, HomeService, AmapService, ManageRouteService) {
 
     $scope.inputBusStation = {
         lng: "",
@@ -23,14 +23,12 @@ angular.module('myApp-home').controller('HomeController', ['$scope', 'HomeServic
         $scope.map.addControl(new AMap.ToolBar());
     });
 
-    $scope.inputKeyword = "";
-
-    $scope.searchNearestStations = function() {
+    $scope.searchNearestStations = function (apiFlag) {
         if(!$scope.inputBusStation.lng) {
             return;
         }
         console.log('[' + $scope.inputBusStation.lng + ', ' + $scope.inputBusStation.lat + ']');
-        HomeService.findStationsInCircle($scope.circle).then(function(stations){
+        HomeService.findStationsInCircle($scope.circle, apiFlag).then(function (stations) {
             if(stations.length <= 0) {
                 console.log('no station in the circle suggest user to enlarge the r and search again.');
                 return;
@@ -88,12 +86,6 @@ angular.module('myApp-home').controller('HomeController', ['$scope', 'HomeServic
         });
     };
 
-    AmapService.initTipInput($scope.map);
-
-    $scope.$on('openInfoPoint', function (ev, point) {
-        $scope.openInfoPoint($scope.map, point);
-    });
-
     $scope.openInfoPoint = function (map, point) {
         map.clearMap();
         var marker = new AMap.Marker({
@@ -121,5 +113,23 @@ angular.module('myApp-home').controller('HomeController', ['$scope', 'HomeServic
         $scope.inputBusStation.lat = point.location.lat;
         $scope.inputBusStation.keyword = point.name;
     };
+
+    if ($location.search().lng && $location.search().lat) {
+        $scope.inputBusStation.lng = $location.search().lng;
+        $scope.inputBusStation.lat = $location.search().lat;
+
+        var point = {
+            location: new AMap.LngLat($location.search().lng, $location.search().lat)
+        };
+        $scope.openInfoPoint($scope.map, point);
+        $scope.searchNearestStations(true);
+    }
+
+    AmapService.initTipInput($scope.map);
+
+    $scope.$on('openInfoPoint', function (ev, point) {
+        $scope.openInfoPoint($scope.map, point);
+    });
+
 
 }]);
