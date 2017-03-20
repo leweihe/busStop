@@ -63,7 +63,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         MyRequestHeaderAuthenticationFilter requestFilter = new MyRequestHeaderAuthenticationFilter();
         requestFilter.setPrincipalRequestHeader("iv-user");
         requestFilter.setExceptionIfHeaderMissing(false);
-        requestFilter.setCheckForPrincipalChanges(true);
+        requestFilter.setCheckForPrincipalChanges(false);
         try {
             requestFilter.setAuthenticationManager(this.authenticationManagerBean());
         } catch (Exception e) {

@@ -16,10 +16,10 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
 
     window.onload = function() {
         $scope.map.plugin(["AMap.ToolBar"], function() {
-            map.addControl(new AMap.ToolBar());
+            $scope.map.addControl(new AMap.ToolBar());
         });
         if(location.href.indexOf('&guide=1')!==-1){
-            map.setStatus({scrollWheel:false})
+            $scope.map.setStatus({scrollWheel:false})
         }
     };
 
@@ -34,15 +34,17 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
 
     $scope.showMap = function(){
         $('#mapContainer').show();
-        $scope.map.setZoomAndCenter(14, new AMap.LngLat($scope.inputBusStation.lng, $scope.inputBusStation.lat));
 
-        var walking = new AMap.Walking({
-            map: $scope.map,
-            panel: 'resultPanel'
-        });
-        var fromLnglat = new AMap.LngLat($scope.inputBusStation.lng, $scope.inputBusStation.lat);
-        var toLngLat = new AMap.LngLat($scope.nearestStation.lng, $scope.nearestStation.lat);
-        walking.search(fromLnglat, toLngLat);
+        if($scope.inputBusStation.lng) {
+            $scope.map.setZoomAndCenter(14, new AMap.LngLat($scope.inputBusStation.lng, $scope.inputBusStation.lat));
+            var walking = new AMap.Walking({
+                map: $scope.map,
+                panel: 'resultPanel'
+            });
+            var fromLnglat = new AMap.LngLat($scope.inputBusStation.lng, $scope.inputBusStation.lat);
+            var toLngLat = new AMap.LngLat($scope.nearestStation.lng, $scope.nearestStation.lat);
+            walking.search(fromLnglat, toLngLat);
+        }
     };
 
     $scope.searchNearestStations = function (apiFlag) {
