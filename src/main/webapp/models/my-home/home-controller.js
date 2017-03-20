@@ -9,10 +9,19 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
         lat: ""
     };
     $scope.map = new AMap.Map('mapContainer', {
-        resizeEnable: true,
+        resizeEnable: false,
         zoom: 14,
         center: [118.139839, 24.488006]
     });
+
+    window.onload = function() {
+        $scope.map.plugin(["AMap.ToolBar"], function() {
+            map.addControl(new AMap.ToolBar());
+        });
+        if(location.href.indexOf('&guide=1')!==-1){
+            map.setStatus({scrollWheel:false})
+        }
+    };
 
     $("#tipinput").click(function(){
         $("#searchTitle1").animate({height:'hide'});
@@ -22,6 +31,19 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
     $scope.map.plugin(["AMap.ToolBar"], function () {
         $scope.map.addControl(new AMap.ToolBar());
     });
+
+    $scope.showMap = function(){
+        $('#mapContainer').show();
+        $scope.map.setZoomAndCenter(14, new AMap.LngLat($scope.inputBusStation.lng, $scope.inputBusStation.lat));
+
+        var walking = new AMap.Walking({
+            map: $scope.map,
+            panel: 'resultPanel'
+        });
+        var fromLnglat = new AMap.LngLat($scope.inputBusStation.lng, $scope.inputBusStation.lat);
+        var toLngLat = new AMap.LngLat($scope.nearestStation.lng, $scope.nearestStation.lat);
+        walking.search(fromLnglat, toLngLat);
+    };
 
     $scope.searchNearestStations = function (apiFlag) {
         if(!$scope.inputBusStation.lng) {
@@ -61,6 +83,7 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
             }).then(function () {
                 ManageRouteService.findRoutesByStationIds($scope.nearestStation.stationId).then(function (outputRoutes) {
                     $scope.outputRoutes = outputRoutes;
+                    $scope.resultDesc = '为您推荐的路线为[' + $scope.outputRoutes[0].routeName +'], 在[' + $scope.nearestStation.keyword + ']站上车';
                     console.log('choose route name : ' + $scope.outputRoutes[0].routeName);
 
                     angular.forEach(outputRoutes, function (route) {
@@ -74,12 +97,6 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
                         });
                     });
 
-                    var walking = new AMap.Walking({
-                        map: $scope.map
-                    });
-                    var fromLnglat = new AMap.LngLat($scope.inputBusStation.lng, $scope.inputBusStation.lat);
-                    var toLngLat = new AMap.LngLat($scope.nearestStation.lng, $scope.nearestStation.lat);
-                    walking.search(fromLnglat, toLngLat);
                 });
             });
 
@@ -114,12 +131,45 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
         $scope.inputBusStation.keyword = point.name;
     };
 
+
+
+    $scope.onComplete = function(data) {
+        $scope.inputBusStation.lng = data.position.getLng();
+        $scope.inputBusStation.lat = data.position.getLat();
+        var point = {
+            location: new AMap.LngLat(data.position.getLng(), data.position.getLat())
+        };
+        $scope.openInfoPoint($scope.map, point);
+        $scope.searchNearestStations(true);
+    };
+
+    $scope.onError = function(data) {
+        //TODO
+    };
+
+    if ($location.search().useCurrent) {
+        $('#mapContainer').show();
+        $scope.map.setZoom(14);
+
+        $scope.map.plugin('AMap.Geolocation', function() {
+            var geolocation = new AMap.Geolocation({
+                timeout: 10000,
+                zoomToAccuracy: true,
+                buttonPosition:'RB'
+            });
+            $scope.map.addControl(geolocation);
+            geolocation.getCurrentPosition();
+            AMap.event.addListener(geolocation, 'complete', $scope.onComplete);
+            AMap.event.addListener(geolocation, 'error', $scope.onError);
+        });
+    }
+
+
     if ($location.search().lng && $location.search().lat) {
         $scope.inputBusStation.lng = $location.search().lng;
         $scope.inputBusStation.lat = $location.search().lat;
-
         var point = {
-            location: new AMap.LngLat($location.search().lng, $location.search().lat)
+            location: new AMap.LngLat($scope.inputBusStation.lng, $scope.inputBusStation.lat)
         };
         $scope.openInfoPoint($scope.map, point);
         $scope.searchNearestStations(true);
