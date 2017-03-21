@@ -96,8 +96,15 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
                             route.search();
                         });
                     });
-
                 });
+                if(apiFlag === false) {
+                    var walking = new AMap.Walking({
+                        map: $scope.map
+                    });
+                    var fromLnglat = new AMap.LngLat($scope.inputBusStation.lng, $scope.inputBusStation.lat);
+                    var toLngLat = new AMap.LngLat($scope.nearestStation.lng, $scope.nearestStation.lat);
+                    walking.search(fromLnglat, toLngLat);
+                }
             });
 
         });
@@ -143,9 +150,10 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
         $scope.searchNearestStations(true);
     };
 
-    $scope.onError = function(data) {
-        //TODO
-    };
+    //
+    // $scope.onError = function(data) {
+
+    // };
 
     if ($location.search().useCurrent) {
         $('#mapContainer').show();
@@ -164,7 +172,6 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
         });
     }
 
-
     if ($location.search().lng && $location.search().lat) {
         $scope.inputBusStation.lng = $location.search().lng;
         $scope.inputBusStation.lat = $location.search().lat;
@@ -180,6 +187,5 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
     $scope.$on('openInfoPoint', function (ev, point) {
         $scope.openInfoPoint($scope.map, point);
     });
-
 
 }]);
