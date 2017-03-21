@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('base').service('AmapService', ['$rootScope', '$http', '$q', function ($rootScope, $http, $q) {
     return {
         getAmapWebApiKey: function () {
@@ -34,14 +36,14 @@ angular.module('base').service('AmapService', ['$rootScope', '$http', '$q', func
         initTipInput: function (map) {
             //init tip input
             var autoOptions = {
-                input: "tipinput",
-                city: "厦门",
+                input: 'tipinput',
+                city: '厦门',
                 citylimit: true
             };
 
             var auto = new AMap.Autocomplete(autoOptions);
 
-            AMap.event.addListener(auto, "select", function (e) {
+            AMap.event.addListener(auto, 'select', function (e) {
                 $rootScope.$broadcast('openInfoPoint', e.poi);
                 map.setZoom(15);
                 map.setCenter(e.poi.location);

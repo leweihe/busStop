@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp-home').factory('HomeService', ['$http', '$q', 'ManageStationService', 'ManageRouteService', function ($http, $q, ManageStationService, ManageRouteService) {
+angular.module('myApp-home-api').factory('HomeApiService', ['$http', '$q', 'ManageStationService', 'ManageRouteService', function ($http, $q, ManageStationService, ManageRouteService) {
     return {
         findStationsInCircle: function (circle, apiFlag) {
             var defer = $q.defer();

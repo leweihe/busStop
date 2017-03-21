@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('myApp-manageRoute').factory('ManageRouteService', ['$http', '$resource', function ($http, $resource) {
     var BusRoute = $resource('app/rest/busroute/save', {}, {
         save: {method: 'POST', cache: true}

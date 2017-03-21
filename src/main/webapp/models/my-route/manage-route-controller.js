@@ -8,7 +8,7 @@ angular.module('myApp-manageRoute').controller('ManageRouteController', ['$scope
         center: [118.139839, 24.488006]
     });
 
-    map.plugin(["AMap.ToolBar"], function () {
+    map.plugin(['AMap.ToolBar'], function () {
         map.addControl(new AMap.ToolBar());
     });
 
@@ -16,7 +16,7 @@ angular.module('myApp-manageRoute').controller('ManageRouteController', ['$scope
         $scope.allBusRoutes = allBusRoutes.data;
     });
 
-    $scope.$on("refreshRoutes", function () {
+    $scope.$on('refreshRoutes', function () {
         ManageRouteService.findAllBusRoute().then(function (allBusRoutes) {
             $scope.allBusRoutes = allBusRoutes.data;
         });
@@ -31,7 +31,7 @@ angular.module('myApp-manageRoute').controller('ManageRouteController', ['$scope
                     angular.forEach(data, function (station) {
                         path.push([station.lng, station.lat]);
                     });
-                    map.plugin("AMap.DragRoute", function () {
+                    map.plugin('AMap.DragRoute', function () {
                         route = new AMap.DragRoute(map, path, AMap.DrivingPolicy.LEAST_DISTANCE);
                         route.search();
                     });
@@ -58,7 +58,7 @@ angular.module('myApp-manageRoute').controller('ManageRouteController', ['$scope
     $scope.saveBusRoute = function () {
         if ($scope.inputBusRoute) {
             ManageRouteService.saveBusRoute($scope.inputBusRoute).then(function () {
-                $scope.$broadcast("refreshRoutes");
+                $scope.$broadcast('refreshRoutes');
             });
         }
     };
@@ -70,7 +70,7 @@ angular.module('myApp-manageRoute').controller('ManageRouteController', ['$scope
     $scope.removeRoute = function (route) {
         if (route.routeId) {
             ManageRouteService.removeRoute(route.routeId).then(function () {
-                $scope.$broadcast("refreshRoutes");
+                $scope.$broadcast('refreshRoutes');
             });
         }
     };

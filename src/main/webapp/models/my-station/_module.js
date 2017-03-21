@@ -1,5 +1,5 @@
 'use strict';
 
-angular.module('myApp-manageStation', ['base']).config(function ($stateProvider) {
+angular.module('myApp-manageStation', ['base']).config(function () {
 
 });

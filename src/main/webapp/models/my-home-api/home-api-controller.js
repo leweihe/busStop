@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp-home').controller('HomeController', ['$scope', '$location', 'HomeService', 'AmapService', 'ManageRouteService', function ($scope, $location, HomeService, AmapService, ManageRouteService) {
+angular.module('myApp-home-api').controller('HomeApiController', ['$scope', '$location', 'HomeApiService', 'AmapService', 'ManageRouteService', function ($scope, $location, HomeApiService, AmapService, ManageRouteService) {
 
     $scope.inputBusStation = {
         lng: '',
@@ -50,7 +50,7 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
             return;
         }
         console.log('[' + $scope.inputBusStation.lng + ', ' + $scope.inputBusStation.lat + ']');
-        HomeService.findStationsInCircle($scope.circle, apiFlag).then(function (stations) {
+        HomeApiService.findStationsInCircle($scope.circle, apiFlag).then(function (stations) {
             if(stations.length <= 0) {
                 console.log('no station in the circle suggest user to enlarge the r and search again.');
                 return;

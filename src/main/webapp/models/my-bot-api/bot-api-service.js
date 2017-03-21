@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('myApp-bot-api').factory('BotApiService', ['$http', '$q', 'ManageStationService', 'ManageRouteService', function ($http, $q, ManageStationService, ManageRouteService) {
     return {
         sendMsg: function (inputVal) {

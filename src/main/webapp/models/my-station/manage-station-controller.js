@@ -8,7 +8,7 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
             lng: '',
             lat: '',
             keyword: '',
-            description: ""
+            description: ''
         };
         $scope.inputBusStation.routeId = $scope.routeId;
         var amapRoute;
@@ -26,7 +26,7 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
             angular.forEach(allBusStations, function (station) {
                 path.push([station.lng, station.lat]);
             });
-            $scope.map.plugin("AMap.DragRoute", function () {
+            $scope.map.plugin('AMap.DragRoute', function () {
                 amapRoute = new AMap.DragRoute($scope.map, path, AMap.DrivingPolicy.LEAST_DISTANCE);
                 amapRoute.search();
             });
@@ -34,11 +34,11 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
 
         $scope.addBusStation = function () {
             ManageStationService.saveBusStation($scope.inputBusStation).then(function () {
-                $scope.$broadcast("refreshStations");
+                $scope.$broadcast('refreshStations');
             });
         };
 
-        $scope.$on("refreshStations", function () {
+        $scope.$on('refreshStations', function () {
             ManageStationService.findAllBusStationByRouteId($scope.routeId).then(function (allBusStations) {
                 $scope.allBusStations = allBusStations;
             });
@@ -46,7 +46,7 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
 
         $scope.deleteBusStation = function (stationId) {
             ManageStationService.removeStation($scope.routeId, stationId);
-            $scope.$broadcast("refreshStations");
+            $scope.$broadcast('refreshStations');
         };
 
         AmapService.initTipInput($scope.map);
@@ -97,7 +97,7 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
             info.push('地址 : ' + point.district + point.address + '</div>');
 
             var infoWindow = new AMap.InfoWindow({
-                content: info.join("")
+                content: info.join('')
             });
             $scope.inputBusStation.lng = point.location.lng;
             $scope.inputBusStation.lat = point.location.lat;

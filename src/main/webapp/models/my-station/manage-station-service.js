@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('myApp-manageStation').factory('ManageStationService', ['$http', '$resource', function ($http, $resource) {
     var BusStation = $resource('app/rest/busstation/save', {}, {
         save: {method: 'POST', cache: true},
