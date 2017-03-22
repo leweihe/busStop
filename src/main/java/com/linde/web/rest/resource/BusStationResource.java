@@ -1,6 +1,9 @@
 package com.linde.web.rest.resource;
 
+import com.mongodb.client.gridfs.model.GridFSFile;
 import org.springframework.hateoas.ResourceSupport;
+
+import java.util.Date;
 
 /**
  * Created by cn40580 at 2016-10-10 10:06 AM.
@@ -15,6 +18,12 @@ public class BusStationResource extends ResourceSupport {
     private String description;
 
     private String busRouteId;
+
+    private GridFSFile stationPic;
+
+    private Date morningArrTime;
+
+    private Date eveningArrTime;
 
     public String getKeyword() {
         return keyword;
@@ -70,5 +79,29 @@ public class BusStationResource extends ResourceSupport {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public GridFSFile getStationPic() {
+        return stationPic;
+    }
+
+    public void setStationPic(GridFSFile stationPic) {
+        this.stationPic = stationPic;
+    }
+
+    public Date getMorningArrTime() {
+        return morningArrTime;
+    }
+
+    public void setMorningArrTime(Date morningArrTime) {
+        this.morningArrTime = morningArrTime;
+    }
+
+    public Date getEveningArrTime() {
+        return eveningArrTime;
+    }
+
+    public void setEveningArrTime(Date eveningArrTime) {
+        this.eveningArrTime = eveningArrTime;
     }
 }

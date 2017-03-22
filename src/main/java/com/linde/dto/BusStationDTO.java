@@ -1,8 +1,11 @@
 package com.linde.dto;
 
+import com.mongodb.client.gridfs.model.GridFSFile;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import java.util.Date;
 
 /**
  * Created by cn40580 at 2016-10-10 10:04 AM.
@@ -17,6 +20,12 @@ public class BusStationDTO {
     private String lng;
     private String lat;
     private String description;
+
+    private GridFSFile stationPic;
+
+    private Date morningArrTime;
+
+    private Date eveningArrTime;
 
     @ManyToOne
     private BusRouteDTO busRoute;
@@ -83,6 +92,30 @@ public class BusStationDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public GridFSFile getStationPic() {
+        return stationPic;
+    }
+
+    public void setStationPic(GridFSFile stationPic) {
+        this.stationPic = stationPic;
+    }
+
+    public Date getMorningArrTime() {
+        return morningArrTime;
+    }
+
+    public void setMorningArrTime(Date morningArrTime) {
+        this.morningArrTime = morningArrTime;
+    }
+
+    public Date getEveningArrTime() {
+        return eveningArrTime;
+    }
+
+    public void setEveningArrTime(Date eveningArrTime) {
+        this.eveningArrTime = eveningArrTime;
     }
 
     @Override

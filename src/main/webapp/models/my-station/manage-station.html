@@ -11,7 +11,7 @@
     <div class="col-md-5">
         <div id="mapContainer" class="map"></div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-6">
         <table class="table table-hover">
             <tr>
                 <th class="col-md-4">{{'station.keyword' | translate}}</th>
@@ -38,11 +38,11 @@
                     <input id="tipinput" class="form-control" type="text" ng-model="inputBusStation.keyword" title="type in station keyword"/>
                 </div>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" value="{{station.lng}}, {{station.lat}}" contenteditable="false"
-                           title="type in station description"/>
+                    <input type="file" class="form-control text-center" nv-file-drop uploader="uploader" />
                 </div>
-                <div>
+                <div class="col-md-3">
                     <span ng-click="addBusStation()" class="btn btn-default">{{'station.add' | translate}}</span>
+                    <span ng-click="reloadMap()" class="btn btn-default">{{'station.reload' | translate}}</span>
                 </div>
             </form>
         </div>

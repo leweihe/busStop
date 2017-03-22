@@ -24,6 +24,7 @@ angular.module('myApp-manageStation').factory('ManageStationService', ['$http', 
             resource.lng = busStation.lng;
             resource.lat = busStation.lat;
             resource.description = busStation.description;
+            resource.stationPic = busStation.stationPic;
             if (resource.stationId) {
                 return resource.$update();
             } else {

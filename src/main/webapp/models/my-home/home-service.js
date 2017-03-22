@@ -19,5 +19,5 @@ angular.module('myApp-home').factory('HomeService', ['$http', '$q', 'ManageStati
             });
             return defer.promise;
         }
-    }
+    };
 }]);

@@ -1,14 +1,15 @@
 'use strict';
 
-angular.module('myApp-manageStation').controller('ManageStationController', ['$rootScope', '$scope', '$stateParams', 'ManageStationService', 'AmapService',
-    function ($rootScope, $scope, $stateParams, ManageStationService, AmapService) {
+angular.module('myApp-manageStation').controller('ManageStationController', ['$rootScope', '$scope', '$stateParams', 'ManageStationService', 'AmapService', 'FileUploader',
+    function ($rootScope, $scope, $stateParams, ManageStationService, AmapService, FileUploader) {
         $scope.routeId = $stateParams.routeId;
         $scope.inputBusStation = {
             routeId: '',
             lng: '',
             lat: '',
             keyword: '',
-            description: ''
+            description: '',
+            stationPic: ''
         };
         $scope.inputBusStation.routeId = $scope.routeId;
         var amapRoute;
@@ -20,17 +21,22 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
         });
 
 
-        ManageStationService.findAllBusStationByRouteId($scope.routeId).then(function (allBusStations) {
-            $scope.allBusStations = allBusStations;
-            var path = [];
-            angular.forEach(allBusStations, function (station) {
-                path.push([station.lng, station.lat]);
+        $scope.reloadMap = function() {
+            $scope.map.clearMap();
+            ManageStationService.findAllBusStationByRouteId($scope.routeId).then(function (allBusStations) {
+                $scope.allBusStations = allBusStations;
+                var path = [];
+                angular.forEach(allBusStations, function (station) {
+                    path.push([station.lng, station.lat]);
+                });
+                $scope.map.plugin('AMap.DragRoute', function () {
+                    amapRoute = new AMap.DragRoute($scope.map, path, AMap.DrivingPolicy.LEAST_DISTANCE);
+                    amapRoute.search();
+                });
             });
-            $scope.map.plugin('AMap.DragRoute', function () {
-                amapRoute = new AMap.DragRoute($scope.map, path, AMap.DrivingPolicy.LEAST_DISTANCE);
-                amapRoute.search();
-            });
-        });
+        };
+
+        $scope.reloadMap();
 
         $scope.addBusStation = function () {
             ManageStationService.saveBusStation($scope.inputBusStation).then(function () {
@@ -41,6 +47,8 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
         $scope.$on('refreshStations', function () {
             ManageStationService.findAllBusStationByRouteId($scope.routeId).then(function (allBusStations) {
                 $scope.allBusStations = allBusStations;
+            }).then(function () {
+                $scope.reloadMap();
             });
         });
 

@@ -26,6 +26,7 @@ angular.module('base')
             'description': 'description',
             'action': 'action',
             'add' : 'add',
+
             'clear.map' : 'clear map',
             'show.in.map' : 'show.in.map',
             'edit' : 'edit',
@@ -37,7 +38,9 @@ angular.module('base')
             'route': 'route',
             'keyword': 'keyword',
             'position': 'position',
-            'action': 'action'
+            'action': 'action',
+            'add': 'add',
+            'reload' : 'reload Map'
         }
     });
 
@@ -63,6 +66,7 @@ angular.module('base')
             'description': '描述',
             'action': '操作',
             'add' : '添加',
+
             'clear.map' : '清除地图',
             'show.in.map' : '在地图中显示',
             'edit' : '编辑',
@@ -75,7 +79,8 @@ angular.module('base')
             'keyword': '站点名称',
             'position': '地理座标',
             'action': '操作',
-            'add': '添加'
+            'add': '添加',
+            'reload' : '刷新地图'
         }
     });
 
