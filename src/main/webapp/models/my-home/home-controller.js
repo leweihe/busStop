@@ -162,9 +162,9 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
     };
 
     //
-    // $scope.onError = function(data) {
+    $scope.onError = function(data) {
 
-    // };
+    };
     $scope.searchByCurrentLocation = function () {
         $scope.map.plugin('AMap.Geolocation', function () {
             var geolocation = new AMap.Geolocation({

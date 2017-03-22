@@ -8,7 +8,8 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
             lng: '',
             lat: '',
             keyword: '',
-            description: ''
+            description: '',
+            stationPic: ''
         };
         $scope.inputBusStation.routeId = $scope.routeId;
         var amapRoute;
@@ -19,6 +20,14 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
             center: [118.139839, 24.488006]
         });
 
+        window.onload = function () {
+            $scope.map.plugin(['AMap.ToolBar'], function () {
+                $scope.map.addControl(new AMap.ToolBar());
+            });
+            if (location.href.indexOf('&guide=1') !== -1) {
+                $scope.map.setStatus({scrollWheel: false})
+            }
+        };
 
         $scope.reloadMap = function() {
             $scope.map.clearMap();
@@ -40,6 +49,32 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
         $scope.addBusStation = function () {
             ManageStationService.saveBusStation($scope.inputBusStation).then(function () {
                 $scope.$broadcast('refreshStations');
+            });
+        };
+
+        $scope.onComplete = function (data) {
+            $scope.inputBusStation.lng = data.position.getLng();
+            $scope.inputBusStation.lat = data.position.getLat();
+            ManageStationService.saveBusStation($scope.inputBusStation).then(function () {
+                $scope.$broadcast('refreshStations');
+            });
+        };
+
+        $scope.onError = function(data) {
+
+        };
+
+        $scope.addBusStationByCurrent = function() {
+            $scope.map.plugin('AMap.Geolocation', function () {
+                var geolocation = new AMap.Geolocation({
+                    timeout: 10000,
+                    zoomToAccuracy: true,
+                    buttonPosition: 'RB'
+                });
+                $scope.map.addControl(geolocation);
+                geolocation.getCurrentPosition();
+                AMap.event.addListener(geolocation, 'complete', $scope.onComplete);
+                AMap.event.addListener(geolocation, 'error', $scope.onError);
             });
         };
 

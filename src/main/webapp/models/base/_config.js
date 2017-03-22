@@ -41,7 +41,8 @@ angular.module('base')
             'position': 'position',
             'action': 'action',
             'add': 'add',
-            'reload' : 'reload Map'
+            'reload' : 'reload Map',
+            'addByCurrent' : 'Add Current Position'
         }
     });
 
@@ -82,7 +83,8 @@ angular.module('base')
             'position': '地理座标',
             'action': '操作',
             'add': '添加',
-            'reload' : '刷新地图'
+            'reload' : '刷新地图',
+            'addByCurrent' : '添加当前位置'
         }
     });
 
