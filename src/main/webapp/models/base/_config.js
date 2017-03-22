@@ -16,7 +16,8 @@ angular.module('base')
         'home': {
             'title': 'Linde Bus Stop',
             'subtitle': 'key in key word of your destination',
-            'search': 'search'
+            'search': 'search',
+            'searchByCurrent': 'search by current'
         },
         'route': {
             'map': 'map',
@@ -56,7 +57,8 @@ angular.module('base')
         'home': {
             'title': 'Linde 班车',
             'subtitle': '输入您的目的地关键字',
-            'search': '搜索'
+            'search': '搜索',
+            'searchByCurrent': '当前位置搜索'
         },
         'route': {
             'map': '地图',

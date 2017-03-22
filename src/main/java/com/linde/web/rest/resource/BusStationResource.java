@@ -19,12 +19,6 @@ public class BusStationResource extends ResourceSupport {
 
     private String busRouteId;
 
-    private GridFSFile stationPic;
-
-    private Date morningArrTime;
-
-    private Date eveningArrTime;
-
     public String getKeyword() {
         return keyword;
     }
@@ -81,27 +75,4 @@ public class BusStationResource extends ResourceSupport {
         this.description = description;
     }
 
-    public GridFSFile getStationPic() {
-        return stationPic;
-    }
-
-    public void setStationPic(GridFSFile stationPic) {
-        this.stationPic = stationPic;
-    }
-
-    public Date getMorningArrTime() {
-        return morningArrTime;
-    }
-
-    public void setMorningArrTime(Date morningArrTime) {
-        this.morningArrTime = morningArrTime;
-    }
-
-    public Date getEveningArrTime() {
-        return eveningArrTime;
-    }
-
-    public void setEveningArrTime(Date eveningArrTime) {
-        this.eveningArrTime = eveningArrTime;
-    }
 }

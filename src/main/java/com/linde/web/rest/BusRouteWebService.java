@@ -62,14 +62,20 @@ public class BusRouteWebService {
         return new ResponseEntity<>(newBusRouteRes, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/busroute/find/{stationIds}", method = RequestMethod.GET,
+    @RequestMapping(value = "/busroute/find/{stationId}", method = RequestMethod.GET,
             produces = {MediaType.APPLICATION_JSON_VALUE})
     @Timed
-    public ResponseEntity<List<BusRouteResource>> findRoutesByStationIds(@PathVariable String stationIds) throws Exception {
-        LOG.debug("To Create new Bus Route" + stationIds);
+    public ResponseEntity<List<BusRouteResource>> findRoutesByStationIds(@PathVariable String stationId) throws Exception {
+        LOG.debug("To Create new Bus Route" + stationId);
         List<BusRouteDTO> allBusRoutes = busRouteService.findAll();
-        List<BusRouteResource> result = allBusRoutes.stream().filter(n -> n.getStations().contains(new BusStationDTO(stationIds)))
+        List<BusRouteResource> result = allBusRoutes.stream().filter(n -> n.getStations().contains(new BusStationDTO(stationId)))
                 .map(n -> busRouteResourceAssembler.toResource(n)).collect(Collectors.toList());
+        for (int i = 0; i < allBusRoutes.size(); i++) {
+            List<BusStationDTO> stations = allBusRoutes.get(i).getStations();
+            if (stationId.equals(stations.get(stations.size() - 1).getId())) {
+                result.remove(i);
+            }
+        }
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

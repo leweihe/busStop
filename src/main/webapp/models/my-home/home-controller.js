@@ -12,28 +12,28 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
         center: [118.139839, 24.488006]
     });
 
-    window.onload = function() {
-        $scope.map.plugin(['AMap.ToolBar'], function() {
+    window.onload = function () {
+        $scope.map.plugin(['AMap.ToolBar'], function () {
             $scope.map.addControl(new AMap.ToolBar());
         });
-        if(location.href.indexOf('&guide=1')!==-1){
-            $scope.map.setStatus({scrollWheel:false})
+        if (location.href.indexOf('&guide=1') !== -1) {
+            $scope.map.setStatus({scrollWheel: false})
         }
     };
 
-    $('#tipinput').click(function(){
-        $('#searchTitle1').animate({height:'hide'});
-        $('#searchTitle2').animate({height:'hide'});
+    $('#tipinput').click(function () {
+        $('#searchTitle1').animate({height: 'hide'});
+        $('#searchTitle2').animate({height: 'hide'});
     });
 
     $scope.map.plugin(['AMap.ToolBar'], function () {
         $scope.map.addControl(new AMap.ToolBar());
     });
 
-    $scope.showMap = function(){
+    $scope.showMap = function () {
         $('#mapContainer').show();
 
-        if($scope.inputBusStation.lng) {
+        if ($scope.inputBusStation.lng) {
             $scope.map.setZoomAndCenter(14, new AMap.LngLat($scope.inputBusStation.lng, $scope.inputBusStation.lat));
             var walking = new AMap.Walking({
                 map: $scope.map,
@@ -46,33 +46,35 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
     };
 
     $scope.searchNearestStations = function (apiFlag) {
-        if(!$scope.inputBusStation.lng) {
+        if (!$scope.inputBusStation.lng) {
             return;
         }
         console.log('[' + $scope.inputBusStation.lng + ', ' + $scope.inputBusStation.lat + ']');
         HomeService.findStationsInCircle($scope.circle, apiFlag).then(function (stations) {
-            if(stations.length <= 0) {
+            if (stations.length <= 0) {
                 console.log('no station in the circle suggest user to enlarge the r and search again.');
+                $scope.resultDesc = '您附近并没有合适的班车,再次点击搜索,将为您推荐换乘路线.';
+                $scope.circle.setOptions({radius: 3000, fillColor: '#323232'});
                 return;
             }
             var originals = [];
-            angular.forEach(stations, function(station) {
+            angular.forEach(stations, function (station) {
                 originals.push({lng: station.lng, lat: station.lat});
             });
             var destination = {lng: $scope.inputBusStation.lng, lat: $scope.inputBusStation.lat};
 
-            AmapService.calcWalkDist(originals, destination).then(function(distResults){
+            AmapService.calcWalkDist(originals, destination).then(function (distResults) {
 
                 var shortestInd = 0;
                 var shortestDist = 0;
                 var tmpDist = 0;
-                angular.forEach(distResults, function(dist, index){
+                angular.forEach(distResults, function (dist, index) {
                     console.log('@ ' + dist.distance + '');
-                    if(index == 0) {
+                    if (index == 0) {
                         shortestDist = parseFloat(dist.distance);
                     }
                     tmpDist = parseFloat(dist.distance);
-                    if(tmpDist < shortestDist) {
+                    if (tmpDist < shortestDist) {
                         shortestDist = tmpDist;
                         shortestInd = index;
                     }
@@ -83,30 +85,40 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
             }).then(function () {
                 ManageRouteService.findRoutesByStationIds($scope.nearestStation.stationId).then(function (outputRoutes) {
                     $scope.outputRoutes = outputRoutes;
-                    $scope.resultDesc = '为您推荐的路线为[' + $scope.outputRoutes[0].routeName +'], 在[' + $scope.nearestStation.keyword + ']站上车';
-                    console.log('choose route name : ' + $scope.outputRoutes[0].routeName);
+                    if (outputRoutes.length === 0) {
+                        $scope.resultDesc = '您距离终点较近,建议直接前往' + $scope.nearestStation.keyword;
+                    } else {
+                        $scope.resultDesc = '为您推荐的路线为[' + $scope.outputRoutes[0].routeName + '], 在[' + $scope.nearestStation.keyword + ']站上车';
+                        console.log('choose route name : ' + $scope.outputRoutes[0].routeName);
 
-                    angular.forEach(outputRoutes, function (route) {
-                        var path = [];
-                        angular.forEach(route.stations, function (station) {
-                            path.push([station.lng, station.lat]);
+                        angular.forEach(outputRoutes, function (route) {
+                            var path = [];
+                            angular.forEach(route.stations, function (station) {
+                                path.push([station.lng, station.lat]);
+                            });
+                            $scope.map.plugin('AMap.DragRoute', function () {
+                                route = new AMap.DragRoute($scope.map, path, AMap.DrivingPolicy.LEAST_DISTANCE);
+                                route.search();
+                            });
                         });
-                        $scope.map.plugin('AMap.DragRoute', function () {
-                            route = new AMap.DragRoute($scope.map, path, AMap.DrivingPolicy.LEAST_DISTANCE);
-                            route.search();
-                        });
-                    });
+                    }
                 });
-                if(apiFlag === false) {
-                    var walking = new AMap.Walking({
-                        map: $scope.map
-                    });
+                if (apiFlag === false) {
+                    var search;
+                    if ($scope.circle.getRadius() === 1000) {
+                        search = new AMap.Walking({
+                            map: $scope.map
+                        });
+                    } else {
+                        search = new AMap.Transfer({
+                            map: $scope.map
+                        });
+                    }
                     var fromLnglat = new AMap.LngLat($scope.inputBusStation.lng, $scope.inputBusStation.lat);
                     var toLngLat = new AMap.LngLat($scope.nearestStation.lng, $scope.nearestStation.lat);
-                    walking.search(fromLnglat, toLngLat);
+                    search.search(fromLnglat, toLngLat);
                 }
             });
-
         });
     };
 
@@ -139,8 +151,7 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
     };
 
 
-
-    $scope.onComplete = function(data) {
+    $scope.onComplete = function (data) {
         $scope.inputBusStation.lng = data.position.getLng();
         $scope.inputBusStation.lat = data.position.getLat();
         var point = {
@@ -154,22 +165,24 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
     // $scope.onError = function(data) {
 
     // };
-
-    if ($location.search().useCurrent) {
-        $('#mapContainer').show();
-        $scope.map.setZoom(14);
-
-        $scope.map.plugin('AMap.Geolocation', function() {
+    $scope.searchByCurrentLocation = function () {
+        $scope.map.plugin('AMap.Geolocation', function () {
             var geolocation = new AMap.Geolocation({
                 timeout: 10000,
                 zoomToAccuracy: true,
-                buttonPosition:'RB'
+                buttonPosition: 'RB'
             });
             $scope.map.addControl(geolocation);
             geolocation.getCurrentPosition();
             AMap.event.addListener(geolocation, 'complete', $scope.onComplete);
             AMap.event.addListener(geolocation, 'error', $scope.onError);
         });
+    };
+
+    if ($location.search().useCurrent) {
+        $('#mapContainer').show();
+        $scope.map.setZoom(14);
+        $scope.searchByCurrentLocation();
     }
 
     if ($location.search().lng && $location.search().lat) {

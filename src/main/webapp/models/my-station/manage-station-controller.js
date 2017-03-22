@@ -1,15 +1,14 @@
 'use strict';
 
-angular.module('myApp-manageStation').controller('ManageStationController', ['$rootScope', '$scope', '$stateParams', 'ManageStationService', 'AmapService', 'FileUploader',
-    function ($rootScope, $scope, $stateParams, ManageStationService, AmapService, FileUploader) {
+angular.module('myApp-manageStation').controller('ManageStationController', ['$rootScope', '$scope', '$stateParams', 'ManageStationService', 'AmapService',
+    function ($rootScope, $scope, $stateParams, ManageStationService, AmapService) {
         $scope.routeId = $stateParams.routeId;
         $scope.inputBusStation = {
             routeId: '',
             lng: '',
             lat: '',
             keyword: '',
-            description: '',
-            stationPic: ''
+            description: ''
         };
         $scope.inputBusStation.routeId = $scope.routeId;
         var amapRoute;
