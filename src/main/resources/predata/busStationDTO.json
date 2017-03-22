@@ -1,0 +1,15 @@
+{"_id":{"$oid":"58d1d54b20de8023a83b39d8"},"_class":"com.linde.dto.BusStationDTO","keyword":"故宫路","lng":"118.083882","lat":"24.462565","description":""}
+{"_id":{"$oid":"58d1d55620de8023a83b39d9"},"_class":"com.linde.dto.BusStationDTO","keyword":"思北路口(公交站)","lng":"118.079185","lat":"24.461693","description":""}
+{"_id":{"$oid":"58d1d55d20de8023a83b39da"},"_class":"com.linde.dto.BusStationDTO","keyword":"滨北中行","lng":"118.081721","lat":"24.477857","description":""}
+{"_id":{"$oid":"58d1d56420de8023a83b39db"},"_class":"com.linde.dto.BusStationDTO","keyword":"特贸","lng":"118.091858","lat":"24.479557","description":""}
+{"_id":{"$oid":"58d1d56b20de8023a83b39dc"},"_class":"com.linde.dto.BusStationDTO","keyword":"体育东村(公交站)","lng":"118.112754","lat":"24.485557","description":""}
+{"_id":{"$oid":"58d1d57120de8023a83b39dd"},"_class":"com.linde.dto.BusStationDTO","keyword":"宏业大厦(湖滨北路)","lng":"118.125457","lat":"24.488954","description":""}
+{"_id":{"$oid":"58d1d58220de8023a83b39de"},"_class":"com.linde.dto.BusStationDTO","keyword":"林德(中国)叉车有限公司","lng":"118.144801","lat":"24.487986","description":""}
+{"_id":{"$oid":"58d1d61620de8023a83b39df"},"_class":"com.linde.dto.BusStationDTO","keyword":"角滨路口(公交站)","lng":"118.082804","lat":"24.4664","description":""}
+{"_id":{"$oid":"58d1d62420de8023a83b39e0"},"_class":"com.linde.dto.BusStationDTO","keyword":"中山医院","lng":"118.097836","lat":"24.470475","description":""}
+{"_id":{"$oid":"58d1d65720de8023a83b39e1"},"_class":"com.linde.dto.BusStationDTO","keyword":"闽南大厦","lng":"118.103392","lat":"24.472036","description":""}
+{"_id":{"$oid":"58d1d67020de8023a83b39e2"},"_class":"com.linde.dto.BusStationDTO","keyword":"槟榔西里","lng":"118.112264","lat":"24.478191","description":""}
+{"_id":{"$oid":"58d1d68d20de8023a83b39e3"},"_class":"com.linde.dto.BusStationDTO","keyword":"槟榔东","lng":"118.116544","lat":"24.47949","description":""}
+{"_id":{"$oid":"58d1d69720de8023a83b39e4"},"_class":"com.linde.dto.BusStationDTO","keyword":"常明路口","lng":"118.118561","lat":"24.486481","description":""}
+{"_id":{"$oid":"58d1d6a020de8023a83b39e5"},"_class":"com.linde.dto.BusStationDTO","keyword":"莲花三村","lng":"118.133201","lat":"24.492156","description":""}
+{"_id":{"$oid":"58d1d6ad20de8023a83b39e6"},"_class":"com.linde.dto.BusStationDTO","keyword":"林德(中国)叉车有限公司","lng":"118.14483","lat":"24.487968","description":""}

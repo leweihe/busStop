@@ -46,5 +46,21 @@ java -jar lewei-bus-0.0.1-SNAPSHOT.jar --spring.profiles.active=[your profile]
 ```
 your profile is configured in **lewei-bus\src\main\resources\config**
 
+### import data
+
+```bash
+mongoimport -d test -c busStationDTO busStationDTO.json
+mongoimport -d test -c busRouteDTO busRouteDTO.json
+```
+
+### API links
+use current position
+```angular2html
+http://localhost/lewei-bus/#!/home?useCurrent=true
+```
+use given point to search
+```angular2html
+http://localhost/lewei-bus/#!/home?lng=118.082809&lat=24.466511
+```
 
 :)

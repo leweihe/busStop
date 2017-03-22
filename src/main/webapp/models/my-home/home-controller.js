@@ -12,15 +12,6 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
         center: [118.139839, 24.488006]
     });
 
-    window.onload = function () {
-        $scope.map.plugin(['AMap.ToolBar'], function () {
-            $scope.map.addControl(new AMap.ToolBar());
-        });
-        if (location.href.indexOf('&guide=1') !== -1) {
-            $scope.map.setStatus({scrollWheel: false})
-        }
-    };
-
     $('#tipinput').click(function () {
         $('#searchTitle1').animate({height: 'hide'});
         $('#searchTitle2').animate({height: 'hide'});

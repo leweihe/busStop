@@ -20,15 +20,6 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
             center: [118.139839, 24.488006]
         });
 
-        window.onload = function () {
-            $scope.map.plugin(['AMap.ToolBar'], function () {
-                $scope.map.addControl(new AMap.ToolBar());
-            });
-            if (location.href.indexOf('&guide=1') !== -1) {
-                $scope.map.setStatus({scrollWheel: false})
-            }
-        };
-
         $scope.reloadMap = function() {
             $scope.map.clearMap();
             ManageStationService.findAllBusStationByRouteId($scope.routeId).then(function (allBusStations) {
