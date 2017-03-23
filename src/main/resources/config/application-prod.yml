@@ -1,6 +1,6 @@
 server:
     contextPath: /lewei-bus
-    port: 8088
+    port: 80
 
 spring:
     profiles: prod
