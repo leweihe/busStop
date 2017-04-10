@@ -8,10 +8,10 @@ spring:
 
     data:
         mongodb:
-            uri: mongodb://lewei-luis:ULOTuo0NdnR4hoD8zQvsKZuwIpjp3O98BKrynYynyaFBxVlHDZNDoSvmN5VCtTgSR40YVpnH0fNdpjEhPNoJew==@lewei-luis.documents.azure.com:10250/?ssl=true&sslInvalidHostNameAllowed=true
-            database: admin
-#            host: lewei-luis.documents.azure.com
-#            port: 10250
+#            uri: mongodb://lewei-luis:ULOTuo0NdnR4hoD8zQvsKZuwIpjp3O98BKrynYynyaFBxVlHDZNDoSvmN5VCtTgSR40YVpnH0fNdpjEhPNoJew==@lewei-luis.documents.azure.com:10250/?ssl=true&sslInvalidHostNameAllowed=true
+            database: lewei-bus
+            host: localhost
+            port: 27017
 #            username: lewei-luis
 #            password: ULOTuo0NdnR4hoD8zQvsKZuwIpjp3O98BKrynYynyaFBxVlHDZNDoSvmN5VCtTgSR40YVpnH0fNdpjEhPNoJew==
 
