@@ -13,8 +13,7 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
     });
 
     $('#tipinput').click(function () {
-        $('#searchTitle1').animate({height: 'hide'});
-        $('#searchTitle2').animate({height: 'hide'});
+        $('#titles').animate({height: 'hide', speed: 'fast'});
     });
 
     var passedDefaultMarkerOpt = {icon: 'images/path-gray.png', offset: new AMap.Pixel(-16, -32), draggable: false};
