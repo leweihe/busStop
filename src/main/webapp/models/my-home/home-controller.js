@@ -17,6 +17,34 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
         $('#searchTitle2').animate({height: 'hide'});
     });
 
+    var passedDefaultMarkerOpt = {icon: 'images/path-gray.png', offset: new AMap.Pixel(-16, -32), draggable: false};
+    var passedEndMarkerOpt = {icon: 'images/hidden-point.png', offset: new AMap.Pixel(-16, -32), draggable: false};
+    var comingDefaultMarkerOpt = {icon: 'images/path-blue.png', offset: new AMap.Pixel(-16, -32), draggable: false};
+    var startMarkerOpt = {icon: 'images/start-point.png', offset: new AMap.Pixel(-16, -32), draggable: false};
+
+    var polyOptions = {isOutline: true, outlineColor: '#ffffff', lineJoin: 'round'};
+
+    var passedMarkerOptions = {
+        polyOptions: polyOptions,
+        startMarkerOptions: passedDefaultMarkerOpt,
+        midMarkerOptions: passedDefaultMarkerOpt,
+        endMarkerOptions: passedEndMarkerOpt,
+        showTraffic: false
+    };
+
+    var comingMarkerOptions = {
+        polyOptions: polyOptions,
+        startMarkerOptions: startMarkerOpt,
+        midMarkerOptions: comingDefaultMarkerOpt,
+        endMarkerOptions: comingDefaultMarkerOpt
+    };
+
+    var defaultWalkingOpt = {
+        map: $scope.map,
+        isOutline: false,
+        hideMarkers: true
+    };
+
     $scope.map.plugin(['AMap.ToolBar'], function () {
         $scope.map.addControl(new AMap.ToolBar());
     });
@@ -26,10 +54,7 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
 
         if ($scope.inputBusStation.lng) {
             $scope.map.setZoomAndCenter(14, new AMap.LngLat($scope.inputBusStation.lng, $scope.inputBusStation.lat));
-            var walking = new AMap.Walking({
-                map: $scope.map,
-                panel: 'resultPanel'
-            });
+            var walking = new AMap.Walking(defaultWalkingOpt);
             var fromLnglat = new AMap.LngLat($scope.inputBusStation.lng, $scope.inputBusStation.lat);
             var toLngLat = new AMap.LngLat($scope.nearestStation.lng, $scope.nearestStation.lat);
             walking.search(fromLnglat, toLngLat);
@@ -61,7 +86,7 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
                 var tmpDist = 0;
                 angular.forEach(distResults, function (dist, index) {
                     console.log('@ ' + dist.distance + '');
-                    if (index == 0) {
+                    if (index === 0) {
                         shortestDist = parseFloat(dist.distance);
                     }
                     tmpDist = parseFloat(dist.distance);
@@ -83,27 +108,40 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
                         console.log('choose route name : ' + $scope.outputRoutes[0].routeName);
 
                         angular.forEach(outputRoutes, function (route) {
-                            var path = [];
-                            angular.forEach(route.stations, function (station) {
-                                path.push([station.lng, station.lat]);
+                            var passedPath = [];
+                            var comingPath = [];
+                            var flag = true;
+                            angular.forEach(route.stations, function (station, index) {
+                                flag = flag && !(station.id === $scope.nearestStation.stationId);
+                                if (flag) {
+                                    passedPath.push([station.lng, station.lat]);
+                                } else {
+                                    comingPath.push([station.lng, station.lat]);
+                                }
                             });
+
                             $scope.map.plugin('AMap.DragRoute', function () {
-                                route = new AMap.DragRoute($scope.map, path, AMap.DrivingPolicy.LEAST_DISTANCE);
+                                route = new AMap.DragRoute($scope.map, comingPath, AMap.DrivingPolicy.LEAST_DISTANCE, comingMarkerOptions);
                                 route.search();
                             });
+
+                            if (passedPath && passedPath.length > 0 && comingPath && comingPath.length > 0) {
+                                passedPath.push(comingPath[0]);
+                            }
+                            $scope.map.plugin('AMap.DragRoute', function () {
+                                route = new AMap.DragRoute($scope.map, passedPath, AMap.DrivingPolicy.LEAST_DISTANCE, passedMarkerOptions);
+                                route.search();
+                            });
+
                         });
                     }
                 });
                 if (apiFlag === false) {
                     var search;
                     if ($scope.circle.getRadius() === 1000) {
-                        search = new AMap.Walking({
-                            map: $scope.map
-                        });
+                        search = new AMap.Walking(defaultWalkingOpt);
                     } else {
-                        search = new AMap.Transfer({
-                            map: $scope.map
-                        });
+                        search = new AMap.Transfer(defaultWalkingOpt);
                     }
                     var fromLnglat = new AMap.LngLat($scope.inputBusStation.lng, $scope.inputBusStation.lat);
                     var toLngLat = new AMap.LngLat($scope.nearestStation.lng, $scope.nearestStation.lat);

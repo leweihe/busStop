@@ -62,8 +62,7 @@ public class BusRouteWebService {
         return new ResponseEntity<>(newBusRouteRes, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/busroute/find/{stationId}", method = RequestMethod.GET,
-            produces = {MediaType.APPLICATION_JSON_VALUE})
+    @RequestMapping(value = "/busroute/find/{stationId}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     @Timed
     public ResponseEntity<List<BusRouteResource>> findRoutesByStationIds(@PathVariable String stationId) throws Exception {
         LOG.debug("To Create new Bus Route" + stationId);

@@ -2,6 +2,24 @@
 
 angular.module('myApp-manageRoute').controller('ManageRouteController', ['$scope', '$state', 'ManageRouteService', 'ManageStationService', function ($scope, $state, ManageRouteService, ManageStationService) {
 
+    var defaultMarkerOpt = {icon: 'images/point-red.png', offset: new AMap.Pixel(-4, -4), draggable: false};
+    var polyOptions = {
+        strokeColor: '#3366FF',   // 线颜色
+        strokeOpacity: 1,         // 线透明度
+        strokeWeight: 2,          // 线宽
+        strokeStyle: 'solid',     // 线样式
+        strokeDasharray: [10, 5], // 补充线样式
+        geodesic: true            // 绘制大地线
+    };
+
+    var passedMarkerOptions = {
+        polyOptions: polyOptions,
+        startMarkerOptions: defaultMarkerOpt,
+        midMarkerOptions: defaultMarkerOpt,
+        endMarkerOptions: defaultMarkerOpt,
+        showTraffic: false
+    };
+
     var map = new AMap.Map('mapContainer', {
         resizeEnable: true,
         zoom: 14,
@@ -32,7 +50,7 @@ angular.module('myApp-manageRoute').controller('ManageRouteController', ['$scope
                         path.push([station.lng, station.lat]);
                     });
                     map.plugin('AMap.DragRoute', function () {
-                        route = new AMap.DragRoute(map, path, AMap.DrivingPolicy.LEAST_DISTANCE);
+                        route = new AMap.DragRoute(map, path, AMap.DrivingPolicy.LEAST_DISTANCE, passedMarkerOptions);
                         route.search();
                     });
 

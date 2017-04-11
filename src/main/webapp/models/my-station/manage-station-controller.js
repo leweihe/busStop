@@ -11,6 +11,7 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
             description: '',
             stationPic: ''
         };
+
         $scope.inputBusStation.routeId = $scope.routeId;
         var amapRoute;
 
@@ -19,6 +20,15 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
             zoom: 14,
             center: [118.139839, 24.488006]
         });
+
+        var defaultMarkerOpt = {icon: 'images/circle-red.png', offset: new AMap.Pixel(-8, -8)};
+
+        var editMarkerOpt = {icon: 'images/drag-circle.png', offset: new AMap.Pixel(-8, -8), draggable: true};
+
+        var markerOptions = {
+            startMarkerOptions: defaultMarkerOpt,
+            midMarkerOptions: defaultMarkerOpt
+        };
 
         $scope.reloadMap = function() {
             $scope.map.clearMap();
@@ -29,7 +39,7 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
                     path.push([station.lng, station.lat]);
                 });
                 $scope.map.plugin('AMap.DragRoute', function () {
-                    amapRoute = new AMap.DragRoute($scope.map, path, AMap.DrivingPolicy.LEAST_DISTANCE);
+                    amapRoute = new AMap.DragRoute($scope.map, path, AMap.DrivingPolicy.LEAST_DISTANCE, markerOptions);
                     amapRoute.search();
                 });
             });
@@ -90,11 +100,8 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
 
         $scope.openInfoPoint = function (map, point) {
             map.clearMap();
-            var marker = new AMap.Marker({
-                map: map,
-                position: point.location,
-                draggable: true
-            });
+            defaultMarkerOpt.map = $scope.map;
+            var marker = new AMap.Marker(defaultMarkerOpt);
 
             marker.on('dragend', function (dragedPoint) {
                 $scope.inputBusStation.lng = dragedPoint.lnglat.lng;
@@ -108,11 +115,9 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
         $scope.drawStationPoint = function (station) {
             station.routeId = $scope.routeId;
             var position = new AMap.LngLat(station.lng, station.lat);
-            var marker = new AMap.Marker({
-                map: $scope.map,
-                position: position,
-                draggable: true
-            });
+            editMarkerOpt.position = position;
+            editMarkerOpt.map = $scope.map;
+            var marker = new AMap.Marker(editMarkerOpt);
             marker.on('dragend', function (dragedPoint) {
                 station.lng = dragedPoint.lnglat.lng;
                 station.lat = dragedPoint.lnglat.lat;
