@@ -20,12 +20,26 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
     var passedDefaultMarkerOpt = {icon: 'images/path-gray.png', offset: new AMap.Pixel(-16, -32), draggable: false};
     var passedEndMarkerOpt = {icon: 'images/hidden-point.png', offset: new AMap.Pixel(-16, -32), draggable: false};
     var comingDefaultMarkerOpt = {icon: 'images/path-blue.png', offset: new AMap.Pixel(-16, -32), draggable: false};
-    var startMarkerOpt = {icon: 'images/start-point.png', offset: new AMap.Pixel(-16, -32), draggable: false};
+    var keyMarkerOpt = {icon: 'images/start-point.png', offset: new AMap.Pixel(-16, -32), draggable: false};
 
-    var polyOptions = {isOutline: true, outlineColor: '#ffffff', lineJoin: 'round'};
+    var passedPolyOptions = {
+        strokeColor: '#828282',   // 线颜色
+        strokeOpacity: 1,         // 线透明度
+        strokeWeight: 4,          // 线宽
+        strokeStyle: 'solid',     // 线样式
+        isOutline: false
+    };
+
+    var comingPolyOptions = {
+        strokeColor: '#3366FF',   // 线颜色
+        strokeOpacity: 1,         // 线透明度
+        strokeWeight: 4,          // 线宽
+        strokeStyle: 'solid',     // 线样式
+        isOutline: false
+    };
 
     var passedMarkerOptions = {
-        polyOptions: polyOptions,
+        polyOptions: passedPolyOptions,
         startMarkerOptions: passedDefaultMarkerOpt,
         midMarkerOptions: passedDefaultMarkerOpt,
         endMarkerOptions: passedEndMarkerOpt,
@@ -33,10 +47,10 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
     };
 
     var comingMarkerOptions = {
-        polyOptions: polyOptions,
-        startMarkerOptions: startMarkerOpt,
+        polyOptions: comingPolyOptions,
+        startMarkerOptions: keyMarkerOpt,
         midMarkerOptions: comingDefaultMarkerOpt,
-        endMarkerOptions: comingDefaultMarkerOpt
+        endMarkerOptions: keyMarkerOpt
     };
 
     var defaultWalkingOpt = {

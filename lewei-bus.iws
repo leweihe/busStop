@@ -2,25 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71781281-eadf-42b6-98ff-cfb3ee95496c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/circle-blue.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/circle-red.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/drag-circle.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/hidden-point.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/path-blue.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/path-gray.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/point-red.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/images/start-point.png" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/images/bg.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/images/point_black.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/images/point_blue.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/images/point_orange.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lewei-bus.iml" afterPath="$PROJECT_DIR$/lewei-bus.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lewei-bus.ipr" afterPath="$PROJECT_DIR$/lewei-bus.ipr" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/images/start-point.png" afterPath="$PROJECT_DIR$/src/main/webapp/images/start-point.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lewei-bus.iws" afterPath="$PROJECT_DIR$/lewei-bus.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/linde/web/rest/BusRouteWebService.java" afterPath="$PROJECT_DIR$/src/main/java/com/linde/web/rest/BusRouteWebService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/models/my-home/home-api.html" afterPath="$PROJECT_DIR$/src/main/webapp/models/my-home/home-api.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/models/my-home/home-controller.js" afterPath="$PROJECT_DIR$/src/main/webapp/models/my-home/home-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/models/my-route/manage-route-controller.js" afterPath="$PROJECT_DIR$/src/main/webapp/models/my-route/manage-route-controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/models/my-station/manage-station-controller.js" afterPath="$PROJECT_DIR$/src/main/webapp/models/my-station/manage-station-controller.js" />
     </list>
     <ignored path="$PROJECT_DIR$/target/classes/" />
@@ -189,21 +173,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="home-controller.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="home-controller.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-home/home-controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="24" column="4" lean-forward="true" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="84" />
+            <state relative-caret-position="211">
+              <caret line="238" column="5" lean-forward="true" selection-start-line="238" selection-start-column="5" selection-end-line="238" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manage-route-controller.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="manage-route-controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-route/manage-route-controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="4" column="87" lean-forward="false" selection-start-line="4" selection-start-column="87" selection-end-line="4" selection-end-column="87" />
+            <state relative-caret-position="100">
+              <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -222,8 +206,8 @@
       <file leaf-file-name="manage-station-controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-station/manage-station-controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="21" column="11" lean-forward="true" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
+            <state relative-caret-position="235">
+              <caret line="36" column="25" lean-forward="false" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -243,7 +227,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>point_blu</find>
       <find>point_bl</find>
       <find>point_b</find>
       <find>point_</find>
@@ -269,10 +252,11 @@
       <find>你</find>
       <find />
       <find>route</find>
-      <find>drag</find>
       <find>距离</find>
       <find>start-point.png</find>
+      <find>polyOptions</find>
       <find>AMap.Walking</find>
+      <find>drag</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -289,10 +273,10 @@
         <option value="$PROJECT_DIR$/src/main/resources/config/application-prod.yml" />
         <option value="$PROJECT_DIR$/src/main/webapp/models/my-station/manage-station.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/linde/web/rest/BusRouteWebService.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/models/my-station/manage-station-controller.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/models/my-home/home-api.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/models/my-home/home-controller.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/models/my-route/manage-route-controller.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/models/my-home/home-controller.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/models/my-station/manage-station-controller.js" />
       </list>
     </option>
   </component>
@@ -743,7 +727,7 @@
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lewei-weixin" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -951,7 +935,7 @@
       <updated>1491834330499</updated>
       <workItem from="1491834335037" duration="2611000" />
       <workItem from="1491839886826" duration="2541000" />
-      <workItem from="1491868726343" duration="12203000" />
+      <workItem from="1491868726343" duration="15485000" />
     </task>
     <task id="LOCAL-00001" summary="lewei-bus">
       <created>1491835235882</created>
@@ -967,11 +951,18 @@
       <option name="project" value="LOCAL" />
       <updated>1491859451988</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="change some uis .">
+      <created>1491889669757</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1491889669757</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17355000" />
+    <option name="totallyTimeSpent" value="20637000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1031,7 +1022,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="lewei-bus" />
-    <option name="LAST_COMMIT_MESSAGE" value="lewei-bus" />
+    <MESSAGE value="change some uis ." />
+    <option name="LAST_COMMIT_MESSAGE" value="change some uis ." />
   </component>
   <component name="VssConfiguration">
     <CheckoutOptions>
@@ -1090,7 +1082,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/webapp/models/my-home/home-controller.js</url>
-          <line>143</line>
+          <line>157</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -1237,14 +1229,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-station/manage-station-controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="21" column="11" lean-forward="true" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/images/point_black.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1290,22 +1274,9 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/images/path-blue.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/images/hidden-point.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-home/home-controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="24" column="4" lean-forward="true" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="84" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/images/start-point.png">
@@ -1315,8 +1286,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-route/manage-route-controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="87" lean-forward="false" selection-start-line="4" selection-start-column="87" selection-end-line="4" selection-end-column="87" />
+        <state relative-caret-position="100">
+          <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/images/path-blue.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-station/manage-station-controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="36" column="25" lean-forward="false" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-home/home-controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="238" column="5" lean-forward="true" selection-start-line="238" selection-start-column="5" selection-end-line="238" selection-end-column="5" />
           <folding />
         </state>
       </provider>

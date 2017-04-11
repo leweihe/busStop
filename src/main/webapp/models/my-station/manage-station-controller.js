@@ -12,6 +12,14 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
             stationPic: ''
         };
 
+        var comingPolyOptions = {
+            strokeColor: '#3366FF',   // 线颜色
+            strokeOpacity: 1,         // 线透明度
+            strokeWeight: 3,          // 线宽
+            strokeStyle: 'solid',     // 线样式
+            isOutline: false
+        };
+
         $scope.inputBusStation.routeId = $scope.routeId;
         var amapRoute;
 
@@ -26,6 +34,7 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
         var editMarkerOpt = {icon: 'images/drag-circle.png', offset: new AMap.Pixel(-8, -8), draggable: true};
 
         var markerOptions = {
+            polyOptions: comingPolyOptions,
             startMarkerOptions: defaultMarkerOpt,
             midMarkerOptions: defaultMarkerOpt
         };
