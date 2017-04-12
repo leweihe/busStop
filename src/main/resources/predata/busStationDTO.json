@@ -1,15 +1,648 @@
-{"_id":{"$oid":"58d1d54b20de8023a83b39d8"},"_class":"com.linde.dto.BusStationDTO","keyword":"故宫路","lng":"118.083882","lat":"24.462565","description":""}
-{"_id":{"$oid":"58d1d55620de8023a83b39d9"},"_class":"com.linde.dto.BusStationDTO","keyword":"思北路口(公交站)","lng":"118.079185","lat":"24.461693","description":""}
-{"_id":{"$oid":"58d1d55d20de8023a83b39da"},"_class":"com.linde.dto.BusStationDTO","keyword":"滨北中行","lng":"118.081721","lat":"24.477857","description":""}
-{"_id":{"$oid":"58d1d56420de8023a83b39db"},"_class":"com.linde.dto.BusStationDTO","keyword":"特贸","lng":"118.091858","lat":"24.479557","description":""}
-{"_id":{"$oid":"58d1d56b20de8023a83b39dc"},"_class":"com.linde.dto.BusStationDTO","keyword":"体育东村(公交站)","lng":"118.112754","lat":"24.485557","description":""}
-{"_id":{"$oid":"58d1d57120de8023a83b39dd"},"_class":"com.linde.dto.BusStationDTO","keyword":"宏业大厦(湖滨北路)","lng":"118.125457","lat":"24.488954","description":""}
-{"_id":{"$oid":"58d1d58220de8023a83b39de"},"_class":"com.linde.dto.BusStationDTO","keyword":"林德(中国)叉车有限公司","lng":"118.144801","lat":"24.487986","description":""}
-{"_id":{"$oid":"58d1d61620de8023a83b39df"},"_class":"com.linde.dto.BusStationDTO","keyword":"角滨路口(公交站)","lng":"118.082804","lat":"24.4664","description":""}
-{"_id":{"$oid":"58d1d62420de8023a83b39e0"},"_class":"com.linde.dto.BusStationDTO","keyword":"中山医院","lng":"118.097836","lat":"24.470475","description":""}
-{"_id":{"$oid":"58d1d65720de8023a83b39e1"},"_class":"com.linde.dto.BusStationDTO","keyword":"闽南大厦","lng":"118.103392","lat":"24.472036","description":""}
-{"_id":{"$oid":"58d1d67020de8023a83b39e2"},"_class":"com.linde.dto.BusStationDTO","keyword":"槟榔西里","lng":"118.112264","lat":"24.478191","description":""}
-{"_id":{"$oid":"58d1d68d20de8023a83b39e3"},"_class":"com.linde.dto.BusStationDTO","keyword":"槟榔东","lng":"118.116544","lat":"24.47949","description":""}
-{"_id":{"$oid":"58d1d69720de8023a83b39e4"},"_class":"com.linde.dto.BusStationDTO","keyword":"常明路口","lng":"118.118561","lat":"24.486481","description":""}
-{"_id":{"$oid":"58d1d6a020de8023a83b39e5"},"_class":"com.linde.dto.BusStationDTO","keyword":"莲花三村","lng":"118.133201","lat":"24.492156","description":""}
-{"_id":{"$oid":"58d1d6ad20de8023a83b39e6"},"_class":"com.linde.dto.BusStationDTO","keyword":"林德(中国)叉车有限公司","lng":"118.14483","lat":"24.487968","description":""}
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec28911ed44819f179be66"),
+	"description" : "",
+	"keyword" : "故宫路",
+	"lat" : "24.461706",
+	"lng" : "118.083753"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec28a71ed44819f179be68"),
+	"description" : "",
+	"keyword" : "思北路口",
+	"lat" : "24.461693",
+	"lng" : "118.079185"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec28b41ed44819f179be69"),
+	"description" : "",
+	"keyword" : "滨北中行",
+	"lat" : "24.477835",
+	"lng" : "118.081905"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec28c11ed44819f179be6a"),
+	"description" : "",
+	"keyword" : "特贸",
+	"lat" : "24.479557",
+	"lng" : "118.091858"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec28cc1ed44819f179be6b"),
+	"description" : "",
+	"keyword" : "体育东村",
+	"lat" : "24.485403",
+	"lng" : "118.112794"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec28d71ed44819f179be6c"),
+	"description" : "",
+	"keyword" : "宏业大厦",
+	"lat" : "24.489443",
+	"lng" : "118.125764"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec28e91ed44819f179be6d"),
+	"description" : "",
+	"keyword" : "林德(中国)叉车有限公司",
+	"lat" : "24.488396",
+	"lng" : "118.144141"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec29481ed44819f179be6f"),
+	"description" : "",
+	"keyword" : "禾祥西二路",
+	"lat" : "24.463781",
+	"lng" : "118.075121"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec29551ed44819f179be70"),
+	"description" : "",
+	"keyword" : "角滨路口(公交站)",
+	"lat" : "24.466472",
+	"lng" : "118.082852"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec29611ed44819f179be71"),
+	"description" : "",
+	"keyword" : "中山医院",
+	"lat" : "24.470514",
+	"lng" : "118.097986"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec29871ed44819f179be72"),
+	"description" : "",
+	"keyword" : "新村",
+	"lat" : "24.471929",
+	"lng" : "118.103247"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec298e1ed44819f179be73"),
+	"description" : "",
+	"keyword" : "自行车厂",
+	"lat" : "24.473002",
+	"lng" : "118.107063"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec29ae1ed44819f179be74"),
+	"description" : "",
+	"keyword" : "槟榔西里",
+	"lat" : "24.478306",
+	"lng" : "118.11249"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec29be1ed44819f179be75"),
+	"description" : "",
+	"keyword" : "槟榔东",
+	"lat" : "24.478651",
+	"lng" : "118.114305"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec29e21ed44819f179be76"),
+	"description" : "",
+	"keyword" : "常明路口",
+	"lat" : "24.486309",
+	"lng" : "118.123479"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec29ec1ed44819f179be77"),
+	"description" : "",
+	"keyword" : "莲花三村",
+	"lat" : "24.49203",
+	"lng" : "118.134345"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec29f71ed44819f179be78"),
+	"description" : "",
+	"keyword" : "林德(中国)叉车有限公司",
+	"lat" : "24.488201",
+	"lng" : "118.144409"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2a241ed44819f179be7a"),
+	"description" : "",
+	"keyword" : "钟宅",
+	"lat" : "24.526965",
+	"lng" : "118.163502"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2a2d1ed44819f179be7b"),
+	"description" : "",
+	"keyword" : "双十中学",
+	"lat" : "24.521167",
+	"lng" : "118.156528"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2a3d1ed44819f179be7c"),
+	"description" : "",
+	"keyword" : "车管所",
+	"lat" : "24.516489",
+	"lng" : "118.158199"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2a441ed44819f179be7d"),
+	"description" : "",
+	"keyword" : "穆厝",
+	"lat" : "24.511491",
+	"lng" : "118.159315"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2a8c1ed44819f179be7e"),
+	"description" : "",
+	"keyword" : "后坑",
+	"lat" : "24.499687",
+	"lng" : "118.157231"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2a981ed44819f179be7f"),
+	"description" : "",
+	"keyword" : "林德(中国)叉车有限公司",
+	"lat" : "24.487967",
+	"lng" : "118.144281"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2abd1ed44819f179be81"),
+	"description" : "",
+	"keyword" : "高林居住区",
+	"lat" : "24.504305",
+	"lng" : "118.1875"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2ac61ed44819f179be82"),
+	"description" : "",
+	"keyword" : "蔡塘",
+	"lat" : "24.487219",
+	"lng" : "118.15366"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2acf1ed44819f179be83"),
+	"description" : "",
+	"keyword" : "林德(中国)叉车有限公司",
+	"lat" : "24.487967",
+	"lng" : "118.144581"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2b261ed44819f179be8a"),
+	"description" : "",
+	"keyword" : "城东工业区",
+	"lat" : "24.723014",
+	"lng" : "118.182503"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2b2c1ed44819f179be8b"),
+	"description" : "",
+	"keyword" : "银华新村",
+	"lat" : "24.723316",
+	"lng" : "118.168736"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2b321ed44819f179be8c"),
+	"description" : "",
+	"keyword" : "东桥",
+	"lat" : "24.734188",
+	"lng" : "118.157639"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2b3b1ed44819f179be8d"),
+	"description" : "",
+	"keyword" : "小西门",
+	"lat" : "24.735933",
+	"lng" : "118.150681"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2b591ed44819f179be8e"),
+	"description" : "",
+	"keyword" : "安溪路",
+	"lat" : "24.735933",
+	"lng" : "118.150681"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2b641ed44819f179be8f"),
+	"description" : "",
+	"keyword" : "城南",
+	"lat" : "24.71645",
+	"lng" : "118.146973"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2b771ed44819f179be91"),
+	"description" : "",
+	"keyword" : "第三医院",
+	"lat" : "24.706202",
+	"lng" : "118.144722"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2b7e1ed44819f179be92"),
+	"description" : "",
+	"keyword" : "工业集中区",
+	"lat" : "24.689112",
+	"lng" : "118.141098"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2c021ed44819f179be94"),
+	"description" : "",
+	"keyword" : "西柯",
+	"lat" : "24.658941",
+	"lng" : "118.15184"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2c0a1ed44819f179be95"),
+	"description" : "",
+	"keyword" : "蔡店",
+	"lat" : "24.626436",
+	"lng" : "118.146156"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2c121ed44819f179be96"),
+	"description" : "",
+	"keyword" : "嘉庚体育馆站",
+	"lat" : "24.585478",
+	"lng" : "118.108345"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2c1e1ed44819f179be97"),
+	"description" : "",
+	"keyword" : "林德(中国)叉车有限公司",
+	"lat" : "24.48785",
+	"lng" : "118.143809"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2c351ed44819f179be98"),
+	"description" : "",
+	"keyword" : "明达北门",
+	"lat" : "24.528677",
+	"lng" : "118.023381"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2c3a1ed44819f179be99"),
+	"description" : "",
+	"keyword" : "新垵",
+	"lat" : "24.520146",
+	"lng" : "117.99878"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2c411ed44819f179be9a"),
+	"description" : "",
+	"keyword" : "新阳街道办",
+	"lat" : "24.523031",
+	"lng" : "118.010351"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2c4a1ed44819f179be9b"),
+	"description" : "",
+	"keyword" : "刘山村",
+	"lat" : "24.489941",
+	"lng" : "118.044772"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2c561ed44819f179be9c"),
+	"description" : "",
+	"keyword" : "海沧鑫星河",
+	"lat" : "24.491894",
+	"lng" : "118.035652"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2c621ed44819f179be9d"),
+	"description" : "",
+	"keyword" : "车场",
+	"lat" : "24.492655",
+	"lng" : "118.031136"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2c681ed44819f179be9e"),
+	"description" : "",
+	"keyword" : "石塘站",
+	"lat" : "24.498819",
+	"lng" : "118.034803"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2c721ed44819f179be9f"),
+	"description" : "",
+	"keyword" : "林德(中国)叉车有限公司",
+	"lat" : "24.488084",
+	"lng" : "118.144023"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2d111ed44819f179bea0"),
+	"description" : "",
+	"keyword" : "岭兜小区",
+	"lat" : "24.476822",
+	"lng" : "118.178803"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2d171ed44819f179bea1"),
+	"description" : "",
+	"keyword" : "前埔北区",
+	"lat" : "24.473049",
+	"lng" : "118.174465"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2d1f1ed44819f179bea2"),
+	"description" : "",
+	"keyword" : "前埔南区",
+	"lat" : "24.471608",
+	"lng" : "118.17363"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2d3c1ed44819f179bea3"),
+	"description" : "",
+	"keyword" : "华林",
+	"lat" : "24.472464",
+	"lng" : "118.17089"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2d4f1ed44819f179bea4"),
+	"description" : "",
+	"keyword" : "潘宅",
+	"lat" : "24.470584",
+	"lng" : "118.167843"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2d6d1ed44819f179bea5"),
+	"description" : "",
+	"keyword" : "林德(中国)叉车有限公司",
+	"lat" : "24.48785",
+	"lng" : "118.144281"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2d941ed44819f179bea6"),
+	"description" : "",
+	"keyword" : "翔安一中",
+	"lat" : "24.66931",
+	"lng" : "118.247208"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2d991ed44819f179bea7"),
+	"description" : "",
+	"keyword" : "马巷车站",
+	"lat" : "24.664631",
+	"lng" : "118.253761"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2d9e1ed44819f179bea8"),
+	"description" : "",
+	"keyword" : "同民医院",
+	"lat" : "24.659629",
+	"lng" : "118.248272"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2da31ed44819f179bea9"),
+	"description" : "",
+	"keyword" : "祥吴站",
+	"lat" : "24.629049",
+	"lng" : "118.246262"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2da91ed44819f179beaa"),
+	"description" : "",
+	"keyword" : "汇景广场站",
+	"lat" : "24.61977",
+	"lng" : "118.244598"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2db11ed44819f179beab"),
+	"description" : "",
+	"keyword" : "新店",
+	"lat" : "24.608664",
+	"lng" : "118.246384"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2dbf1ed44819f179beac"),
+	"description" : "",
+	"keyword" : "林前",
+	"lat" : "24.574514",
+	"lng" : "118.238037"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2dc51ed44819f179bead"),
+	"description" : "",
+	"keyword" : "肖厝",
+	"lat" : "24.564787",
+	"lng" : "118.228577"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2dcb1ed44819f179beae"),
+	"description" : "",
+	"keyword" : "国贸金融中心",
+	"lat" : "24.508173",
+	"lng" : "118.18055"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2dd11ed44819f179beaf"),
+	"description" : "",
+	"keyword" : "湖边花园北站",
+	"lat" : "24.505812",
+	"lng" : "118.174042"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2dda1ed44819f179beb0"),
+	"description" : "",
+	"keyword" : "林德(中国)叉车有限公司",
+	"lat" : "24.487967",
+	"lng" : "118.14368"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2e051ed44819f179beb1"),
+	"description" : "",
+	"keyword" : "浒井",
+	"lat" : "24.60165",
+	"lng" : "118.098717"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2e0c1ed44819f179beb2"),
+	"description" : "",
+	"keyword" : "滨水小区",
+	"lat" : "24.594434",
+	"lng" : "118.091991"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2e151ed44819f179beb3"),
+	"description" : "",
+	"keyword" : "孙厝",
+	"lat" : "24.58412",
+	"lng" : "118.100655"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2e3d1ed44819f179beb4"),
+	"description" : "",
+	"keyword" : "集源路口",
+	"lat" : "24.574339",
+	"lng" : "118.095846"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2e451ed44819f179beb5"),
+	"description" : "",
+	"keyword" : "林德(中国)叉车有限公司",
+	"lat" : "24.48742",
+	"lng" : "118.144452"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2e5d1ed44819f179beb6"),
+	"description" : "",
+	"keyword" : "康城总站",
+	"lat" : "24.592926",
+	"lng" : "118.022559"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2e651ed44819f179beb7"),
+	"description" : "",
+	"keyword" : "杏林内茂",
+	"lat" : "24.571084",
+	"lng" : "118.041596"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2e6b1ed44819f179beb8"),
+	"description" : "",
+	"keyword" : "内林",
+	"lat" : "24.570704",
+	"lng" : "118.053483"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2e7c1ed44819f179beb9"),
+	"description" : "",
+	"keyword" : "化工学校",
+	"lat" : "24.569894",
+	"lng" : "118.061299"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2e8d1ed44819f179beba"),
+	"description" : "",
+	"keyword" : "高崎",
+	"lat" : "24.538029",
+	"lng" : "118.116561"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec2e961ed44819f179bebb"),
+	"description" : "",
+	"keyword" : "林德(中国)叉车有限公司",
+	"lat" : "24.487928",
+	"lng" : "118.143594"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec67601ed44819f179bebe"),
+	"description" : "",
+	"keyword" : "南普陀",
+	"lat" : "24.439858",
+	"lng" : "118.094576"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec67691ed44819f179bebf"),
+	"description" : "",
+	"keyword" : "厦港消防队",
+	"lat" : "24.444288",
+	"lng" : "118.087364"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec67701ed44819f179bec0"),
+	"description" : "",
+	"keyword" : "大生里",
+	"lat" : "24.445967",
+	"lng" : "118.085307"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec67771ed44819f179bec1"),
+	"description" : "",
+	"keyword" : "第一医院",
+	"lat" : "24.453125",
+	"lng" : "118.087639"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec67811ed44819f179bec2"),
+	"description" : "",
+	"keyword" : "文塔市场",
+	"lat" : "24.464944",
+	"lng" : "118.102205"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec67931ed44819f179bec3"),
+	"description" : "",
+	"keyword" : "文曾路",
+	"lat" : "24.46705",
+	"lng" : "118.108223"
+},
+{
+	"_class" : "com.linde.dto.BusStationDTO",
+	"_id" : ObjectId("58ec67a41ed44819f179bec4"),
+	"description" : "",
+	"keyword" : "林德(中国)叉车有限公司",
+	"lat" : "24.487694",
+	"lng" : "118.144259"
+},

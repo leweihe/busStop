@@ -40,6 +40,14 @@ angular.module('myApp-manageRoute').controller('ManageRouteController', ['$scope
         });
     });
 
+    ManageRouteService.findTripFlagValues().then(function (tripFlags) {
+        $scope.tripFlags = tripFlags;
+    });
+
+    ManageRouteService.findAllBusRouteBuStatus('ACTIVE').then(function (activeRoutes) {
+        $scope.activeRoutes = activeRoutes.data;
+    });
+
     $scope.searchInAmap = function (route) {
         if (route.routeId) {
             ManageStationService.findAllBusStationByRouteId(route.routeId)

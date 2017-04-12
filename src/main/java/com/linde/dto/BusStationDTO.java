@@ -1,8 +1,8 @@
 package com.linde.dto;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import com.linde.constants.TripFlagEnum;
+
+import javax.persistence.*;
 
 /**
  * Created by cn40580 at 2016-10-10 10:04 AM.
@@ -17,6 +17,11 @@ public class BusStationDTO {
     private String lng;
     private String lat;
     private String description;
+
+    private Integer sequence;
+
+    @Enumerated(EnumType.STRING)
+    private TripFlagEnum tripFlag;
 
     @ManyToOne
     private BusRouteDTO busRoute;
@@ -83,6 +88,22 @@ public class BusStationDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getSequence() {
+        return sequence;
+    }
+
+    public void setSequence(Integer sequence) {
+        this.sequence = sequence;
+    }
+
+    public TripFlagEnum getTripFlag() {
+        return tripFlag;
+    }
+
+    public void setTripFlag(TripFlagEnum tripFlag) {
+        this.tripFlag = tripFlag;
     }
 
     @Override

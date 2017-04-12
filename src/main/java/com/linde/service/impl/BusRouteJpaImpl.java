@@ -1,8 +1,10 @@
 package com.linde.service.impl;
 
+import com.linde.constants.RouteStatusEnum;
 import com.linde.repo.BusRouteRepository;
 import com.linde.service.BusRouteService;
 import com.linde.dto.BusRouteDTO;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
@@ -21,6 +23,13 @@ public class BusRouteJpaImpl implements BusRouteService {
     @Override
     public List<BusRouteDTO> findAll() {
         return busRouteRepo.findAll();
+    }
+
+    @Override
+    public List<BusRouteDTO> findAllByStatus(RouteStatusEnum status){
+        BusRouteDTO ex = new BusRouteDTO();
+        ex.setRouteStatus(status);
+        return busRouteRepo.findAll(Example.of(ex));
     }
 
     @Override

@@ -12,6 +12,12 @@ angular.module('myApp-manageStation').factory('ManageStationService', ['$http', 
             });
             return promise;
         },
+        findAllBusStationsByTripFlag: function (tripFlag) {
+            var promise = $http.get('app/rest/busstation/all/' + tripFlag).then(function (data) {
+                return data;
+            });
+            return promise;
+        },
         findAllBusStationByRouteId: function (routeId) {
             return $resource('app/rest/busstation/:routeId', {routeId: routeId}).query().$promise;
         },
@@ -24,6 +30,9 @@ angular.module('myApp-manageStation').factory('ManageStationService', ['$http', 
             resource.lng = busStation.lng;
             resource.lat = busStation.lat;
             resource.description = busStation.description;
+            resource.sequence = busStation.sequence;
+            resource.tripFlag = busStation.tripFlag;
+
             if (resource.stationId) {
                 return resource.$update();
             } else {

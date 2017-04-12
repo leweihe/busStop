@@ -1,16 +1,14 @@
-<div class="row">
-    <div class="col-md-5">
-        <h3>{{'station.map' | translate}}</h3>
-    </div>
-    <div class="col-md-4">
-        <h3>{{'station.station' | translate}}</h3>
-    </div>
-</div>
+<!--<div class="row">-->
+    <!--<div class="col-md-5">-->
+        <!--<h3>{{'station.map' | translate}}</h3>-->
+    <!--</div>-->
+    <!--<div class="col-md-4">-->
+        <!--<h3>{{'station.station' | translate}}</h3>-->
+    <!--</div>-->
+<!--</div>-->
 
 <div class="row">
-    <div class="col-md-5">
-        <div id="mapContainer" class="map"></div>
-    </div>
+
     <div class="col-md-6">
         <table class="table table-hover">
             <tr>
@@ -53,5 +51,69 @@
             <div class="col-md_4" id="searchResults"></div>
         </div>
     </div>
+    <div class="col-md-5">
+        <div id="mapContainer" class="map"></div>
+    </div>
 </div>
 
+<hr/>
+
+<div class="row col-sm-8">
+    <div class="row">
+        <div class="col-md-4">
+            班次信息编辑:
+        </div>
+    </div>
+    <form class="form-group" name="myForm" >
+        <div class="row">
+            <div class="col-md-2">
+                班车名:
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" type="text" ng-model="currentRoute.routeName"/>
+            </div>
+            <div class="col-md-2">
+                来程/返程:
+            </div>
+            <div class="col-md-4">
+                <select
+                        id="trip-flag-selector"
+                        class="form-control"
+                        ng-model="currentRoute.tripFlag"
+                        ng-options="(obj.name === 'GO' ? '上班' : '下班') for obj in tripFlags | orderBy : 'name'">
+                </select>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                描述:
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" type="text" ng-model="currentRoute.description"/>
+            </div>
+            <div class="col-md-2">
+                关联班次:
+            </div>
+            <div class="col-md-4">
+                <select
+                        id="linked-route-selector"
+                        class="form-control"
+                        ng-model="currentRoute.oppRoute"
+                        ng-options="' - ' + (obj.description ? obj.description : '')
+                          + ' - ' + (obj.tripFlag === 'GO' ? '上班' : '下班')
+                          + ' - ' + (obj.routeName ? obj.routeName : '') for obj in activeRoutes | orderBy : 'routeName'">
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <span ng-click="saveBusRoute()" class="btn btn-default">保存</span>
+            </div>
+            <input class="form-control" type="hidden" ng-model="currentRoute.routeStatus" value="ACTIVE"/>
+        </div>
+        <div class="row">
+            <hr/>
+        </div>
+    </form>
+</div>

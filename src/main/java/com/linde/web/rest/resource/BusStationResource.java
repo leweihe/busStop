@@ -1,9 +1,6 @@
 package com.linde.web.rest.resource;
 
-import com.mongodb.client.gridfs.model.GridFSFile;
 import org.springframework.hateoas.ResourceSupport;
-
-import java.util.Date;
 
 /**
  * Created by cn40580 at 2016-10-10 10:06 AM.
@@ -16,6 +13,10 @@ public class BusStationResource extends ResourceSupport {
     private String lng;
     private String lat;
     private String description;
+
+    private Integer sequence;
+
+    private String tripFlag;
 
     private String busRouteId;
 
@@ -75,4 +76,19 @@ public class BusStationResource extends ResourceSupport {
         this.description = description;
     }
 
+    public Integer getSequence() {
+        return sequence;
+    }
+
+    public void setSequence(Integer sequence) {
+        this.sequence = sequence;
+    }
+
+    public String getTripFlag() {
+        return tripFlag;
+    }
+
+    public void setTripFlag(String tripFlag) {
+        this.tripFlag = tripFlag;
+    }
 }

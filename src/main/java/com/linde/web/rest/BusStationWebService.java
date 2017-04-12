@@ -1,10 +1,12 @@
 package com.linde.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.linde.constants.TripFlagEnum;
 import com.linde.dto.BusRouteDTO;
 import com.linde.dto.BusStationDTO;
 import com.linde.service.BusRouteService;
 import com.linde.service.BusStationService;
+import com.linde.web.rest.resource.BusRouteResource;
 import com.linde.web.rest.resource.BusStationResource;
 import com.linde.web.rest.resourceassembler.BusStationResourceAssembler;
 import org.apache.commons.logging.Log;
@@ -18,6 +20,8 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static java.util.Comparator.comparing;
 
 /**
  * Created by cn40580 at 2016-10-12 10:21 AM.
@@ -44,6 +48,18 @@ public class BusStationWebService {
     public ResponseEntity<List<BusStationResource>> getAllBusStations() {
         List<BusStationDTO> us = busStationService.findAll();
         List<BusStationResource> res = us.stream().map(n -> busStationResourceAssembler.toResource(n)).collect(Collectors.toList());
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/busstation/all/{tripFlag}",
+            method = RequestMethod.GET,
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_ATOM_XML_VALUE})
+    @Timed
+    public ResponseEntity<List<BusStationResource>> getAllBusStations(@PathVariable String tripFlag) {
+        List<BusStationDTO> us = busStationService.findAllByTripFlag(Enum.valueOf(TripFlagEnum.class, tripFlag));
+        List<BusStationResource> res = us.stream().map(n -> busStationResourceAssembler.toResource(n))
+                .sorted(comparing(BusStationResource::getSequence))
+                .collect(Collectors.toList());
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 

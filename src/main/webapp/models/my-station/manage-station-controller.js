@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('myApp-manageStation').controller('ManageStationController', ['$rootScope', '$scope', '$stateParams', 'ManageStationService', 'AmapService',
-    function ($rootScope, $scope, $stateParams, ManageStationService, AmapService) {
+angular.module('myApp-manageStation').controller('ManageStationController', ['$rootScope', '$scope', '$stateParams', 'ManageStationService', 'ManageRouteService', 'AmapService',
+    function ($rootScope, $scope, $stateParams, ManageStationService, ManageRouteService, AmapService) {
         $scope.routeId = $stateParams.routeId;
         $scope.inputBusStation = {
             routeId: '',
@@ -9,7 +9,9 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
             lat: '',
             keyword: '',
             description: '',
-            stationPic: ''
+            stationPic: '',
+            sequence: 0,
+            tripFlag: ''
         };
 
         var comingPolyOptions = {
@@ -39,6 +41,10 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
             midMarkerOptions: defaultMarkerOpt
         };
 
+        ManageRouteService.findRouteById($scope.routeId).then(function (currentRoute) {
+            $scope.currentRoute = currentRoute.data;
+        });
+
         $scope.reloadMap = function() {
             $scope.map.clearMap();
             ManageStationService.findAllBusStationByRouteId($scope.routeId).then(function (allBusStations) {
@@ -57,6 +63,7 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
         $scope.reloadMap();
 
         $scope.addBusStation = function () {
+            $scope.inputBusStation.tripFlag = $scope.currentRoute.tripFlag;
             ManageStationService.saveBusStation($scope.inputBusStation).then(function () {
                 $scope.$broadcast('refreshStations');
             });
@@ -150,7 +157,34 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
             $scope.inputBusStation.lat = point.location.lat;
 
             infoWindow.open(map, [point.location.lng, point.location.lat]);
-        }
+        };
+
+        $scope.saveBusRoute = function () {
+            if ($scope.currentRoute) {
+                ManageRouteService.saveBusRoute($scope.currentRoute).then(function () {
+                    $scope.$broadcast('refreshRoutes');
+                });
+            }
+        };
+
+        ManageRouteService.findTripFlagValues().then(function (tripFlags) {
+            $scope.tripFlags = tripFlags;
+            tripFlags.forEach(function (flag) {
+                if($scope.currentRoute.tripFlag.name === flag.name) {
+                    $scope.currentRoute.tripFlag = flag;
+                }
+            });
+            $scope.currentRoute.tripFlag = tripFlags[0];
+        });
+
+        ManageRouteService.findAllBusRouteBuStatus('ACTIVE').then(function (activeRoutes) {
+            $scope.activeRoutes = activeRoutes.data;
+            $scope.activeRoutes.forEach(function (route) {
+                if($scope.currentRoute.oppRouteId === route.routeId){
+                    $scope.currentRoute.oppRoute = route;
+                }
+            });
+        });
     }
 
 ]);

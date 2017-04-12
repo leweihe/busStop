@@ -58,9 +58,18 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
         hideMarkers: true
     };
 
-    $scope.map.plugin(['AMap.ToolBar'], function () {
-        $scope.map.addControl(new AMap.ToolBar());
-    });
+    var TRIP_FLAG_GO = 'GO';
+    var TRIP_FLAG_RETURN = 'RETURN';
+
+    $scope.tripFlag = TRIP_FLAG_GO;
+
+    ///finish init data
+
+
+    //
+    // $scope.map.plugin(['AMap.ToolBar'], function () {
+    //     $scope.map.addControl(new AMap.ToolBar());
+    // });
 
     $scope.showMap = function () {
         $('#mapContainer').show();
@@ -74,12 +83,25 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
         }
     };
 
+    $scope.switchOppRoute = function() {
+        $scope.map.clearMap();
+        if(!$scope.outputRoutes){
+            return;
+        }
+        if(!$scope.outputRoutes[0].oppRouteId) {
+            return;
+        }
+        $scope.tripFlag = $scope.tripFlag === TRIP_FLAG_GO ? TRIP_FLAG_RETURN : TRIP_FLAG_GO;
+
+        $scope.searchNearestStations(false);
+    };
+
     $scope.searchNearestStations = function (apiFlag) {
         if (!$scope.inputBusStation.lng) {
             return;
         }
         console.log('[' + $scope.inputBusStation.lng + ', ' + $scope.inputBusStation.lat + ']');
-        HomeService.findStationsInCircle($scope.circle, apiFlag).then(function (stations) {
+        HomeService.findStationsInCircle($scope.circle, $scope.tripFlag, apiFlag).then(function (stations) {
             if (stations.length <= 0) {
                 console.log('no station in the circle suggest user to enlarge the r and search again.');
                 $scope.resultDesc = '您附近并没有合适的班车,再次点击搜索,将为您推荐换乘路线.';
@@ -112,7 +134,7 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
                 console.log('the nearest station is : ' + stations[shortestInd].keyword + ', suggest to take route number ' + stations[shortestInd].routeId);
                 $scope.nearestStation = stations[shortestInd];
             }).then(function () {
-                ManageRouteService.findRoutesByStationIds($scope.nearestStation.stationId).then(function (outputRoutes) {
+                ManageRouteService.findRoutesByStationId($scope.nearestStation.stationId).then(function (outputRoutes) {
                     $scope.outputRoutes = outputRoutes;
                     if (outputRoutes.length === 0) {
                         $scope.resultDesc = '您距离终点较近,建议直接前往' + $scope.nearestStation.keyword;
@@ -125,7 +147,8 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
                             var comingPath = [];
                             var flag = true;
                             angular.forEach(route.stations, function (station, index) {
-                                flag = flag && !(station.id === $scope.nearestStation.stationId);
+                                flag = flag && !(station.id === $scope.nearestStation.stationId) ;
+
                                 if (flag) {
                                     passedPath.push([station.lng, station.lat]);
                                 } else {
@@ -133,16 +156,19 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
                                 }
                             });
 
-                            $scope.map.plugin('AMap.DragRoute', function () {
-                                route = new AMap.DragRoute($scope.map, comingPath, AMap.DrivingPolicy.LEAST_DISTANCE, comingMarkerOptions);
-                                route.search();
-                            });
-
                             if (passedPath && passedPath.length > 0 && comingPath && comingPath.length > 0) {
                                 passedPath.push(comingPath[0]);
                             }
+
                             $scope.map.plugin('AMap.DragRoute', function () {
-                                route = new AMap.DragRoute($scope.map, passedPath, AMap.DrivingPolicy.LEAST_DISTANCE, passedMarkerOptions);
+                                route = new AMap.DragRoute($scope.map, comingPath, AMap.DrivingPolicy.LEAST_DISTANCE,
+                                    $scope.tripFlag === TRIP_FLAG_GO ? comingMarkerOptions : passedMarkerOptions);
+                                route.search();
+                            });
+
+                            $scope.map.plugin('AMap.DragRoute', function () {
+                                route = new AMap.DragRoute($scope.map, passedPath, AMap.DrivingPolicy.LEAST_DISTANCE,
+                                    $scope.tripFlag === TRIP_FLAG_GO ? passedMarkerOptions : comingMarkerOptions);
                                 route.search();
                             });
 

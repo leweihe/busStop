@@ -1,6 +1,7 @@
 package com.linde.dto;
 
 import com.linde.constants.RouteStatusEnum;
+import com.linde.constants.TripFlagEnum;
 
 import javax.persistence.*;
 import java.util.List;
@@ -17,8 +18,15 @@ public class BusRouteDTO {
     private String routeName;
     private String description;
 
+    private Integer sequence;
+
+    @Enumerated(EnumType.STRING)
+    private TripFlagEnum tripFlag;
+
     @Enumerated(EnumType.STRING)
     private RouteStatusEnum routeStatus;
+
+    private String oppRouteId;
 
     @OneToMany(mappedBy = "BusStationDTO")
     private List<BusStationDTO> stations;
@@ -61,5 +69,29 @@ public class BusRouteDTO {
 
     public void setRouteStatus(RouteStatusEnum routeStatus) {
         this.routeStatus = routeStatus;
+    }
+
+    public TripFlagEnum getTripFlag() {
+        return tripFlag;
+    }
+
+    public void setTripFlag(TripFlagEnum tripFlag) {
+        this.tripFlag = tripFlag;
+    }
+
+    public Integer getSequence() {
+        return sequence;
+    }
+
+    public void setSequence(Integer sequence) {
+        this.sequence = sequence;
+    }
+
+    public String getOppRouteId() {
+        return oppRouteId;
+    }
+
+    public void setOppRouteId(String oppRouteId) {
+        this.oppRouteId = oppRouteId;
     }
 }

@@ -10,7 +10,12 @@
         <h3 class="text-warning">{{resultDesc}}</h3>
         <br>
         <div class="container">
-            <input type="text" class="form-control" id="tipinput" >
+            <div class="col-md-11">
+                <input type="text" class="form-control" id="tipinput" >
+            </div>
+            <div class="">
+                <span class="btn btn-default" ng-click="switchOppRoute()"><img src="images/switch.png"/></span>
+            </div>
         </div>
         <br>
         <span ng-click="searchNearestStations(false)" class="btn btn-default" data-dismiss="alert">{{'home.search' | translate}}</span>
