@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71781281-eadf-42b6-98ff-cfb3ee95496c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/models/my-bot-api/bot-map.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lewei-bus.iml" afterPath="$PROJECT_DIR$/lewei-bus.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lewei-bus.ipr" afterPath="$PROJECT_DIR$/lewei-bus.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lewei-bus.iws" afterPath="$PROJECT_DIR$/lewei-bus.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/linde/web/rest/BusRouteWebService.java" afterPath="$PROJECT_DIR$/src/main/java/com/linde/web/rest/BusRouteWebService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/index.html" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/models/my-bot-api/_routing.js" afterPath="$PROJECT_DIR$/src/main/webapp/models/my-bot-api/_routing.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/models/my-bot-api/bot-api-controller.js" afterPath="$PROJECT_DIR$/src/main/webapp/models/my-bot-api/bot-api-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/models/my-bot-api/bot-api-service.js" afterPath="$PROJECT_DIR$/src/main/webapp/models/my-bot-api/bot-api-service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/models/my-bot-api/bot-api.html" afterPath="$PROJECT_DIR$/src/main/webapp/models/my-bot-api/bot-api.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/models/my-home/home-api.html" afterPath="$PROJECT_DIR$/src/main/webapp/models/my-home/home-api.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/models/my-home/home-controller.js" afterPath="$PROJECT_DIR$/src/main/webapp/models/my-home/home-controller.js" />
     </list>
     <ignored path="$PROJECT_DIR$/target/classes/" />
     <ignored path="$PROJECT_DIR$/target/test-classes/" />
@@ -939,7 +928,7 @@
       <workItem from="1491839886826" duration="2541000" />
       <workItem from="1491868726343" duration="19408000" />
       <workItem from="1491956557210" duration="27592000" />
-      <workItem from="1492044002827" duration="18659000" />
+      <workItem from="1492044002827" duration="18759000" />
     </task>
     <task id="LOCAL-00001" summary="lewei-bus">
       <created>1491835235882</created>
@@ -983,11 +972,18 @@
       <option name="project" value="LOCAL" />
       <updated>1491982033231</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="change some uis .">
+      <created>1492070394940</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1492070394942</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70811000" />
+    <option name="totallyTimeSpent" value="70911000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1236,6 +1232,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="32" column="11" lean-forward="false" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#587#588#0" expanded="true" />
+            <element signature="e#615#616#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
