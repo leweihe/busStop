@@ -121,12 +121,15 @@ public class BusRouteWebService {
     public ResponseEntity<List<BusRouteResource>> findRoutesByStationIds(@PathVariable String stationId) throws Exception {
         LOG.debug("To Create new Bus Route" + stationId);
         List<BusRouteDTO> allActiveBusRoutes = busRouteService.findAllByStatus(RouteStatusEnum.ACTIVE);
-        List<BusRouteResource> result = allActiveBusRoutes.stream().filter(n -> n.getStations().contains(new BusStationDTO(stationId)))
+        List<BusRouteResource> result = allActiveBusRoutes.stream()
+                .filter(n -> n.getStations() != null && n.getStations().contains(new BusStationDTO(stationId)))
                 .map(n -> busRouteResourceAssembler.toResource(n)).collect(Collectors.toList());
         for (int i = 0; i < allActiveBusRoutes.size(); i++) {
-            List<BusStationDTO> stations = allActiveBusRoutes.get(i).getStations();
-            if (stationId.equals(stations.get(stations.size() - 1).getId())) {
-                result.remove(i);
+            if(allActiveBusRoutes.get(i).getStations() != null) {
+                List<BusStationDTO> stations = allActiveBusRoutes.get(i).getStations();
+                if (stations.size() != 0 && stationId.equals(stations.get(stations.size() - 1).getId())) {
+                    result.remove(i);
+                }
             }
         }
         return new ResponseEntity<>(result, HttpStatus.OK);

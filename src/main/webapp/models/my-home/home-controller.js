@@ -7,14 +7,14 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
         lat: ''
     };
     $scope.map = new AMap.Map('mapContainer', {
-        resizeEnable: false,
+        resizeEnable: true,
         zoom: 14,
         center: [118.139839, 24.488006]
     });
-
-    $('#tipinput').click(function () {
-        $('#titles').animate({height: 'hide', speed: 'fast'});
-    });
+    //
+    // $('#tipinput').click(function () {
+    //     $('#titles').animate({height: 'hide', speed: 'fast'});
+    // });
 
     var passedDefaultMarkerOpt = {icon: 'images/path-gray.png', offset: new AMap.Pixel(-16, -32), draggable: false};
     var passedEndMarkerOpt = {icon: 'images/hidden-point.png', offset: new AMap.Pixel(-16, -32), draggable: false};
@@ -65,11 +65,9 @@ angular.module('myApp-home').controller('HomeController', ['$scope', '$location'
 
     ///finish init data
 
-
-    //
-    // $scope.map.plugin(['AMap.ToolBar'], function () {
-    //     $scope.map.addControl(new AMap.ToolBar());
-    // });
+    $scope.map.plugin(['AMap.ToolBar'], function () {
+        $scope.map.addControl(new AMap.ToolBar());
+    });
 
     $scope.showMap = function () {
         $('#mapContainer').show();

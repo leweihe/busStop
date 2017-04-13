@@ -1885,5 +1885,9 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="zepto" level="application" />
+    <orderEntry type="library" name="sm" level="application" />
+    <orderEntry type="library" name="sm-extend" level="application" />
+    <orderEntry type="library" name="angular-translate" level="application" />
   </component>
 </module>

@@ -1,2 +1,39 @@
-    <iframe align="middle" height="100%" width="100%"
-            src='https://webchat.botframework.com/embed/LindeBot?s=fJh61Vmas2o.cwA.sVU.o4HcHH3bMQgiocHYUsCpG95gQhxnSqAUg8yNN2QMFHk'></iframe>
+<link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+<!--<script type='text/javascript' src='http://g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>-->
+<!--<script src='http://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>-->
+<header class="bar bar-nav">
+    <a class="icon icon-menu pull-left open-panel" ng-click="showSideBar()"></a>
+    <h1 class="title">{{msg}}</h1>
+</header>
+
+<div class="content">
+    <div class="content-block">
+        <div class="list-block">
+            <ul class="list-container" ng-repeat="st in stations">
+                <li class="item-content">
+                    <div class="item-inner">
+                        <div class="item-title alert-success" style="text-decoration: underline;" ng-if="st.isHighlight"
+                             ui-sref="bot-map({lng: lng, lat: lat, routeId: route.routeId, stationId: st.id, showMap: true})">
+                            {{st.keyword}}
+                        </div>
+                        <div class="item-title" ng-if="!st.isHighlight">
+                            {{st.keyword}}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-left panel-reveal active" id="sideBar">
+    <div class="content-block">
+        <p>班车信息</p>
+        <ul ng-repeat="route in routes">
+            <li ng-click="listBusStations(route.routeId)">{{route.description}}</li>
+        </ul>
+        <p><a ng-click="hideSideBar()" class="close-panel">关闭</a></p>
+    </div>
+</div>
+
+<script>$.init()</script>

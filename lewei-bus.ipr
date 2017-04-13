@@ -38,10 +38,15 @@
       <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
         <option name="myValues">
           <value>
-            <list size="3">
+            <list size="8">
               <item index="0" class="java.lang.String" itemvalue="ng-model" />
               <item index="1" class="java.lang.String" itemvalue="ng-options" />
               <item index="2" class="java.lang.String" itemvalue="ng-click" />
+              <item index="3" class="java.lang.String" itemvalue="ui-view" />
+              <item index="4" class="java.lang.String" itemvalue="ng-app" />
+              <item index="5" class="java.lang.String" itemvalue="ng-repeat" />
+              <item index="6" class="java.lang.String" itemvalue="ng-if" />
+              <item index="7" class="java.lang.String" itemvalue="ui-sref" />
             </list>
           </value>
         </option>
@@ -52,6 +57,9 @@
   </component>
   <component name="JUnitProjectSettings">
     <option name="TEST_RUNNER" value="UI" />
+  </component>
+  <component name="JavaScriptLibraryMappings">
+    <file url="file://$PROJECT_DIR$" libraries="{angular-translate, sm, sm-extend, zepto}" />
   </component>
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" />
@@ -80,6 +88,15 @@
     <option name="IS_EMACS_ERRORS_MODE" value="true" />
     <option name="ADDITIONAL_OPTIONS_STRING" value="" />
     <option name="MAXIMUM_HEAP_SIZE" value="128" />
+  </component>
+  <component name="ProjectDictionaryState">
+    <dictionary name="cn40580">
+      <words>
+        <w>browsehappy</w>
+        <w>overline</w>
+        <w>zepto</w>
+      </words>
+    </dictionary>
   </component>
   <component name="ProjectModuleManager">
     <modules>

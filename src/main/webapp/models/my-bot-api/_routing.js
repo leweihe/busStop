@@ -3,7 +3,12 @@
 angular.module('myApp-bot-api').config(function ($stateProvider) {
     $stateProvider.state('bot-api', {
         templateUrl: 'models/my-bot-api/bot-api.html',
-        url: '/botApi',
+        url: '/bot-api',
+        controller: 'BotApiController'
+    }).state('bot-map', {
+        params: {lng: null, lat: null, routeId: null, stationId: null, showMap: false},
+        templateUrl: 'models/my-bot-api/bot-map.html',
+        url: '/bot-map',
         controller: 'BotApiController'
     });
 });

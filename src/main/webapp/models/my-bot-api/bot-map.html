@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+
+<header class="bar bar-nav">
+    <a class="icon icon-menu pull-left open-panel" ng-click="showSideBar()"></a>
+    <h1 class="title">{{msg}}</h1>
+</header>
+
+<div id="mapContainer" class="map"></div>
+
+<div class="panel panel-left panel-reveal active" id="sideBar">
+    <div class="content-block">
+        <p>班车信息</p>
+        <ul ng-repeat="route in routes">
+            <li ng-click="listBusStations(route.routeId)">{{route.description}}</li>
+        </ul>
+        <p><a ng-click="hideSideBar()" class="close-panel">关闭</a></p>
+    </div>
+</div>
