@@ -11,7 +11,7 @@
     <div class="content-block">
         <p>班车信息</p>
         <ul ng-repeat="route in routes">
-            <li ng-click="listBusStations(route.routeId)">{{route.description}}</li>
+            <li ng-click="jumpToListPage(route.routeId)">{{route.description}}</li>
         </ul>
         <p><a ng-click="hideSideBar()" class="close-panel">关闭</a></p>
     </div>

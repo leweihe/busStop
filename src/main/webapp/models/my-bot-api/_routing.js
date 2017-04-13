@@ -2,6 +2,7 @@
 
 angular.module('myApp-bot-api').config(function ($stateProvider) {
     $stateProvider.state('bot-api', {
+        params: {routeId: null},
         templateUrl: 'models/my-bot-api/bot-api.html',
         url: '/bot-api',
         controller: 'BotApiController'

@@ -3,8 +3,8 @@
  */
 'use strict';
 
-angular.module('myApp-bot-api').controller('BotApiController', ['$scope', '$location', '$stateParams', 'BotApiService', 'AmapService', 'ManageRouteService',
-    function ($scope, $location, $stateParams, BotApiService, AmapService, ManageRouteService) {
+angular.module('myApp-bot-api').controller('BotApiController', ['$scope', '$location', '$stateParams', '$state', 'BotApiService', 'AmapService', 'ManageRouteService',
+    function ($scope, $location, $stateParams, $state, BotApiService, AmapService, ManageRouteService) {
 
         var TRIP_FLAG_GO = 'GO';
         $scope.tripFlag = TRIP_FLAG_GO;
@@ -62,8 +62,11 @@ angular.module('myApp-bot-api').controller('BotApiController', ['$scope', '$loca
             $scope.stationId = $stateParams.stationId;
         }
 
-        ManageRouteService.findAllBusRoute().then(function (routes) {
-            routes.data.forEach(function (route) {
+        ManageRouteService.findAllBusRoute().then(function (result) {
+            var routes = result.data;
+            $scope.routes = routes;
+
+            routes.forEach(function (route) {
                 if (route.routeId === $scope.routeId) {
                     route.isHighlight = true;
                     $scope.route = route;
@@ -76,9 +79,11 @@ angular.module('myApp-bot-api').controller('BotApiController', ['$scope', '$loca
                     $scope.stations = route.stations;
                 }
             });
-            $scope.routes = routes.data;
         });
 
+        $scope.jumpToListPage = function (routeId) {
+            $state.go('bot-api', {routeId: routeId});
+        };
 
         $scope.listBusStations = function (routeId) {
             ManageRouteService.findRouteById(routeId).then(function (route) {
@@ -96,7 +101,6 @@ angular.module('myApp-bot-api').controller('BotApiController', ['$scope', '$loca
             $('#sideBar').attr('style', '');
             $('body').attr('class', '');
         };
-
 
         $scope.doSearch = function () {
 
@@ -169,6 +173,5 @@ angular.module('myApp-bot-api').controller('BotApiController', ['$scope', '$loca
 
             $scope.doSearch();
         }
-
 
     }]);
