@@ -24,6 +24,12 @@
             </ul>
         </div>
     </div>
+    <div class="content-block">
+        <div class="list-block">
+            <div class="btn btn-info"
+                 ui-sref="bot-map({routeId: route.routeId, showMap: true})">查看完整路径</div>
+        </div>
+    </div>
 </div>
 
 <div class="panel panel-left panel-reveal active" id="sideBar">
@@ -35,5 +41,3 @@
         <p><a ng-click="hideSideBar()" class="close-panel">关闭</a></p>
     </div>
 </div>
-
-<script>$.init()</script>
