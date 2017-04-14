@@ -2,7 +2,7 @@
 
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
-    'myApp-home',
+    // 'myApp-home',
     'myApp-manageRoute',
     'myApp-manageStation',
     'myApp-bot-api'

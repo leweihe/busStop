@@ -57,39 +57,34 @@ angular.module('myApp-bot-api').controller('BotApiController', ['$scope', '$loca
             $scope.lat = $stateParams.lat;
         }
 
-        if($stateParams.routeId || $stateParams.stationId) {
-            $scope.routeId = $stateParams.routeId;
-            $scope.stationId = $stateParams.stationId;
+        if($stateParams.route || $stateParams.station) {
+            $scope.route = $stateParams.route;
+            $scope.stations = $scope.route.stations;
+            $scope.station = $stateParams.station;
         }
 
-        ManageRouteService.findAllBusRoute().then(function (result) {
-            var routes = result.data;
-            $scope.routes = routes;
+        ManageRouteService.findAllBusRouteByTripFlag('GO').then(function (result) {
+            $scope.routes = result.data;
 
-            routes.forEach(function (route) {
-                if (route.routeId === $scope.routeId) {
-                    route.isHighlight = true;
-                    $scope.route = route;
-                    route.stations.forEach(function (station) {
-                        if (station.id === $scope.stationId) {
-                            station.isHighlight = true;
-                            $scope.station = station;
-                        }
-                    });
-                    $scope.stations = route.stations;
-                }
-            });
+            if($scope.routeId && $scope.stationId) {
+                $scope.routes.forEach(function (route) {
+                    if (route.routeId === $scope.routeId) {
+                        route.isHighlight = true;
+                        $scope.route = route;
+                        route.stations.forEach(function (station) {
+                            if (station.id === $scope.stationId) {
+                                station.isHighlight = true;
+                                $scope.station = station;
+                            }
+                        });
+                        $scope.stations = route.stations;
+                    }
+                });
+            }
         });
 
-        $scope.jumpToListPage = function (routeId) {
-            $state.go('bot-api', {routeId: routeId});
-        };
-
-        $scope.listBusStations = function (routeId) {
-            ManageRouteService.findRouteById(routeId).then(function (route) {
-                $scope.stations = route.data.stations;
-            });
-            $scope.hideSideBar();
+        $scope.jumpToListPage = function (route) {
+            $state.go('bot-api', {route: route});
         };
 
         $scope.showSideBar = function () {
@@ -103,61 +98,58 @@ angular.module('myApp-bot-api').controller('BotApiController', ['$scope', '$loca
         };
 
         $scope.doSearch = function () {
+            var route = $scope.route;
+            if ($scope.station) {
+                $scope.msg = '[' + route.routeName + '] - [' + $scope.station.keyword + ']';
+            } else {
+                $scope.msg = '[' + route.routeName + ']';
+            }
 
-            ManageRouteService.findRouteById($scope.routeId).then(function (result) {
-                var route = result.data;
+            var passedPath = [];
+            var comingPath = [];
+            var flag = true;
+            angular.forEach(route.stations, function (station, index) {
                 if ($scope.station) {
-                    $scope.msg = '[' + route.routeName + '] - [' + $scope.station.keyword + ']';
+                    flag = flag && !(station.id === $scope.station.id);
                 } else {
-                    $scope.msg = '[' + route.routeName + ']';
+                    flag = false;
                 }
 
-                var passedPath = [];
-                var comingPath = [];
-                var flag = true;
-                angular.forEach(route.stations, function (station, index) {
-                    if ($scope.station) {
-                        flag = flag && !(station.id === $scope.station.id);
-                    } else {
-                        flag = false;
-                    }
-
-                    if (flag) {
-                        passedPath.push([station.lng, station.lat]);
-                    } else {
-                        comingPath.push([station.lng, station.lat]);
-                    }
-                });
-
-                if (passedPath && passedPath.length > 0 && comingPath && comingPath.length > 0) {
-                    passedPath.push(comingPath[0]);
-                }
-
-                $scope.map.plugin('AMap.DragRoute', function () {
-                    route = new AMap.DragRoute($scope.map, comingPath, AMap.DrivingPolicy.LEAST_DISTANCE,
-                        $scope.tripFlag === TRIP_FLAG_GO ? comingMarkerOptions : passedMarkerOptions);
-                    route.search();
-                });
-
-                $scope.map.plugin('AMap.DragRoute', function () {
-                    route = new AMap.DragRoute($scope.map, passedPath, AMap.DrivingPolicy.LEAST_DISTANCE,
-                        $scope.tripFlag === TRIP_FLAG_GO ? passedMarkerOptions : comingMarkerOptions);
-                    route.search();
-                });
-
-                if ($scope.station) {
-                    var defaultWalkingOpt = {
-                        map: $scope.map,
-                        isOutline: false,
-                        hideMarkers: true
-                    };
-
-                    var search = new AMap.Walking(defaultWalkingOpt);
-                    var fromLnglat = new AMap.LngLat($scope.lng, $scope.lat);
-                    var toLngLat = new AMap.LngLat($scope.station.lng, $scope.station.lat);
-                    search.search(fromLnglat, toLngLat);
+                if (flag) {
+                    passedPath.push([station.lng, station.lat]);
+                } else {
+                    comingPath.push([station.lng, station.lat]);
                 }
             });
+
+            if (passedPath && passedPath.length > 0 && comingPath && comingPath.length > 0) {
+                passedPath.push(comingPath[0]);
+            }
+
+            $scope.map.plugin('AMap.DragRoute', function () {
+                route = new AMap.DragRoute($scope.map, comingPath, AMap.DrivingPolicy.LEAST_DISTANCE,
+                    $scope.tripFlag === TRIP_FLAG_GO ? comingMarkerOptions : passedMarkerOptions);
+                route.search();
+            });
+
+            $scope.map.plugin('AMap.DragRoute', function () {
+                route = new AMap.DragRoute($scope.map, passedPath, AMap.DrivingPolicy.LEAST_DISTANCE,
+                    $scope.tripFlag === TRIP_FLAG_GO ? passedMarkerOptions : comingMarkerOptions);
+                route.search();
+            });
+
+            if ($scope.station) {
+                var defaultWalkingOpt = {
+                    map: $scope.map,
+                    isOutline: false,
+                    hideMarkers: true
+                };
+
+                var search = new AMap.Walking(defaultWalkingOpt);
+                var fromLnglat = new AMap.LngLat($scope.lng, $scope.lat);
+                var toLngLat = new AMap.LngLat($scope.station.lng, $scope.station.lat);
+                search.search(fromLnglat, toLngLat);
+            }
         };
 
         if ($stateParams.showMap) {

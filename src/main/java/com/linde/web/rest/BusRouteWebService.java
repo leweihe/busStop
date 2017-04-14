@@ -64,12 +64,12 @@ public class BusRouteWebService {
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/busroute/all/{status}",
+    @RequestMapping(value = "/busroute/all/{tripFlag}",
             method = RequestMethod.GET,
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_ATOM_XML_VALUE})
     @Timed
-    public ResponseEntity<List<BusRouteResource>> getAllBusRoute(@PathVariable String status) {
-        List<BusRouteDTO> us = busRouteService.findAllByStatus(Enum.valueOf(RouteStatusEnum.class, status));
+    public ResponseEntity<List<BusRouteResource>> getAllBusRoute(@PathVariable String tripFlag) {
+        List<BusRouteDTO> us = busRouteService.findAllByTripFlag(Enum.valueOf(TripFlagEnum.class, tripFlag));
         List<BusRouteResource> res = us.stream().map(n -> busRouteResourceAssembler.toResource(n))
                 .sorted(comparing(BusRouteResource::getSequence))
                 .collect(Collectors.toList());

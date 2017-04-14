@@ -11,8 +11,8 @@ angular.module('myApp-manageRoute').factory('ManageRouteService', ['$http', '$re
             });
             return promise;
         },
-        findAllBusRouteBuStatus: function (status) {
-            var promise = $http.get('app/rest/busroute/all/' + status).then(function (data) {
+        findAllBusRouteByTripFlag: function (tripFlag) {
+            var promise = $http.get('app/rest/busroute/all/' + tripFlag).then(function (data) {
                 return data;
             });
             return promise;

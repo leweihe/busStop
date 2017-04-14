@@ -13,7 +13,7 @@
                 <li class="item-content">
                     <div class="item-inner">
                         <div class="item-title alert-success" style="text-decoration: underline;" ng-if="st.isHighlight"
-                             ui-sref="bot-map({lng: lng, lat: lat, routeId: route.routeId, stationId: st.id, showMap: true})">
+                             ui-sref="bot-map({lng: lng, lat: lat, route: route, station: st, showMap: true})">
                             {{st.keyword}}
                         </div>
                         <div class="item-title" ng-if="!st.isHighlight">
@@ -27,7 +27,7 @@
     <div class="content-block">
         <div class="list-block">
             <div class="btn btn-info"
-                 ui-sref="bot-map({routeId: route.routeId, showMap: true})">查看完整路径</div>
+                 ui-sref="bot-map({route: route, showMap: true})">查看完整路径</div>
         </div>
     </div>
 </div>
@@ -36,7 +36,7 @@
     <div class="content-block">
         <p>班车信息</p>
         <ul ng-repeat="route in routes">
-            <li ng-click="listBusStations(route.routeId)">{{route.description}}</li>
+            <li><div ui-sref="bot-api({route: route})">{{route.description}}</div></li>
         </ul>
         <p><a ng-click="hideSideBar()" class="close-panel">关闭</a></p>
     </div>

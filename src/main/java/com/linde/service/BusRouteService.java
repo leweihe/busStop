@@ -3,6 +3,7 @@ package com.linde.service;
 import java.util.List;
 
 import com.linde.constants.RouteStatusEnum;
+import com.linde.constants.TripFlagEnum;
 import com.linde.dto.BusRouteDTO;
 
 /**
@@ -13,6 +14,8 @@ public interface BusRouteService {
     List<BusRouteDTO> findAll();
 
     List<BusRouteDTO> findAllByStatus(RouteStatusEnum status);
+
+    List<BusRouteDTO> findAllByTripFlag(TripFlagEnum tripFlagEnum);
 
     void remove(String routeId);
 

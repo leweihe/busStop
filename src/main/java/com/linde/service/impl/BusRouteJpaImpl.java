@@ -1,6 +1,7 @@
 package com.linde.service.impl;
 
 import com.linde.constants.RouteStatusEnum;
+import com.linde.constants.TripFlagEnum;
 import com.linde.repo.BusRouteRepository;
 import com.linde.service.BusRouteService;
 import com.linde.dto.BusRouteDTO;
@@ -29,6 +30,13 @@ public class BusRouteJpaImpl implements BusRouteService {
     public List<BusRouteDTO> findAllByStatus(RouteStatusEnum status){
         BusRouteDTO ex = new BusRouteDTO();
         ex.setRouteStatus(status);
+        return busRouteRepo.findAll(Example.of(ex));
+    }
+
+    @Override
+    public List<BusRouteDTO> findAllByTripFlag(TripFlagEnum tripFlag){
+        BusRouteDTO ex = new BusRouteDTO();
+        ex.setTripFlag(tripFlag);
         return busRouteRepo.findAll(Example.of(ex));
     }
 

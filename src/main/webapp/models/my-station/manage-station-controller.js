@@ -177,7 +177,7 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
             $scope.currentRoute.tripFlag = tripFlags[0];
         });
 
-        ManageRouteService.findAllBusRouteBuStatus('ACTIVE').then(function (activeRoutes) {
+        ManageRouteService.findAllBusRoute().then(function (activeRoutes) {
             $scope.activeRoutes = activeRoutes.data;
             $scope.activeRoutes.forEach(function (route) {
                 if($scope.currentRoute.oppRouteId === route.routeId){

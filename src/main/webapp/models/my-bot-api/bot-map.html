@@ -11,8 +11,12 @@
     <div class="content-block">
         <p>班车信息</p>
         <ul ng-repeat="route in routes">
-            <li ng-click="jumpToListPage(route.routeId)">{{route.description}}</li>
+            <li><div ui-sref="bot-api({route: route})">{{route.description}}</div></li>
         </ul>
         <p><a ng-click="hideSideBar()" class="close-panel">关闭</a></p>
     </div>
 </div>
+
+<script type="application/javascript">
+    $('#mapContainer').attr('style', 'height: ' + (window.screen.availHeight - 30) + 'px;');
+</script>
