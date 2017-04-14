@@ -57,10 +57,19 @@ angular.module('myApp-bot-api').controller('BotApiController', ['$scope', '$loca
             $scope.lat = $stateParams.lat;
         }
 
+        var buildTitle = function() {
+            if ($scope.station) {
+                $scope.title = '[' + $scope.route.routeName + ' - ' + $scope.route.description + '] - [' + $scope.station.keyword + ']';
+            } else {
+                $scope.title = '[' + $scope.route.routeName + ' - ' + $scope.route.description + ']';
+            }
+        };
+
         if($stateParams.route || $stateParams.station) {
             $scope.route = $stateParams.route;
             $scope.stations = $scope.route.stations;
             $scope.station = $stateParams.station;
+            buildTitle();
         }
 
         ManageRouteService.findAllBusRouteByTripFlag('GO').then(function (result) {
@@ -78,10 +87,12 @@ angular.module('myApp-bot-api').controller('BotApiController', ['$scope', '$loca
                             }
                         });
                         $scope.stations = route.stations;
+                        buildTitle();
                     }
                 });
             }
         });
+
 
         $scope.jumpToListPage = function (route) {
             $state.go('bot-api', {route: route});
@@ -99,12 +110,6 @@ angular.module('myApp-bot-api').controller('BotApiController', ['$scope', '$loca
 
         $scope.doSearch = function () {
             var route = $scope.route;
-            if ($scope.station) {
-                $scope.msg = '[' + route.routeName + '] - [' + $scope.station.keyword + ']';
-            } else {
-                $scope.msg = '[' + route.routeName + ']';
-            }
-
             var passedPath = [];
             var comingPath = [];
             var flag = true;
