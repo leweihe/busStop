@@ -48,8 +48,6 @@ angular.module('myApp-bot-api').controller('BotApiController', ['$scope', '$loca
         if ($location.search().lng && $location.search().lat) {
             $scope.lng = $location.search().lng;
             $scope.lat = $location.search().lat;
-            $scope.routeId = $location.search().routeId;
-            $scope.stationId = $location.search().stationId;
         }
 
         if ($stateParams.lng && $stateParams.lat) {
@@ -60,22 +58,31 @@ angular.module('myApp-bot-api').controller('BotApiController', ['$scope', '$loca
         var buildTitle = function() {
             if ($scope.station) {
                 $scope.title = '[' + $scope.route.routeName + ' - ' + $scope.route.description + '] - [' + $scope.station.keyword + ']';
-            } else {
+            } else if ($scope.route) {
                 $scope.title = '[' + $scope.route.routeName + ' - ' + $scope.route.description + ']';
+            } else {
+                $scope.title = '';
             }
         };
 
-        if($stateParams.route || $stateParams.station) {
+        if ($location.search().routeId || $location.search().stationId || $location.search().showMap) {
+            $scope.routeId = $location.search().routeId;
+            $scope.stationId = $location.search().stationId;
+            $scope.showMap = $location.search().showMap;
+        }
+
+        if ($stateParams.route || $stateParams.station) {
             $scope.route = $stateParams.route;
             $scope.stations = $scope.route.stations;
             $scope.station = $stateParams.station;
+            $scope.showMap = $stateParams.showMap;
             buildTitle();
         }
 
         ManageRouteService.findAllBusRouteByTripFlag('GO').then(function (result) {
             $scope.routes = result.data;
 
-            if($scope.routeId && $scope.stationId) {
+            if ($scope.routeId) {
                 $scope.routes.forEach(function (route) {
                     if (route.routeId === $scope.routeId) {
                         route.isHighlight = true;
@@ -83,7 +90,9 @@ angular.module('myApp-bot-api').controller('BotApiController', ['$scope', '$loca
                         route.stations.forEach(function (station) {
                             if (station.id === $scope.stationId) {
                                 station.isHighlight = true;
-                                $scope.station = station;
+                                if ($scope.stationId) {
+                                    $scope.station = station;
+                                }
                             }
                         });
                         $scope.stations = route.stations;
@@ -92,7 +101,6 @@ angular.module('myApp-bot-api').controller('BotApiController', ['$scope', '$loca
                 });
             }
         });
-
 
         $scope.jumpToListPage = function (route) {
             $state.go('bot-api', {route: route});
@@ -126,7 +134,6 @@ angular.module('myApp-bot-api').controller('BotApiController', ['$scope', '$loca
                     comingPath.push([station.lng, station.lat]);
                 }
             });
-
             if (passedPath && passedPath.length > 0 && comingPath && comingPath.length > 0) {
                 passedPath.push(comingPath[0]);
             }
@@ -143,7 +150,7 @@ angular.module('myApp-bot-api').controller('BotApiController', ['$scope', '$loca
                 route.search();
             });
 
-            if ($scope.station) {
+            if ($scope.station && $scope.lng && $scope.lat) {
                 var defaultWalkingOpt = {
                     map: $scope.map,
                     isOutline: false,
@@ -157,7 +164,7 @@ angular.module('myApp-bot-api').controller('BotApiController', ['$scope', '$loca
             }
         };
 
-        if ($stateParams.showMap) {
+        if ($scope.showMap) {
             $scope.map = new AMap.Map('mapContainer', {
                 resizeEnable: true,
                 zoom: 14,

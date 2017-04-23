@@ -16,7 +16,9 @@
                              ui-sref="bot-map({lng: lng, lat: lat, route: route, station: st, showMap: true})">
                             {{st.keyword}}
                         </div>
-                        <div class="item-title" ng-if="!st.isHighlight">
+                        <div class="item-title" style="text-decoration: underline;"
+                             ui-sref="bot-map({route: route, station: st, showMap: true})"
+                             ng-if="!st.isHighlight">
                             {{st.keyword}}
                         </div>
                     </div>
@@ -24,12 +26,7 @@
             </ul>
         </div>
     </div>
-    <div class="content-block">
-        <div class="list-block">
-            <div class="btn btn-info"
-                 ui-sref="bot-map({route: route, showMap: true})">查看完整路径</div>
-        </div>
-    </div>
+
 </div>
 
 <div class="panel panel-left panel-reveal active" id="sideBar">
