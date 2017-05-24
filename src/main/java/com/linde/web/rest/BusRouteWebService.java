@@ -53,10 +53,10 @@ public class BusRouteWebService {
                 .sorted(comparing(BusRouteResource::getSequence))
                 .collect(Collectors.toList());
 
-        for(BusRouteResource br : res) {
-            if(br.getOppRouteId() != null) {
+        for (BusRouteResource br : res) {
+            if (br.getOppRouteId() != null) {
                 BusRouteDTO oppRouteDTO = busRouteService.findById(br.getRouteId());
-                if(oppRouteDTO != null) {
+                if (oppRouteDTO != null) {
                     br.setOppRoute(busRouteResourceAssembler.toResource(oppRouteDTO));
                 }
             }
@@ -100,18 +100,25 @@ public class BusRouteWebService {
     public ResponseEntity<BusRouteResource> saveBusRoute(@RequestBody BusRouteResource busRouteResource) throws Exception {
         LOG.debug("To Create new Bus Route" + busRouteResource);
         BusRouteDTO busRouteDTO = busRouteResourceAssembler.toDto(busRouteResource);
-        List<BusStationDTO> stations = busRouteService.findById(busRouteResource.getRouteId()).getStations();
+        List<BusStationDTO> stations = new ArrayList<>();
+        if (busRouteResource.getRouteId() != null) {
+            stations = busRouteService.findById(busRouteResource.getRouteId()).getStations();
 
-        busRouteDTO.setStations(stations.stream().map(n -> {
-            n.setTripFlag(busRouteDTO.getTripFlag());
-            return n;
-        }).collect(Collectors.toList()));
-        if(!busRouteDTO.getId().equals(busRouteDTO.getOppRouteId())) {
+            busRouteDTO.setStations(stations.stream().map(n -> {
+                n.setTripFlag(busRouteDTO.getTripFlag());
+                return n;
+            }).collect(Collectors.toList()));
+            if (!busRouteDTO.getId().equals(busRouteDTO.getOppRouteId())) {
+                BusRouteDTO newBusRoute = busRouteService.saveBusRoute(busRouteDTO);
+                BusRouteResource newBusRouteRes = busRouteResourceAssembler.toResource(newBusRoute);
+                return new ResponseEntity<>(newBusRouteRes, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+            }
+        } else {
             BusRouteDTO newBusRoute = busRouteService.saveBusRoute(busRouteDTO);
             BusRouteResource newBusRouteRes = busRouteResourceAssembler.toResource(newBusRoute);
             return new ResponseEntity<>(newBusRouteRes, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
         }
 
     }
@@ -125,7 +132,7 @@ public class BusRouteWebService {
                 .filter(n -> n.getStations() != null && n.getStations().contains(new BusStationDTO(stationId)))
                 .map(n -> busRouteResourceAssembler.toResource(n)).collect(Collectors.toList());
         for (int i = 0; i < allActiveBusRoutes.size(); i++) {
-            if(allActiveBusRoutes.get(i).getStations() != null) {
+            if (allActiveBusRoutes.get(i).getStations() != null) {
                 List<BusStationDTO> stations = allActiveBusRoutes.get(i).getStations();
                 if (stations.size() != 0 && stationId.equals(stations.get(stations.size() - 1).getId())) {
                     result.remove(i);

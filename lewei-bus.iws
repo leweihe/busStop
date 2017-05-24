@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="71781281-eadf-42b6-98ff-cfb3ee95496c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lewei-bus.iws" afterPath="$PROJECT_DIR$/lewei-bus.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/css/app.css" afterPath="$PROJECT_DIR$/src/main/webapp/css/app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/models/my-station/manage-station-controller.js" afterPath="$PROJECT_DIR$/src/main/webapp/models/my-station/manage-station-controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/linde/web/rest/BusRouteWebService.java" afterPath="$PROJECT_DIR$/src/main/java/com/linde/web/rest/BusRouteWebService.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/classes/" />
     <ignored path="$PROJECT_DIR$/target/test-classes/" />
@@ -175,44 +174,34 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="bot-map.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-bot-api/bot-map.html">
+      <file leaf-file-name="manage-route-controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-route/manage-route-controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            <state relative-caret-position="155">
+              <caret line="84" column="35" lean-forward="true" selection-start-line="84" selection-start-column="35" selection-end-line="84" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bot-api-service.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-bot-api/bot-api-service.js">
+      <file leaf-file-name="BusRouteJpaImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/linde/service/impl/BusRouteJpaImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bot-api.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-bot-api/bot-api.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+            <state relative-caret-position="188">
+              <caret line="53" column="24" lean-forward="true" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#1447#1448#0" expanded="true" />
+                <element signature="e#1499#1500#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/css/app.css">
+      <file leaf-file-name="BusRouteWebService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/linde/web/rest/BusRouteWebService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+            <state relative-caret-position="336">
+              <caret line="113" column="41" lean-forward="false" selection-start-line="113" selection-start-column="41" selection-end-line="113" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -221,58 +210,18 @@
       <file leaf-file-name="manage-route-service.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-route/manage-route-service.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="manage-station-controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-station/manage-station-controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="120" column="42" lean-forward="true" selection-start-line="120" selection-start-column="42" selection-end-line="120" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="manage-station.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-station/manage-station.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="86" column="14" lean-forward="true" selection-start-line="86" selection-start-column="14" selection-end-line="86" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BusStationWebService.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/linde/web/rest/BusStationWebService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="96" column="48" lean-forward="true" selection-start-line="96" selection-start-column="48" selection-end-line="96" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="amap-service.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/models/base/amap-service.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="46" column="52" lean-forward="false" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bot-api-controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-bot-api/bot-api-controller.js">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="325">
-              <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+              <caret line="32" column="54" lean-forward="false" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="manage-route.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-route/manage-route.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="268">
+              <caret line="104" column="84" lean-forward="false" selection-start-line="104" selection-start-column="83" selection-end-line="104" selection-end-column="84" />
               <folding />
             </state>
           </provider>
@@ -307,11 +256,11 @@
       <find>openInfoPoint</find>
       <find>copy</find>
       <find>copyo</find>
-      <find>save</find>
-      <find>tripflag</find>
       <find>tripFlag</find>
       <find>.copy</find>
       <find>editMarkerOpt</find>
+      <find>save</find>
+      <find>tripflag</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\cn40580\IdeaProjects\lewei-bus\src</dir>
@@ -341,7 +290,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/linde/constants/TripFlagEnum.java" />
         <option value="$PROJECT_DIR$/src/main/resources/config/application-local.yml" />
         <option value="$PROJECT_DIR$/target/generated-sources/com/linde/web/rest/resourceassembler/mapper/BusRouteResourceMapperImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/models/my-route/manage-route-controller.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/linde/web/rest/resourceassembler/impl/BusRouteAssemblerMapperImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/linde/web/rest/resource/BusRouteResource.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/models/my-home/home-service.js" />
@@ -362,7 +310,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/models/my-route/manage-route-service.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/linde/service/impl/BusRouteJpaImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/linde/service/BusRouteService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/linde/web/rest/BusRouteWebService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/models/my-bot-api/_routing.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/models/my-app/_module.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/index.html" />
@@ -372,6 +319,8 @@
         <option value="$PROJECT_DIR$/src/main/webapp/models/my-bot-api/bot-api-controller.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/css/app.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/models/my-station/manage-station-controller.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/models/my-route/manage-route-controller.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/linde/web/rest/BusRouteWebService.java" />
       </list>
     </option>
   </component>
@@ -931,7 +880,7 @@
       <workItem from="1492419614698" duration="738000" />
       <workItem from="1492926972308" duration="5054000" />
       <workItem from="1494227110796" duration="609000" />
-      <workItem from="1495593088985" duration="5934000" />
+      <workItem from="1495593088985" duration="6556000" />
     </task>
     <task id="LOCAL-00001" summary="lewei-bus">
       <created>1491835235882</created>
@@ -1024,11 +973,18 @@
       <option name="project" value="LOCAL" />
       <updated>1492931919625</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="fix station edit bug">
+      <created>1495603207067</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1495603207067</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94761000" />
+    <option name="totallyTimeSpent" value="95383000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1176,8 +1132,14 @@
           <properties />
           <option name="timeStamp" value="29" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/linde/web/rest/BusRouteWebService.java</url>
+          <line>110</line>
+          <properties />
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="30" />
+      <option name="time" value="33" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1363,24 +1325,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linde/service/impl/BusRouteJpaImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="36" column="70" lean-forward="true" selection-start-line="36" selection-start-column="70" selection-end-line="36" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/linde/service/BusRouteService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="17" column="39" lean-forward="false" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/linde/web/rest/BusRouteWebService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="71" column="109" lean-forward="true" selection-start-line="71" selection-start-column="109" selection-end-line="71" selection-end-column="109" />
         </state>
       </provider>
     </entry>
@@ -1438,8 +1386,8 @@
         <state relative-caret-position="560">
           <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1473,30 +1421,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-route/manage-route-controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="94" column="0" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-route/manage-route-service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-route/manage-route.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="548">
-          <caret line="91" column="44" lean-forward="true" selection-start-line="91" selection-start-column="44" selection-end-line="91" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/models/base/amap-service.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="295">
@@ -1523,8 +1447,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/linde/web/rest/BusStationWebService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="96" column="48" lean-forward="true" selection-start-line="96" selection-start-column="48" selection-end-line="96" selection-end-column="48" />
+        <state relative-caret-position="228">
+          <caret line="93" column="50" lean-forward="true" selection-start-line="93" selection-start-column="50" selection-end-line="93" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-route/manage-route.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="104" column="84" lean-forward="false" selection-start-line="104" selection-start-column="83" selection-end-line="104" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/linde/service/impl/BusRouteJpaImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="53" column="24" lean-forward="true" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
+          <folding>
+            <element signature="e#1447#1448#0" expanded="true" />
+            <element signature="e#1499#1500#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-route/manage-route-service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="32" column="54" lean-forward="false" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/models/my-route/manage-route-controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="84" column="35" lean-forward="true" selection-start-line="84" selection-start-column="35" selection-end-line="84" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/linde/web/rest/BusRouteWebService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="113" column="41" lean-forward="false" selection-start-line="113" selection-start-column="41" selection-end-line="113" selection-end-column="41" />
           <folding />
         </state>
       </provider>
