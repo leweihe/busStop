@@ -45,7 +45,7 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
             $scope.currentRoute = currentRoute.data;
         });
 
-        $scope.reloadMap = function() {
+        $scope.reloadMap = function () {
             $scope.map.clearMap();
             ManageStationService.findAllBusStationByRouteId($scope.routeId).then(function (allBusStations) {
                 $scope.allBusStations = allBusStations;
@@ -63,7 +63,7 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
         $scope.reloadMap();
 
         $scope.addBusStation = function () {
-            $scope.inputBusStation.tripFlag = $scope.currentRoute.tripFlag;
+            $scope.inputBusStation.tripFlag = $scope.currentRoute.tripFlag.value;
             ManageStationService.saveBusStation($scope.inputBusStation).then(function () {
                 $scope.$broadcast('refreshStations');
             });
@@ -77,11 +77,11 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
             });
         };
 
-        $scope.onError = function(data) {
+        $scope.onError = function (data) {
 
         };
 
-        $scope.addBusStationByCurrent = function() {
+        $scope.addBusStationByCurrent = function () {
             $scope.map.plugin('AMap.Geolocation', function () {
                 var geolocation = new AMap.Geolocation({
                     timeout: 10000,
@@ -116,8 +116,10 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
 
         $scope.openInfoPoint = function (map, point) {
             map.clearMap();
-            defaultMarkerOpt.map = $scope.map;
-            var marker = new AMap.Marker(defaultMarkerOpt);
+            var opt = angular.copy(editMarkerOpt);
+            opt.map = $scope.map;
+            opt.position = point.location;
+            var marker = new AMap.Marker(opt);
 
             marker.on('dragend', function (dragedPoint) {
                 $scope.inputBusStation.lng = dragedPoint.lnglat.lng;
@@ -130,8 +132,7 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
 
         $scope.drawStationPoint = function (station) {
             station.routeId = $scope.routeId;
-            var position = new AMap.LngLat(station.lng, station.lat);
-            editMarkerOpt.position = position;
+            editMarkerOpt.position = new AMap.LngLat(station.lng, station.lat);
             editMarkerOpt.map = $scope.map;
             var marker = new AMap.Marker(editMarkerOpt);
             marker.on('dragend', function (dragedPoint) {
@@ -170,7 +171,7 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
         ManageRouteService.findTripFlagValues().then(function (tripFlags) {
             $scope.tripFlags = tripFlags;
             tripFlags.forEach(function (flag) {
-                if($scope.currentRoute.tripFlag.name === flag.name) {
+                if ($scope.currentRoute.tripFlag.name === flag.name) {
                     $scope.currentRoute.tripFlag = flag;
                 }
             });
@@ -180,7 +181,7 @@ angular.module('myApp-manageStation').controller('ManageStationController', ['$r
         ManageRouteService.findAllBusRoute().then(function (activeRoutes) {
             $scope.activeRoutes = activeRoutes.data;
             $scope.activeRoutes.forEach(function (route) {
-                if($scope.currentRoute.oppRouteId === route.routeId){
+                if ($scope.currentRoute.oppRouteId === route.routeId) {
                     $scope.currentRoute.oppRoute = route;
                 }
             });
